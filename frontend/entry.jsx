@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Root from '/components/session/root';
+import Root from '/components/root';
 
 let preloadedState = {};
 if (window.currentUser) {
