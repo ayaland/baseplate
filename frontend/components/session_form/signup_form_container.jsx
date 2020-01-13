@@ -1,8 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { signup, login, logout } from '../../actions/session_actions';
-import LoginFormContainer from './signup_form_container';
+import { signup, login } from '../../actions/session_actions';
 
 class SignupFormContainer extends React.Component {
     constructor(props) {
@@ -90,11 +88,10 @@ class SignupFormContainer extends React.Component {
                     </div>
 
                 <footer className="centered push--bottom">
-                    <p>
                         <small>
                             Having trouble? <a className="decorated" href="https://www.linkedin.com/in/aya-shirai-6791663/">We can't help.</a>
+                            <div>{this.renderErrors()}</div>
                         </small>
-                    </p>
                 </footer>
             </main>
         );
