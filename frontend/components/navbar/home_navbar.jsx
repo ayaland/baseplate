@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-class Navbar extends React.Component {
+class HomeNavbar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -31,4 +31,4 @@ class Navbar extends React.Component {
     }
 }
 
-export default Navbar;
+export default HomeNavbar;

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
+import HomeNavbar from '../navbar/home_navbar';
 
 class HomepageContainer extends React.Component {
     constructor(props) {
@@ -11,7 +12,12 @@ class HomepageContainer extends React.Component {
     };
 
     render() {
-        return (<div>Homepage!</div>);
+        return (
+            <>
+                <HomeNavbar />
+                    Homepage!
+            </>
+        );
     }
 }
 

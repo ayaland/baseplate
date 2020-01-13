@@ -56,9 +56,9 @@ class LoginFormContainer extends React.Component {
                 <div className="centered push--bottom">
 
                     <form onSubmit={this.handleSubmit} className="sheet sheet--shadowed sheet--signup flush--top">
-                            {/* <button onClick={this.handleClick} type="button" className="action_button flush--top">
+                            <button onClick={this.handleClick} type="button" className="action_button flush--top">
                             Use<img className="action_button_img" alt="demo" src={window.demo} />account
-                            </button> */}
+                            </button>
 
                         <div className="break push--top push--bottom :before">
                             <div className="break__content">Or, use my email address</div>
