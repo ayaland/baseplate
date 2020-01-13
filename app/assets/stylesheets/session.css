@@ -93,9 +93,10 @@ small {
 }
 
 .btn {
-    display: block;
+    display: inline-block;
     width: 100%;
     background-color: #2da562;
+    border-color: #2da562;
     color: #fff;
     max-width: 100%;
     padding: 0.5em 0.5em;
@@ -106,6 +107,10 @@ small {
     cursor: pointer;
     text-decoration: none;
     text-align: center;
+}
+
+.btn:focus {
+    outline: none;
 }
 
 .break {

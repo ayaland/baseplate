@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { signup, login } from '../../actions/session_actions';
+import { signup, clearErrors } from '../../actions/session_actions';
 
 class SignupFormContainer extends React.Component {
     constructor(props) {
@@ -11,6 +11,10 @@ class SignupFormContainer extends React.Component {
             password: ''
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    componentDidMount() {
+        this.props.clearErrors();
     }
 
     update(field) {
@@ -89,7 +93,7 @@ class SignupFormContainer extends React.Component {
 
                 <footer className="centered push--bottom">
                         <small>
-                            Having trouble? <a className="decorated" href="https://www.linkedin.com/in/aya-shirai-6791663/">We can't help.</a>
+                            Having trouble? <a className="decorated" href="https://www.linkedin.com/in/aya-shirai-6791663/">We can help.</a>
                             <div>{this.renderErrors()}</div>
                         </small>
                 </footer>
@@ -106,6 +110,7 @@ const mapStateToProps = ({ errors }) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         processForm: (user) => dispatch(signup(user)),
+        clearErrors: () => dispatch(clearErrors())
     };
 };
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { login } from '../../actions/session_actions';
+import { login, clearErrors } from '../../actions/session_actions';
 
 class LoginFormContainer extends React.Component {
     constructor(props) {
@@ -13,6 +13,10 @@ class LoginFormContainer extends React.Component {
         this.handleClick = this.handleClick.bind(this);
     }
 
+    componentDidMount() {
+        this.props.clearErrors();
+    }
+
     update(field) {
         return e => this.setState({
             [field]: e.currentTarget.value
@@ -22,14 +26,12 @@ class LoginFormContainer extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const user = Object.assign({}, this.state);
-        console.log(user);
         this.props.processForm(user);
     }
 
     handleClick(e) {
         e.preventDefault();
         const user = {name: 'Minifig', password: 'password'}
-        console.log(user);
         this.props.processForm(user);
     }
 
@@ -91,12 +93,10 @@ class LoginFormContainer extends React.Component {
                     </div>
 
                 <footer className="centered push--bottom">
-                    {/* <p> */}
                         <small>
                             LEGO-ish font from <a className="decorated" href="https://fontmeme.com/lego-font/">Font Meme</a>
                             <div>{this.renderErrors()}</div>
                         </small>
-                    {/* </p> */}
                 </footer>
             </main>
         );
@@ -113,6 +113,7 @@ const mapStateToProps = ({ errors }) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         processForm: (user) => dispatch(login(user)),
+        clearErrors: () => dispatch(clearErrors())
     };
 };
 
