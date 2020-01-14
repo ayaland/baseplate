@@ -95,7 +95,7 @@ class LoginFormContainer extends React.Component {
                 <footer className="centered push--bottom">
                         <small>
                             LEGO-ish font from <a className="decorated" href="https://fontmeme.com/lego-font/">Font Meme</a>
-                            <div>{this.renderErrors()}</div>
+                            <div className="session-errors">{this.renderErrors()}</div>
                         </small>
                 </footer>
             </main>

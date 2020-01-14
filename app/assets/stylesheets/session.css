@@ -172,22 +172,45 @@ small {
 
 /* Navbar specific css */
 
-.dropdown-div {
-    position: relative;
-    display: inline-block;
-}
-
-.ddown-content {
-    visibility: hidden;
-    position: absolute;
-    background-color: #fff;
-    min-width: 345px;
-    z-index: 1;
-}
 
 /* DO NOT TOUCH, does the alignment of icons. CSS by classname will not work */
 img {
     vertical-align: middle;
+}
+
+.dropdown-menu {
+    flex-direction: column;
+    display: flex;
+    position: fixed;
+    top: 2.4rem;
+    left: auto;
+    right: 0;
+    width: 350px;
+    text-align: left;
+    border: 0;
+/* border radius should be document-wide for projects home */
+    border-radius: 0.2em 0.2em 0 0;
+    background-color: #fff;
+    box-shadow: 0 0 4px rgba(0,0,0,0.15), 0 5px 10px rgba(0,0,0,0.05);
+}
+
+.dropdown-settings:after {
+    content: ' ';
+    position: absolute;
+    bottom: 100%;
+    left: 91%;
+    width: 0;
+    height: 0;
+    margin-left: -9px;
+    border: 9px solid rgba(255,255,255,0);
+    border-bottom-color: #fff;
+    z-index: 5;
+}
+
+.dropdown-settings {
+    overflow-x: hidden;
+    overflow-y: overlay;
+    padding-top: 1rem;   
 }
 
 .nav_accounts {
@@ -199,6 +222,7 @@ img {
 
 .navbar-menu {
     display: flex;
+    line-height: 1.5;
     justify-content: space-between;
 }
 
@@ -217,9 +241,30 @@ img {
     margin-left: auto;
 }
 
-.show-dropdown {
-    display: visible;
+
+/* BEGIN CSS-ONLY MENU ATTEMPT */
+
+/* .ddown-content {
+    visibility: hidden;
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 345px;
+    z-index: 1;
 }
+.show-dropdown {
+    visibility: visible;
+}
+
+.BBB:focus + .AAA {
+    visibility: hidden;
+    display: none;
+}
+
+.AAA {
+    display: block;
+    visibility: visible;
+} */
 
 /* ----- */
 
@@ -260,6 +305,11 @@ img {
 .sheet--signup {
     animation: scale-fade-in 0.3s ease;
     border-radius: 1rem;
+}
+
+.text-link {
+    color: inherit;
+    text-decoration: inherit;
 }
 
 .x-large {

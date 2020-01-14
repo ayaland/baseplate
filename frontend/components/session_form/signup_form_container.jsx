@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+
 import { signup, clearErrors } from '../../actions/session_actions';
 
 class SignupFormContainer extends React.Component {
@@ -94,7 +95,7 @@ class SignupFormContainer extends React.Component {
                 <footer className="centered push--bottom">
                         <small>
                             Having trouble? <a className="decorated" href="https://www.linkedin.com/in/aya-shirai-6791663/">We can help.</a>
-                            <div>{this.renderErrors()}</div>
+                            <div className="session-errors">{this.renderErrors()}</div>
                         </small>
                 </footer>
             </main>

@@ -13,7 +13,6 @@ class SettingsMenu extends React.Component {
 
     showMenu(e) {
         e.preventDefault();
-        console.log('calling here')
         this.setState({ showMenu: true }, () => {
             document.addEventListener('click', this.hideMenu);
         });
@@ -30,7 +29,6 @@ class SettingsMenu extends React.Component {
     render() {
         return (
             <div>
-                <button onClick={this.showMenu}>Button to show menu</button>
 
                 { this.state.showMenu 
                     ? (
