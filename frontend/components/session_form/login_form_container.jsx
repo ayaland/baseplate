@@ -31,7 +31,7 @@ class LoginFormContainer extends React.Component {
 
     handleClick(e) {
         e.preventDefault();
-        const user = {name: 'Minifig', password: 'password'}
+        const user = { name: 'Minifig', password: 'password' }
         this.props.processForm(user);
     }
 

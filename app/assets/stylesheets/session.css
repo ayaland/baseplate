@@ -3,7 +3,7 @@
 }
 
 body {
-    font-family: "Graphik", "Helvetica Neue", helvetica, arial, sans-serif;
+    font-family: arial, sans-serif;
     line-height: 1.4;
     font-size: 16px;
     background-color: #f6f2ef;
@@ -12,6 +12,12 @@ body {
 
 header, main, footer {
     display: block;
+}
+
+section {
+    display: block;
+    position: relative;
+    margin-top: 0px;
 }
 
 form {
@@ -33,12 +39,6 @@ input {
     padding: 1px 0px;
     border-width: 2px;
     border-style: inset;
-}
-
-section {
-    display: block;
-    position: relative;
-    margin-top: 0px;
 }
 
 h1 {
@@ -172,20 +172,55 @@ small {
 
 /* Navbar specific css */
 
+.dropdown-div {
+    position: relative;
+    display: inline-block;
+}
+
+.ddown-content {
+    visibility: hidden;
+    position: absolute;
+    background-color: #fff;
+    min-width: 345px;
+    z-index: 1;
+}
+
+/* DO NOT TOUCH, does the alignment of icons. CSS by classname will not work */
+img {
+    vertical-align: middle;
+}
+
+.nav_accounts {
+    display: flex;
+    margin-right: auto;
+    vertical-align: middle;
+    text-align: center;
+}
+
 .navbar-menu {
     display: flex;
     justify-content: space-between;
 }
 
-.logo {
-    display: flex;
-    margin-right: auto;
+.navbar-menu > li {
+    padding: .25em 1em;
 }
 
-.settings {
+.nav_link {
+    vertical-align: middle;
+    text-align: center;
+    font-weight: bold;
+}
+
+.nav_settings {
     display: flex;
     margin-left: auto;
 }
+
+.show-dropdown {
+    display: visible;
+}
+
 /* ----- */
 
 .center-align {
@@ -226,7 +261,6 @@ small {
     animation: scale-fade-in 0.3s ease;
     border-radius: 1rem;
 }
-
 
 .x-large {
     font-size: 330%;
