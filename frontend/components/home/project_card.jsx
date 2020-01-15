@@ -3,38 +3,30 @@ import { connect } from 'react-redux';
 
 
 class ProjectCard extends React.Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            name: '',
-            description: ''
-        };
-    }
-
-    componentDidMount() {
-        console.log(ownProps)
-    }
-
     render() {
         return (
             <main>
-                <div className="project-card">
-                    <p>Project card</p>
-                </div>
+                <article className="project-card">
+                    <a href="/" className="card_link">
+                        <div className="card_content">
+                            <h2 className="card_title flush">{this.props.project.name}</h2>
+                            <p className="card_description flush">{this.props.title}</p>
+                            <img className="card_avatar" src={window.demo_avatar} />
+                        </div>
+                    </a>
+                </article>
             </main>
         );
     }
 
 }
 
-const mapStateToProps = ({ session, entities: { users } }, ownProps) => {
-    return {
-        currentUser: users[session.id]
-    };
+const mapStateToProps = (state) => {
+    console.log(state);
+    return state;
+    // return {
+    //     currentUser: users[session.id]
+    // };
 };
 
-const mapDispatchToProps = (dispatch) => ({
-    logout: () => dispatch(logout())
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProjectCard);
+export default connect(mapStateToProps)(ProjectCard);

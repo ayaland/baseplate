@@ -12,4 +12,5 @@ User.create(name: 'Forestman2', bio: 'V-necks >> collars', password: 'password',
 User.create(name: 'Blacktron', bio: 'We are smiling and industrious.', password: 'password', email: 'neon10@fgeneration.com')
 User.create(name: 'Harumi', bio: 'Definitely not vengeful at all', password: 'password', email: 'princess@royalpalace.gov')
 
-demo_project = Project.create!(name: 'City Road', owner_id: demo_user.id)
+Project.create!(name: 'City Roads', description: 'Our cars should drive on something smooth and not get carpet fibers tangled in the tires', owner_id: demo_user.id)
+Project.create!(name: 'Buildings should fit together', description: 'Installing technic pins', owner_id: demo_user.id)
