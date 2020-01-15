@@ -7,7 +7,9 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 User.destroy_all
 
+demo_user = User.create!(name: 'Minifig', bio: 'Learning about this site', password: 'password', email: '')
 User.create(name: 'Forestman2', bio: 'V-necks >> collars', password: 'password', email: 'wfeather@hideout.com')
 User.create(name: 'Blacktron', bio: 'We are smiling and industrious.', password: 'password', email: 'neon10@fgeneration.com')
 User.create(name: 'Harumi', bio: 'Definitely not vengeful at all', password: 'password', email: 'princess@royalpalace.gov')
-User.create(name: 'Minifig', bio: 'Learning about this site', password: 'password', email: '')
+
+demo_project = Project.create!(name: 'City Road', owner_id: demo_user.id)

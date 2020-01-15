@@ -7,8 +7,8 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token
 
-  has_many :projects,
-    foreign_key: :project_id
+  has_many :projects, dependent: :destroy,
+    foreign_key: :owner_id
     
   has_many :todos,
     through: :subscribed
@@ -18,7 +18,7 @@ class User < ApplicationRecord
 
   def self.find_by_credentials(name, password)
     user = User.find_by(name: name)
-    return nil unless user
+    returni nil unless user
     user.is_password?(password) ? user : nil
   end
 

@@ -4,7 +4,6 @@ import {
     Route,
     Redirect,
     Switch,
-    Link,
     HashRouter
 } from 'react-router-dom';
 
@@ -18,7 +17,7 @@ import HomepageContainer from './home/homepage_container';
 const App = () => (
     <div>
         <Switch>
-            <Route path="/" component={SplashContainer} />
+            <AuthRoute exact path="/" component={SplashContainer} />
             <AuthRoute path="/login" component={LoginFormContainer} />
             <AuthRoute path="/signup" component={SignupFormContainer} />
             <ProtectedRoute exact path="/:userId" component={HomepageContainer} />

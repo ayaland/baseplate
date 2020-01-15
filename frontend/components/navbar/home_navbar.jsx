@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { logout } from '../../actions/session_actions';
 
 class HomeNavbar extends React.Component {
     constructor(props) {  
@@ -11,6 +10,7 @@ class HomeNavbar extends React.Component {
         }
         this.showMenu = this.showMenu.bind(this)
         this.hideMenu = this.hideMenu.bind(this)
+        this.userLogout = this.userLogout.bind(this)
     }
 
     showMenu(e) {
@@ -28,6 +28,10 @@ class HomeNavbar extends React.Component {
         }
     }
 
+    userLogout() {
+        this.props.logout();
+    }
+
     render () {
         return(
             <div className="outer-container">
@@ -41,7 +45,6 @@ class HomeNavbar extends React.Component {
                         <li className="nav_link"><Link className="text-link" to={`/`}>Hey!</Link></li>
                         <li className="nav_link"><Link className="text-link" to={`/`}>Activity</Link></li>
 
-
                         <li className="nav_settings">
                             <img className="nav_icon" height="30" onClick={this.showMenu} src={window.demo_avatar} data-toggle="dropdown-menu" />
                                 <div className="dropdown-menu">
@@ -53,15 +56,13 @@ class HomeNavbar extends React.Component {
                                                     this.dropdownMenu = element;
                                                 }}>
                                                 Personal Settings
-                                                <a href="#" onClick={this.logout}>Log out</a>
+                                                <a href="#" onClick={this.userLogout}>Log out</a>
                                             </div>)
                                         : (
                                             null)
                                     }
                                 </div>
                         </li>
-
-
                     </ul>
                 </nav>
             </div>
@@ -70,4 +71,14 @@ class HomeNavbar extends React.Component {
     }
 }
 
-export default HomeNavbar;
+const mapStateToProps = ({ session, entities: { users } }, ownProps) => {
+    return {
+        currentUser: users[session.id]
+    };
+};
+
+const mapDispatchToProps = (dispatch) => ({
+    logout: () => dispatch(logout())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeNavbar);
