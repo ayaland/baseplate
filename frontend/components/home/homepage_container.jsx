@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { logout } from '../../actions/session_actions';
 import HomeNavbar from '../navbar/home_navbar';
+import { createProject } from '../../actions/project_actions'
 import ProjectCard from './project_card';
 
 class HomepageContainer extends React.Component {
@@ -36,7 +36,7 @@ const mapStateToProps = ({ session, entities: { users } }, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-    logout: () => dispatch(logout())
+    createProject: () => dispatch(createProject(project))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomepageContainer);

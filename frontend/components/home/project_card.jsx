@@ -11,6 +11,10 @@ class ProjectCard extends React.Component {
         };
     }
 
+    componentDidMount() {
+        console.log(ownProps)
+    }
+
     render() {
         return (
             <main>
