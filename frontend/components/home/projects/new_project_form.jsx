@@ -19,8 +19,6 @@ class NewProjectForm extends React.Component {
         this.setState({
             owner_id: this.props.sessionId
         })
-        console.log('Component mounted')
-        console.log(this.state);
     }
 
     update(field) {

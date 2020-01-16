@@ -20,9 +20,6 @@ class HomepageContainer extends React.Component {
     }
 
     render() {
-        if (!this.props) {
-            return null;
-        }
         return (
             <main>
                 <HomeNavbar />

@@ -58,7 +58,7 @@ class SignupFormContainer extends React.Component {
 
                         <div className="push_half--bottom">
                             <input
-                                className="input"
+                                className="input session"
                                 placeholder="Your name"
                                 type="text"
                                 value={this.state.name}
@@ -68,7 +68,7 @@ class SignupFormContainer extends React.Component {
 
                         <div className="push_half--bottom">
                             <input
-                                className="input"
+                                className="input session"
                                 placeholder="Your email"
                                 type="text"
                                 value={this.state.email}
@@ -78,7 +78,7 @@ class SignupFormContainer extends React.Component {
 
                         <div className="push_half--bottom">
                             <input
-                                className="input"
+                                className="input session"
                                 placeholder="Choose a password"
                                 type="password"
                                 value={this.state.password}
@@ -87,7 +87,7 @@ class SignupFormContainer extends React.Component {
                         </div>
                         <br />
 
-                        <input className="btn" type="submit" value="Next →" />
+                        <input className="btn action_button" type="submit" value="Next →" />
 
                     </form>
                     </div>

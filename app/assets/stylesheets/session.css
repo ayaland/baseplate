@@ -44,7 +44,7 @@ form.session {
 }
 
 input {
-    width: 388px;
+    /* width: 388px; */
     text-align: start;
     background-color: white;
     cursor: text;
@@ -53,6 +53,10 @@ input {
     padding: 1px 0px;
     border-width: 2px;
     border-style: inset;
+}
+
+input.session {
+    width: 388px;
 }
 
 h1 {
@@ -78,6 +82,15 @@ h3 {
     font-weight: bold;
     margin-block-start: 1em;
     margin-block-end: 1em;
+}
+
+h4 {
+    display: block;
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold; 
 }
 
 small {
@@ -119,12 +132,12 @@ small {
 .btn {
     display: inline-block;
     padding: 0.5em 1em;
+    border-radius: 1.5em;
     background-color: #2da562;
     border-color: #2da562;
     color: #fff;
     max-width: 100%;
     border: 1px solid #d9d9d9;
-    border-radius: 1.5em;
     line-height: 1.5;
     white-space: normal;
     cursor: pointer;
@@ -218,6 +231,10 @@ small {
 
 .left {
     text-align: left;
+}
+
+.normal {
+    font-weight: normal;
 }
 
 /* ----Navbar specific css---- */
@@ -365,6 +382,36 @@ img {
     margin: 0 auto;
     max-width: 85%;
 }
+
+/* App card specific CSS */
+
+.card {
+    position: relative;
+    vertical-align: top;
+    line-height: 1.3;
+    margin: 0.75em;
+    font-size: 1.2rem;
+    text-align: left;
+    word-wrap: break-word;
+    border-radius: 0.6rem;
+    box-shadow: 0 0 2px rgba(0,0,0,0.35), 0 1px 3px rgba(0,0,0,0.1);
+    background: #fff;
+}
+
+.card:before {
+    content: '';
+    display: block;
+    padding-top: 133%;
+}
+
+.card--app {
+    width: 31%;
+    border-radius: 0.5rem;
+}
+
+.card--app:before {
+    padding-top: 100%;
+}
 /* ------------------------- */
 
 .panel {
@@ -382,6 +429,32 @@ img {
     max-width: 58em;
     box-shadow: 0 -1px 10px rgba(0,0,0,0.05), 0 1px 4px rgba(0,0,0,0.1), 0 10px 30px #f3ece8;
     border-radius: 0.2em 0.2em 0 0;
+}
+
+.project-dock {
+    text-align: center;
+    max-width: 85rem;
+    margin: 0 auto;
+    font-size: 1.3rem;
+}
+.project-header {
+    padding-bottom: 1rem;
+}
+
+.project-header_description {
+    margin: 0 auto;
+    max-width: 80rem;
+}
+
+.project-header--for-home {
+    margin-bottom: -1.5rem;
+}
+
+.project-header_name--overview {
+    margin: 0 auto;
+    max-width: 72rem;
+    font-size: 2em;
+    word-wrap: break-word;
 }
 
 .push--bottom {
