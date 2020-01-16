@@ -69,7 +69,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => ({
     createProject: () => dispatch(createProject(project)),
     fetchProjects: () => dispatch(fetchProjects()),
-    fetchProject: (id) => dispatch(fetchProject(id)) 
+    fetchProject: (id) => dispatch(fetchProject(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomepageContainer);

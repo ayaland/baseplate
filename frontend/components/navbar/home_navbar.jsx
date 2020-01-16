@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+import { logout } from '../../actions/session_actions';
+
 
 class HomeNavbar extends React.Component {
     constructor(props) {  
@@ -31,7 +33,7 @@ class HomeNavbar extends React.Component {
 
     userLogout() {
         this.props.logout().then(
-            this.props.history.push(`/login`)
+            this.props.history.push('/login')
         );
     }
 
@@ -58,8 +60,12 @@ class HomeNavbar extends React.Component {
                                                 ref={(element) => {
                                                     this.dropdownMenu = element;
                                                 }}>
-                                                Personal Settings
-                                                <a href="#" onClick={this.userLogout}>Log out</a>
+                                                <section className="nav-menu_section">
+                                                    <h3 className="flush--top push_half--bottom break :before">
+                                                        <span>Personal Settings</span>
+                                                    </h3>
+                                                    <a href="#" onClick={this.userLogout}>Log out</a>
+                                                </section>
                                             </div>)
                                         : (
                                             null)
