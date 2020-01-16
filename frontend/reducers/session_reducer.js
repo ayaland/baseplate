@@ -12,7 +12,7 @@ const sessionReducer = (state = _nullUser, action) => {
     switch (action.type) {
         case RECEIVE_CURRENT_USER:
             return { id: action.currentUser.id };
-            // take currentUser off action and make session state { id: 1 }
+            // Ayanote: take currentUser off action and make session state { id: 1 }
         case LOGOUT_CURRENT_USER:
             return _nullUser;
         default:

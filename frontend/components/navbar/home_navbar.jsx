@@ -56,8 +56,15 @@ class HomeNavbar extends React.Component {
                                                 ref={(element) => {
                                                     this.dropdownMenu = element;
                                                 }}>
-                                                Personal Settings
-                                                <a href="#" onClick={this.userLogout}>Log out</a>
+                                                <section className="nav-menu_section">
+                                                    <h3 className="flush--top, push_half--bottom break :before break--flush-left">
+                                                        <span>Personal Settings</span>
+                                                    </h3>
+                                                    <br />
+                                                    <Link to="/login" onClick={this.userLogout}>Log out</Link>
+                                                    {/* <a href="#" onClick={this.userLogout}>Log out</a> */}
+
+                                                </section>
                                             </div>)
                                         : (
                                             null)

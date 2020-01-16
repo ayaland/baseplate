@@ -47,13 +47,13 @@ class SignupFormContainer extends React.Component {
             <main>
                 <header className="centered header--top">
                     <img width="98" height="78" src={window.legohead} />
-                    <h1 className="flush--top push_half--bottom">Sign up for Baseplate</h1>
+                    <h2 className="flush--top push_half--bottom">Sign up for Baseplate</h2>
                 </header>
 
                 <div className="centered push--bottom">
 
-                    <form onSubmit={this.handleSubmit} className="sheet sheet--shadowed sheet--signup flush--top">
-                        <h2 className="centered flush--top">Type your name & email address to begin</h2>
+                    <form onSubmit={this.handleSubmit} className="sheet sheet--shadowed sheet--signup flush--top session">
+                        <h3 className="centered flush--top">Type your name & email address to begin</h3>
                         <br />
 
                         <div className="push_half--bottom">
@@ -105,7 +105,7 @@ class SignupFormContainer extends React.Component {
 
 const mapStateToProps = ({ errors }) => {
     return { errors: errors.session,
-             formType: 'signup' };
+    };
 };
 
 const mapDispatchToProps = (dispatch) => {

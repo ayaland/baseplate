@@ -52,12 +52,12 @@ class LoginFormContainer extends React.Component {
             <main>
                 <header className="centered header--top">
                     <img width="98" height="78" src={window.legohead} />
-                    <h1 className="flush--top push_half--bottom">Log in to Baseplate</h1>
+                    <h2 className="flush--top push_half--bottom">Log in to Baseplate</h2>
                 </header>
 
                 <div className="centered push--bottom">
 
-                    <form onSubmit={this.handleSubmit} className="sheet sheet--shadowed sheet--signup flush--top">
+                    <form onSubmit={this.handleSubmit} className="sheet sheet--shadowed sheet--signup flush--top session">
                             <button onClick={this.handleClick} type="button" className="action_button flush--top">
                             Use<img className="action_button_img" alt="demo" src={window.demo} />account
                             </button>
@@ -106,7 +106,6 @@ class LoginFormContainer extends React.Component {
 const mapStateToProps = ({ errors }) => {
     return {
         errors: errors.session,
-        formType: 'login',
     };
 };
 
