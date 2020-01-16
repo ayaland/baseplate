@@ -31,9 +31,6 @@ class NewProjectForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        // this.setState({
-        //     owner_id: this.props.sessionId
-        // })
         const project = Object.assign({}, this.state);
         this.props.processForm(project).then(
             this.props.history.push(`/${this.props.sessionId}`)
