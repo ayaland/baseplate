@@ -37,11 +37,13 @@ class HomepageContainer extends React.Component {
                             <article className="project-card">
                                 <a href="/" className="card_link">
                                     <div className="card_add-project">
-                                        add
+                                        Add another project
                                     </div>
                                 </a>
                             </article>
-                            
+                        </div>
+                        <div class="centered push--top">
+                            <a class="btn btn--primary txt-bold" href="http://www.bricklink.com/">Need more materials? Check out Bricklink!</a>
                         </div>
                     </section>
                 </div>

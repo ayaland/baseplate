@@ -102,12 +102,11 @@ small {
 
 .btn {
     display: inline-block;
-    width: 100%;
+    padding: 0.5em 1em;
     background-color: #2da562;
     border-color: #2da562;
     color: #fff;
     max-width: 100%;
-    padding: 0.5em 0.5em;
     border: 1px solid #d9d9d9;
     border-radius: 1.5em;
     line-height: 1.5;
@@ -260,13 +259,12 @@ img {
 
 .card_add-project {
     text-align: center;
-    padding-top: 9rem;
-    background-image: url(/assets/icons/plus-6855215….svg);
+    padding-top: 7rem;
+    background-image: url('./green_plus.svg');
     background-repeat: no-repeat;
     background-position: center center;
-    background-size: 6rem 6rem;
+    background-size: 4rem 6rem;
     font-size: 1.5rem;
-    margin-top: -3rem;
 }
 
 .card_avatar {
@@ -314,7 +312,7 @@ img {
     width: 100%;
     background: #fff;
     vertical-align: top;
-    margin: 0.45em;
+    margin: 0.35em;
     padding-top: 33%;
     font-size: 1.8rem;
     border-radius: 0.6rem;
@@ -368,6 +366,10 @@ img {
 .sheet--signup {
     animation: scale-fade-in 0.3s ease;
     border-radius: 1rem;
+}
+
+.txt-bold {
+    font-weight: bold;
 }
 
 .text-link {
