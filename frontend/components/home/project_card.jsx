@@ -2,6 +2,9 @@ import React from 'react';
 
 
 function ProjectCard(props) {
+    if (!props) {
+        return null;
+    }
         return (
                 <article className="project-card">
                     <a href="/" className="card_link">

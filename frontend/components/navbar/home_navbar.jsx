@@ -30,7 +30,9 @@ class HomeNavbar extends React.Component {
     }
 
     userLogout() {
-        this.props.logout();
+        this.props.logout().then(
+            this.props.history.push(`/login`)
+        );
     }
 
     render () {
@@ -56,15 +58,8 @@ class HomeNavbar extends React.Component {
                                                 ref={(element) => {
                                                     this.dropdownMenu = element;
                                                 }}>
-                                                <section className="nav-menu_section">
-                                                    <h3 className="flush--top, push_half--bottom break :before break--flush-left">
-                                                        <span>Personal Settings</span>
-                                                    </h3>
-                                                    <br />
-                                                    <Link to="/login" onClick={this.userLogout}>Log out</Link>
-                                                    {/* <a href="#" onClick={this.userLogout}>Log out</a> */}
-
-                                                </section>
+                                                Personal Settings
+                                                <a href="#" onClick={this.userLogout}>Log out</a>
                                             </div>)
                                         : (
                                             null)
