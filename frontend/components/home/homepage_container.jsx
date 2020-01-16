@@ -33,6 +33,15 @@ class HomepageContainer extends React.Component {
                         {this.props.projects.map((project) => (
                             <ProjectCard project={project} key={project.id} title={this.makeTitle(project)} />
                         ))}
+
+                            <article className="project-card">
+                                <a href="/" className="card_link">
+                                    <div className="card_add-project">
+                                        add
+                                    </div>
+                                </a>
+                            </article>
+                            
                         </div>
                     </section>
                 </div>
