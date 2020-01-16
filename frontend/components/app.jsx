@@ -13,6 +13,7 @@ import SplashContainer from './splash/splash_container';
 import SignupFormContainer from './session_form/signup_form_container';
 import LoginFormContainer from './session_form/login_form_container';
 import HomepageContainer from './home/homepage_container';
+import ProjectContainer from './home/projects/project_container';
 
 const App = () => (
     <div>
@@ -21,6 +22,7 @@ const App = () => (
             <AuthRoute path="/login" component={LoginFormContainer} />
             <AuthRoute path="/signup" component={SignupFormContainer} />
             <ProtectedRoute exact path="/:userId" component={HomepageContainer} />
+            <ProtectedRoute exact path="/:userId/projects/new" component={ProjectContainer} />
         </Switch>
     </div>
 );

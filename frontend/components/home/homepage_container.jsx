@@ -1,13 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import HomeNavbar from '../navbar/home_navbar';
 import { createProject, fetchProjects } from '../../actions/project_actions'
 import ProjectCard from './project_card';
 
 class HomepageContainer extends React.Component {
-
     componentDidMount() {
         this.props.fetchProjects()
+        console.log('In componentDidMount');
+        console.log(this.props);
     }
 
     makeTitle(project) {
@@ -18,7 +20,6 @@ class HomepageContainer extends React.Component {
     }
 
     render() {
-        console.log(this.props.projects);
         return (
             <main>
                 <HomeNavbar />
@@ -29,21 +30,22 @@ class HomepageContainer extends React.Component {
                                 Your Projects
                             </h1>
                         </header>
+
                         <div className="card-grid">
                         {this.props.projects.map((project) => (
-                            <ProjectCard project={project} key={project.id} title={this.makeTitle(project)} />
+                            <ProjectCard project={project} key={project.id} title={this.makeTitle} />
                         ))}
 
                             <article className="project-card">
-                                <a href="/" className="card_link">
+                                <Link to={`/${this.props.sessionId}/projects/new`} className="card_link">
                                     <div className="card_add-project">
                                         Add another project
                                     </div>
-                                </a>
+                                </Link>
                             </article>
                         </div>
-                        <div class="centered push--top">
-                            <a class="btn btn--primary txt-bold" href="http://www.bricklink.com/">Need more materials? Check out Bricklink!</a>
+                        <div className="centered push--top">
+                            <a className="btn btn--primary txt-bold" href="http://www.bricklink.com/">Need more materials? Check out Bricklink!</a>
                         </div>
                     </section>
                 </div>
@@ -56,13 +58,15 @@ class HomepageContainer extends React.Component {
 // ownProps will be able to match params to userId
 const mapStateToProps = (state) => {
     return {
-        projects: Object.values(state.entities.projects)
+        projects: Object.values(state.entities.projects),
+        sessionId: state.session.id
     };
 };
 
 const mapDispatchToProps = (dispatch) => ({
     createProject: () => dispatch(createProject(project)),
-    fetchProjects: () => dispatch(fetchProjects())
+    fetchProjects: () => dispatch(fetchProjects()),
+    fetchProject: (id) => dispatch(fetchProject(id)) 
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomepageContainer);
