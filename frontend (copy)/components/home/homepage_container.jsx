@@ -33,9 +33,6 @@ class HomepageContainer extends React.Component {
                         {this.props.projects.map((project) => (
                             <ProjectCard project={project} key={project.id} title={this.makeTitle(project)} />
                         ))}
-                        <ProjectCard project={name=''} title=''>
-                            
-                        </ProjectCard>
                         </div>
                     </section>
                 </div>
