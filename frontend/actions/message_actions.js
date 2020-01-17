@@ -21,6 +21,13 @@ export const fetchMessages = () => dispatch => (
         dispatch(receiveMessages(messages))
     ))
 );
+
+export const fetchMessage = () => dispatch => (
+    APIUtil.fetchMessage(id).then(message => (
+        dispatch(receiveMessage(message))
+    ))
+);
+
 export const createMessage = (message) => dispatch => (
     APIUtil.createMessage(message).then(message => (
         dispatch(receiveMessage(message))
