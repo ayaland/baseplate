@@ -104,7 +104,8 @@ class SignupFormContainer extends React.Component {
 }
 
 const mapStateToProps = ({ errors }) => {
-    return { errors: errors.session,
+    return { 
+        errors: errors.session,
     };
 };
 

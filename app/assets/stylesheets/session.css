@@ -86,6 +86,7 @@ h3 {
 
 h4 {
     display: block;
+    font-size: 1.0em;
     margin-block-start: 1.33em;
     margin-block-end: 1.33em;
     margin-inline-start: 0px;
@@ -233,6 +234,24 @@ small {
     text-align: left;
 }
 
+.messages-table_avatar {
+    max-width: 9rem;
+    padding-left: 0 !important;
+    text-align: right;
+    white-space: nowrap;
+    vertical-align: top;
+    padding-top: 0.9rem;
+}
+
+.messages-table--for-card .messages-table_avatar {
+    max-width: 4.8rem;
+}
+
+.messages-table--for-card .messages-table_cell {
+    display: table-cell;
+    padding: 0.5rem 0.2rem 0.3rem;
+}
+
 .normal {
     font-weight: normal;
 }
@@ -347,8 +366,10 @@ img {
 }
 
 .card-grid {
+    display:flex;
     text-align: center;
-    font-size: 0;
+    justify-content: center;
+    align-content: flex-start;
 }
 
 .card_link {
@@ -409,9 +430,30 @@ img {
     border-radius: 0.5rem;
 }
 
+.card--app .card_header {
+    margin: -1.5em 0 0;
+    padding: 1.5em 0 1em;
+    background-position: 0.5em center;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    border-bottom: 1px solid #d9d9d9;
+    border-radius: 0.5rem 0.5rem 0 0;
+    position: relative;
+}
+
 .card--app:before {
     padding-top: 100%;
 }
+
+/* for toggling between blank and customized */
+/* .card_blank-slate {
+    display: none;
+} */
+
+.card h1 {
+    font-size: 1.0em;
+}
+
 /* ------------------------- */
 
 .panel {
@@ -422,7 +464,7 @@ img {
 
 .panel--perma {
     width: 90%;
-    padding: 4rem;
+    padding: 2.5rem;
     background: #fff;
     position: relative;
     min-height: 100vh;
@@ -497,13 +539,19 @@ img {
     border-radius: 1rem;
 }
 
+.text-link {
+    color: inherit;
+    text-decoration: inherit;
+}
+
 .txt-bold {
     font-weight: bold;
 }
 
-.text-link {
-    color: inherit;
-    text-decoration: inherit;
+.txt--truncate {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .x-large {

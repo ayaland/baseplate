@@ -33,7 +33,6 @@ class NewProjectForm extends React.Component {
         this.props.processForm(project).then(
             this.props.history.push(`/${this.props.sessionId}`)
         )
-        console.log(this.state);
     }
 
     renderErrors() {

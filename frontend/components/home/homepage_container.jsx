@@ -7,8 +7,7 @@ import ProjectCard from './project_card';
 
 class HomepageContainer extends React.Component {
     componentDidMount() {
-        this.props.fetchProjects()
-        console.log('In componentDidMount');
+        this.props.fetchProjects();
         console.log(this.props);
     }
 
@@ -31,9 +30,9 @@ class HomepageContainer extends React.Component {
                             </h1>
                         </header>
 
-                        <div className="card-grid">
+                        <div className="">
                         {this.props.projects.map((project) => (
-                            <ProjectCard project={project} key={project.id} title={this.makeTitle} />
+                            <ProjectCard project={project} key={project.id} title={this.makeTitle} userId={this.props.sessionId} />
                         ))}
 
                             <article className="project-card">
