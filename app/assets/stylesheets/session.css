@@ -335,7 +335,7 @@ img {
 .card_add-project {
     text-align: center;
     padding-top: 7rem;
-/* Ayanote: this will apparently break when deployed to Heroku. See AA Heroku instructions and/or Abel */
+/* Ayanote: use 'image-url' for deploying to Heroku. See AA Heroku instructions and/or Abel */
     background-image: image-url('./green_plus.svg');
     background-repeat: no-repeat;
     background-position: center center;
