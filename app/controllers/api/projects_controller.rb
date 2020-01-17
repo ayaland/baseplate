@@ -8,8 +8,7 @@ class Api::ProjectsController < ApplicationController
             render :show
         else
             render json: @project.errors.full_messages, status: 422
-        end
-        
+        end     
     end
 
     def show
@@ -17,8 +16,6 @@ class Api::ProjectsController < ApplicationController
     end
 
     def index
-        # @projects = Project.find(params[:owner_id])
-        # @projects = Project.all
         @projects = current_user.projects
         render :index
     end

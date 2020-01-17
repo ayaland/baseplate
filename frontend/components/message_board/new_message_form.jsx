@@ -52,8 +52,23 @@ class NewMessageForm extends React.Component {
     render () {
         return (
             <main>
-                
+
             </main>
         )
     }
 }
+
+const mapStateToProps = (state, ownProps) => {
+    return {
+        errors: state.errors.session,
+        projectId: state.project.id
+    };
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        processForm: (message) => dispatch(createMessage(message))
+    };
+};
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NewMessageForm));

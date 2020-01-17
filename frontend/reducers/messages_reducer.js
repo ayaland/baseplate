@@ -1,4 +1,4 @@
-import { RECEIVE_MESSAGE, RECEIVE_MESSAGES } from '../actions/project_actions';
+import { RECEIVE_MESSAGE, RECEIVE_MESSAGES } from '../actions/message_actions';
 
 const messagesReducer = (state = {}, action) => {
     Object.freeze(state) 
