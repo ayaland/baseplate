@@ -336,7 +336,7 @@ img {
     text-align: center;
     padding-top: 7rem;
 /* Ayanote: use 'image-url' for deploying to Heroku. See AA Heroku instructions and/or Abel */
-    background-image: url('./green_plus.svg');
+    /* background-image: url('./green_plus.svg'); */
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 4rem 6rem;
