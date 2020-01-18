@@ -64,7 +64,7 @@ class HomeNavbar extends React.Component {
                                                     <h3 className="flush--top push_half--bottom break :before">
                                                         <span>Personal Settings</span>
                                                     </h3>
-                                                    <a href="#" onClick={this.userLogout}>Log out</a>
+                                                    <p className="notatag" onClick={this.userLogout}>Log out</p>
                                                 </section>
                                             </div>)
                                         : (

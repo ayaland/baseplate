@@ -15,7 +15,7 @@ class SplashContainer extends React.Component {
                 <header>
                     <div className="banner centered">
                         <p className="banner">Put it all together for {this.state.date.getFullYear()}.
-                            <a href="/before-and-after">Switch to Baseplates.</a>
+                            <Link to="/before-and-after">Switch to Baseplates.</Link>
                         </p>
                     </div>
                     <nav></nav>
@@ -32,7 +32,7 @@ class SplashContainer extends React.Component {
                         Everything’s organized in one place, people are standing on top of studs, buildings are at right angles, and a sense of calm sets in.</p>
                     <div className="grid__item--medium push_double--bottom">
                         <div className="cta push--top">
-                            <a className="button button--primary" href="/signup">Give Baseplates a Try</a>
+                            <Link className="button button--primary" to="/signup">Give Baseplates a Try</Link>
                             <p className="x-small"><span data-signups="">12,522</span> companies signed up in the last week alone!</p>
                         </div>
 

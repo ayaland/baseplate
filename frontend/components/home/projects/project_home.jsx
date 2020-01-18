@@ -13,7 +13,7 @@ class ProjectHome extends React.Component {
         // Ayanote: .map got around the error of projects being empty; we need 
         // to bypass the loop one time and then after componentDidMount runs, 
         // we can access props
-        if (this.props.projects.length === 0)
+        if (this.props.projects.length === 0 || this.props.users.length === 0)
             return null;
         else {
             return (
@@ -24,7 +24,7 @@ class ProjectHome extends React.Component {
                     </header>
                     <section className="project-dock centered">
                         <div className="card-grid">
-                            <AppCard />
+                            <AppCard sessionId={this.props.sessionId} projectId={this.props.projects[0].id} />
                             {/* (this.props.apps.map((app) => (
                                 <AppCard app={app} />
                             )) */}
@@ -39,12 +39,15 @@ class ProjectHome extends React.Component {
 const mapStateToProps = (state, ownProps) => {
     return {
         errors: state.errors.session,
-        projects: Object.values(state.entities.projects)
+        projects: Object.values(state.entities.projects),
+        users: Object.values(state.entities.users),
+        sessionId: state.session.id
     }
 };
 
 const mapDispatchToProps = (dispatch) => ({
         fetchProject: (id) => dispatch(fetchProject(id))
+        
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProjectHome);

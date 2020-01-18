@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom';
 import HomeNavbar from '../navbar/home_navbar';
 import { createProject, fetchProjects } from '../../actions/project_actions'
 import ProjectCard from './project_card';
+// BUG: clicking project card to go to project page then navigating back
+// using either back arrow or Home navbar link causes that project to be
+// duplicated in the props
+// This messes up navigation as the dynamic routes are created based on project index
 
 class HomepageContainer extends React.Component {
     componentDidMount() {
@@ -21,7 +25,7 @@ class HomepageContainer extends React.Component {
     render() {
         return (
             <main>
-                <HomeNavbar />
+                {/* <HomeNavbar /> */}
                 <div className="panel">
                     <section className="project-index">
                         <header className="centered">
@@ -38,7 +42,7 @@ class HomepageContainer extends React.Component {
                             <article className="project-card">
                                 <Link to={`/${this.props.sessionId}/projects/new`} className="card_link">
                                     <div className="card_add-project">
-                                    <img className="" src={window.green_plus} />
+                                    <img width="60" height="60" src={window.green_plus} />
                                     <br />
                                         Add another project
                                     </div>

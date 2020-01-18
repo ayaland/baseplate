@@ -256,6 +256,10 @@ small {
     font-weight: normal;
 }
 
+.notatag {
+    cursor: pointer;
+}
+
 /* ----Navbar specific css---- */
 
 /* DO NOT TOUCH, does the alignment of icons. CSS by classname will not work */
@@ -333,8 +337,9 @@ img {
 /* ----Project card specific css---- */
 
 .card_add-project {
+    vertical-align: top;
     text-align: center;
-    padding-top: 7rem;
+    padding-top: 4rem;
 /* Ayanote: use 'image-url' for deploying to Heroku. See AA Heroku instructions and/or Abel */
     /* background-image: url('./green_plus.svg'); */
     background-repeat: no-repeat;

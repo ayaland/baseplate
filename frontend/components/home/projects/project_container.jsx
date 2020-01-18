@@ -5,13 +5,12 @@ import NewProjectForm from './new_project_form';
 import ProjectHome from './project_home';
 
 const ProjectContainer = (props) => {
-    console.log(props);
 
     switch (props.match.path) {
         case ("/:userId/projects/new"):
             return (
                 <>
-                    <HomeNavBar />
+                    {/* <HomeNavBar /> */}
                     <div className="panel panel--perma push_double--bottom centered">
                         <NewProjectForm />
                     </div>
@@ -20,7 +19,7 @@ const ProjectContainer = (props) => {
         case ("/:userId/projects/:projectId"):
             return (
                 <>
-                    <HomeNavBar />
+                    {/* <HomeNavBar /> */}
                     <div className="panel panel--perma push_double--bottom centered">
                         <ProjectHome projectId={props.match.params.projectId}/>
                     </div>
