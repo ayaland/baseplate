@@ -1,18 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import HomeNavbar from '../navbar/home_navbar';
+
 import { createProject, fetchProjects } from '../../actions/project_actions'
-import ProjectCard from './project_card';
-// BUG: clicking project card to go to project page then navigating back
-// using either back arrow or Home navbar link causes that project to be
-// duplicated in the props
-// This messes up navigation as the dynamic routes are created based on project index
+import ProjectCard from './projects/project_card';
 
 class HomepageContainer extends React.Component {
     componentDidMount() {
         this.props.fetchProjects();
-        console.log(this.props);
     }
 
     makeTitle(project) {
@@ -25,7 +20,6 @@ class HomepageContainer extends React.Component {
     render() {
         return (
             <main>
-                {/* <HomeNavbar /> */}
                 <div className="panel">
                     <section className="project-index">
                         <header className="centered">

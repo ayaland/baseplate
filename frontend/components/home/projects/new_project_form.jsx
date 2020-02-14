@@ -50,43 +50,47 @@ class NewProjectForm extends React.Component {
     render () {
         return (
             <main>
-                <header className="centered flush--bottom">
-                    <img className="push--top" width="125" height="113" src={window.legohead} />
-                    <h2 className="flush--top push_half--bottom">All right, let's get your project started!</h2>
-                </header>
+                <div className="panel panel--perma push_double--bottom centered">
 
-                <div className="centered push--bottom">
-                    <section className="push_double--bottom narrow">
-                        <form onSubmit={this.handleSubmit} className="flush--top">
+                    <header className="centered flush--bottom">
+                        <img className="push--top" width="125" height="113" src={window.legohead} />
+                        <h2 className="flush--top push_half--bottom">All right, let's get your project started!</h2>
+                    </header>
 
-                            <article className="sheet push--bottom left">
-                                    <h3 className="flush">Name this project</h3>
-                                    <div className="push_quarter--top push--bottom">
-                                        <input
-                                            className="input full-width"
-                                            placeholder="e.g. Space Base"
-                                            type="text"
-                                            value={this.state.name}
-                                            onChange={this.update('name')}
-                                        />
-                                    </div>
+                    <div className="centered push--bottom">
+                        <section className="push_double--bottom narrow">
+                            <form onSubmit={this.handleSubmit} className="flush--top">
 
-                                    <h3 className="flush">Add an optional description</h3>
-                                    <div className="push_half--bottom">
-                                        <input
-                                            className="input full-width"
-                                            placeholder="e.g. The sweetest grey base that ever spaced!"
-                                            type="text"
-                                            value={this.state.description}
-                                            onChange={this.update('description')}
-                                        />
-                                    </div>   
-                            </article>
+                                <article className="sheet push--bottom left">
+                                        <h3 className="flush">Name this project</h3>
+                                        <div className="push_quarter--top push--bottom">
+                                            <input
+                                                className="input full-width"
+                                                placeholder="e.g. Space Base"
+                                                type="text"
+                                                value={this.state.name}
+                                                onChange={this.update('name')}
+                                            />
+                                        </div>
 
-                            <input className="btn" type="submit" value="Create this project" />
-                            <div className="session-errors">{this.renderErrors()}</div>
-                        </form>
-                    </section>
+                                        <h3 className="flush">Add an optional description</h3>
+                                        <div className="push_half--bottom">
+                                            <input
+                                                className="input full-width"
+                                                placeholder="e.g. The sweetest grey base that ever spaced!"
+                                                type="text"
+                                                value={this.state.description}
+                                                onChange={this.update('description')}
+                                            />
+                                        </div>   
+                                </article>
+
+                                <input className="btn" type="submit" value="Create this project" />
+                                <div className="session-errors">{this.renderErrors()}</div>
+                            </form>
+                        </section>
+                    </div>
+                    
                 </div>
             </main>
 

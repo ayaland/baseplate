@@ -47,6 +47,7 @@ class HomeNavbar extends React.Component {
                         {/* navbar icons are 24 x 24 */}
                         <li className="nav_link"><Link className="text-link" to={`/`}><img src={window.nav_home} /> Home</Link></li>
                         <li className="nav_link"><Link className="text-link" to={`/`}><img src={window.nav_pint} /> Pints</Link></li>
+                        {/* suggestion from Phil: can I prevent default to prevent the browser from wiping the props and state when clicking on this link? */}
                         <li className="nav_link"><a href={`https://www.youtube.com/watch?v=prgm4eKq6d4`}><img src={window.nav_hey} /> Hey!</a></li>
                         <li className="nav_link"><Link className="text-link" to={`/`}>Activity</Link></li>
 

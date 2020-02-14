@@ -2,53 +2,58 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { fetchProject } from '../../../actions/project_actions';
-import AppCard from './app_card';
+// import AppCard from '../apps/app_card';
 
 class ProjectHome extends React.Component {
-    componentDidMount() {
-        this.props.fetchProject(this.props.projectId);
+    constructor(props) {
+        super(props)
     }
 
+    componentDidMount() {
+        this.props.fetchProject(this.props.match.params.projectId)
+    }
+    // From Jay to address manually typing in an address and having project load
+    // componentDidUpdate(prevProps) {
+    //     if (prevProps.match.params.productId !== this.props.match.params.productId) {
+    //         this.props.requestProduct(this.props.match.params.productId);
+    //     }
+    // }
+
     render() {
-        // Ayanote: .map got around the error of projects being empty; we need 
-        // to bypass the loop one time and then after componentDidMount runs, 
-        // we can access props
-        if (this.props.projects.length === 0 || this.props.users.length === 0)
-            return null;
-        else {
-            return (
-                <>
-                    <header className="project-header project-header--for-home centered">
-                        <h1 className="project-header_name--overview">{this.props.projects[0].name}</h1>
-                        <h4 className="project-header_description normal">{this.props.projects[0].description}</h4>
-                    </header>
-                    <section className="project-dock centered">
-                        <div className="card-grid">
-                            <AppCard sessionId={this.props.sessionId} projectId={this.props.projects[0].id} />
-                            {/* (this.props.apps.map((app) => (
+        if (!this.props.project) return null;
+        let project = this.props.project;
+        return (
+            <div className="panel panel--perma push_double--bottom centered">
+                <header className="project-header project-header--for-home centered">
+                    <h1 className="project-header_name--overview">{project.name}</h1>
+                    <h4 className="project-headere333 _description normal">{project.description}</h4>
+                </header>
+                <section className="project-dock centered">
+                    <div className="card-grid">
+                        {/* <AppCard projectId={this.props.projects.projectId} projectId={this.props.projectId} /> */}
+                        {/* (this.props.apps.map((app) => (
                                 <AppCard app={app} />
                             )) */}
-                        </div>
-                    </section>
-                </>
-            );
-        }
+                    </div>
+                </section>
+            </div>
+
+        );
     }
 }
 
 const mapStateToProps = (state, ownProps) => {
     return {
         errors: state.errors.session,
-        projects: Object.values(state.entities.projects),
-        users: Object.values(state.entities.users),
-        sessionId: state.session.id
+        projectId: state.sessionId,
+        project: state.entities.projects[ownProps.match.params.projectId]
     }
 };
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch) => {
+    return {
         fetchProject: (id) => dispatch(fetchProject(id))
-        
-});
+    }
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProjectHome);
-
