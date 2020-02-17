@@ -14,7 +14,7 @@ export const receiveProjects = (projects) => ({
 })
 
 
-// ---- THUNKS ----
+// ----- THUNKS -----
 
 export const fetchProject = (id) => dispatch => (
     APIUtil.fetchProject(id).then(project => (

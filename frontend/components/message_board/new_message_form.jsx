@@ -33,7 +33,7 @@ class NewMessageForm extends React.Component {
         e.preventDefault();
         const message = Object.assign({}, this.state);
         this.props.processForm(message).then(
-            this.props.history.push(`/${this.props.projectId}`)
+            this.props.history.push(`/${this.props.sessionId}/projects/${this.props.projectId}/messages`)
         )
     }
 
@@ -61,6 +61,7 @@ class NewMessageForm extends React.Component {
 const mapStateToProps = (state, ownProps) => {
     return {
         errors: state.errors.session,
+        sessionId: state.session.id,
         projectId: state.project.id
     };
 };

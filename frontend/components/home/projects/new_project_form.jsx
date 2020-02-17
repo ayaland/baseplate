@@ -62,6 +62,7 @@ class NewProjectForm extends React.Component {
                             <form onSubmit={this.handleSubmit} className="flush--top">
 
                                 <article className="sheet push--bottom left">
+
                                     <h3 className="flush">Name this project</h3>
                                     <div className="push_quarter--top push--bottom">
                                         <input
@@ -83,6 +84,7 @@ class NewProjectForm extends React.Component {
                                             onChange={this.update('description')}
                                         />
                                     </div>
+
                                 </article>
 
                                 <input className="btn" type="submit" value="Create this project" />
@@ -90,7 +92,6 @@ class NewProjectForm extends React.Component {
                             </form>
                         </section>
                     </div>
-
                 </div>
             </main>
 

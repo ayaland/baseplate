@@ -1,10 +1,17 @@
+export const fetchMessage = (id) => (
+    $.ajax({
+        method: 'GET',
+        url: `/api/messages/${id}`,
+    })
+);
+
 export const fetchMessages = (data) => (
     $.ajax({
         method: 'GET',
         url: '/api/messages',
         data
     })
-)
+);
 
 export const createMessage = (message) => (
     $.ajax({
@@ -12,4 +19,4 @@ export const createMessage = (message) => (
         url: '/api/messages',
         data: { message }
     })
-)
+);

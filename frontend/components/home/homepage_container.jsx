@@ -36,8 +36,10 @@ class HomepageContainer extends React.Component {
                             <article className="project-card">
                                 <Link to={`/${this.props.sessionId}/projects/new`} className="card_link">
                                     <div className="card_add-project">
+
                                         <img width="60" height="60" src={window.green_plus} />
                                         <br />
+
                                         Add another project
                                     </div>
                                 </Link>
