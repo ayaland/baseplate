@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { fetchProject } from '../../../actions/project_actions';
-// import AppCard from '../apps/app_card';
+import AppCard from '../app/app_card';
+
 
 class ProjectHome extends React.Component {
     constructor(props) {
@@ -30,6 +31,8 @@ class ProjectHome extends React.Component {
                 </header>
                 <section className="project-dock centered">
                     <div className="card-grid">
+                        <AppCard />
+
                         {/* <AppCard projectId={this.props.projects.projectId} projectId={this.props.projectId} /> */}
                         {/* (this.props.apps.map((app) => (
                                 <AppCard app={app} />

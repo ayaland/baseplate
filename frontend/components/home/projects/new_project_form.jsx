@@ -47,7 +47,7 @@ class NewProjectForm extends React.Component {
         );
     }
 
-    render () {
+    render() {
         return (
             <main>
                 <div className="panel panel--perma push_double--bottom centered">
@@ -62,27 +62,29 @@ class NewProjectForm extends React.Component {
                             <form onSubmit={this.handleSubmit} className="flush--top">
 
                                 <article className="sheet push--bottom left">
-                                        <h3 className="flush">Name this project</h3>
-                                        <div className="push_quarter--top push--bottom">
-                                            <input
-                                                className="input full-width"
-                                                placeholder="e.g. Space Base"
-                                                type="text"
-                                                value={this.state.name}
-                                                onChange={this.update('name')}
-                                            />
-                                        </div>
 
-                                        <h3 className="flush">Add an optional description</h3>
-                                        <div className="push_half--bottom">
-                                            <input
-                                                className="input full-width"
-                                                placeholder="e.g. The sweetest grey base that ever spaced!"
-                                                type="text"
-                                                value={this.state.description}
-                                                onChange={this.update('description')}
-                                            />
-                                        </div>   
+                                    <h3 className="flush">Name this project</h3>
+                                    <div className="push_quarter--top push--bottom">
+                                        <input
+                                            className="input full-width"
+                                            placeholder="e.g. Space Base"
+                                            type="text"
+                                            value={this.state.name}
+                                            onChange={this.update('name')}
+                                        />
+                                    </div>
+
+                                    <h3 className="flush">Add an optional description</h3>
+                                    <div className="push_half--bottom">
+                                        <input
+                                            className="input full-width"
+                                            placeholder="e.g. The sweetest grey base that ever spaced!"
+                                            type="text"
+                                            value={this.state.description}
+                                            onChange={this.update('description')}
+                                        />
+                                    </div>
+
                                 </article>
 
                                 <input className="btn" type="submit" value="Create this project" />
@@ -90,7 +92,6 @@ class NewProjectForm extends React.Component {
                             </form>
                         </section>
                     </div>
-                    
                 </div>
             </main>
 

@@ -29,15 +29,17 @@ class HomepageContainer extends React.Component {
                         </header>
 
                         <div className="">
-                        {this.props.projects.map((project) => (
-                            <ProjectCard project={project} key={project.id} title={this.makeTitle} userId={this.props.sessionId} />
-                        ))}
+                            {this.props.projects.map((project) => (
+                                <ProjectCard project={project} key={project.id} title={this.makeTitle} userId={this.props.sessionId} />
+                            ))}
 
                             <article className="project-card">
                                 <Link to={`/${this.props.sessionId}/projects/new`} className="card_link">
                                     <div className="card_add-project">
-                                    <img width="60" height="60" src={window.green_plus} />
-                                    <br />
+
+                                        <img width="60" height="60" src={window.green_plus} />
+                                        <br />
+
                                         Add another project
                                     </div>
                                 </Link>
