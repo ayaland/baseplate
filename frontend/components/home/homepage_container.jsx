@@ -1,14 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import HomeNavbar from '../navbar/home_navbar';
+
 import { createProject, fetchProjects } from '../../actions/project_actions'
-import ProjectCard from './project_card';
+import ProjectCard from './projects/project_card';
 
 class HomepageContainer extends React.Component {
     componentDidMount() {
         this.props.fetchProjects();
-        console.log(this.props);
     }
 
     makeTitle(project) {
@@ -21,7 +20,6 @@ class HomepageContainer extends React.Component {
     render() {
         return (
             <main>
-                <HomeNavbar />
                 <div className="panel">
                     <section className="project-index">
                         <header className="centered">
@@ -31,13 +29,15 @@ class HomepageContainer extends React.Component {
                         </header>
 
                         <div className="">
-                        {this.props.projects.map((project) => (
-                            <ProjectCard project={project} key={project.id} title={this.makeTitle} userId={this.props.sessionId} />
-                        ))}
+                            {this.props.projects.map((project) => (
+                                <ProjectCard project={project} key={project.id} title={this.makeTitle} userId={this.props.sessionId} />
+                            ))}
 
                             <article className="project-card">
                                 <Link to={`/${this.props.sessionId}/projects/new`} className="card_link">
                                     <div className="card_add-project">
+                                        <img width="60" height="60" src={window.green_plus} />
+                                        <br />
                                         Add another project
                                     </div>
                                 </Link>

@@ -9,7 +9,6 @@ const AppContainer = (props) => {
         case (""):
             return (
                 <>
-                    <HomeNavBar />
                     <div className="panel panel--perma push_double--bottom centered">
                         <NewProjectForm />
                     </div>
@@ -18,7 +17,6 @@ const AppContainer = (props) => {
         case (""):
             return (
                 <>
-                    <HomeNavBar />
                     <div className="panel panel--perma push_double--bottom centered">
                         <ProjectHome projectId={props.match.params.projectId} />
                     </div>
@@ -26,5 +24,4 @@ const AppContainer = (props) => {
             )
     }
 }
-
 export default AppContainer;
