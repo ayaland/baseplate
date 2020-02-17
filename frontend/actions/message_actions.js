@@ -16,20 +16,20 @@ export const receiveMessages = (messages) => ({
 
 // ---- THUNKS ----
 
-export const fetchMessages = () => dispatch => (
-    APIUtil.fetchMessages().then(messages => (
+export const fetchMessages = (projectId) => dispatch => (
+    APIUtil.fetchMessages(projectId).then(messages => (
         dispatch(receiveMessages(messages))
     ))
 );
 
-export const fetchMessage = () => dispatch => (
-    APIUtil.fetchMessage(id).then(message => (
+export const fetchMessage = (projectId, messageId) => dispatch => (
+    APIUtil.fetchMessage(projectId, messageId).then(message => (
         dispatch(receiveMessage(message))
     ))
 );
 
-export const createMessage = (message) => dispatch => (
-    APIUtil.createMessage(message).then(message => (
+export const createMessage = (projectId, message) => dispatch => (
+    APIUtil.createMessage(projectId, message).then(message => (
         dispatch(receiveMessage(message))
     ))
 );

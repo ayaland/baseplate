@@ -1,15 +1,14 @@
-export const fetchMessage = (id) => (
+export const fetchMessage = (projectId, messageId) => (
     $.ajax({
         method: 'GET',
-        url: `/api/messages/${id}`,
+        url: `/api/projects/${projectId}/messages/${messageId}`,
     })
 );
 
-export const fetchMessages = (data) => (
+export const fetchMessages = (projectId) => (
     $.ajax({
         method: 'GET',
-        url: '/api/messages',
-        data
+        url: `/api/projects/${projectId}/messages`,
     })
 );
 
@@ -20,3 +19,10 @@ export const createMessage = (message) => (
         data: { message }
     })
 );
+
+export const deleteMessage = (projectId, messageId) => (
+    $.ajax({
+        method: 'DELETE',
+        url: `/api/projects/${projectId}/messages/${messageId}`
+    })
+)

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 function AppCard(props) {
     return (
         <article className="card card--app">
-            <Link to={`/${props.sessionId}/projects/${props.projectId}/messages`} className="card_link">
+            <Link to={`/projects/${props.projectId}/messages`} className="card_link">
                 <div className="card_content">
                     <header className="card_header centered">
                         {/* <h1 className="flush txt--truncate">{props.app.name}</h1> */}
