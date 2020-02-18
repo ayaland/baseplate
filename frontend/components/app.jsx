@@ -17,6 +17,7 @@ import NewProjectForm from './projects/new_project_form';
 
 import ProjectHome from './projects/project_home';
 import MessageHome from './message_board/message_home';
+
 const App = () => (
     <div>
         <ProtectedRoute path="/:userId" component={HomeNavbar} />

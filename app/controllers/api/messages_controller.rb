@@ -17,8 +17,8 @@ class Api::MessagesController < ApplicationController
     end
 
     def index
-        @messages = current_project.messages
-        render :index
+        project = Project.find_by(id: params[:project_id])
+        @messages = project.messages
     end
 
     def destroy

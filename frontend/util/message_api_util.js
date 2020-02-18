@@ -8,7 +8,7 @@ export const fetchMessage = (projectId, messageId) => (
 export const fetchMessages = (projectId) => (
     $.ajax({
         method: 'GET',
-        url: `/api/projects/${projectId}/messages`,
+        url: `/api/projects/${projectId}/messages`
     })
 );
 
