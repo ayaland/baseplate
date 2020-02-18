@@ -1,7 +1,5 @@
 import React from 'react';
 
-import HomeNavBar from '../../navbar/home_navbar';
-
 const AppContainer = (props) => {
     console.log(props);
 

@@ -10,7 +10,7 @@ body {
     color: #283c46;
 }
 
-header, main, footer {
+header, main, nav, footer {
     display: block;
 }
 
@@ -181,6 +181,7 @@ small {
     padding: 0 0.5em;
     background: #fff;
 }
+
 .centered {
   text-align: center;
   margin: 0px;
@@ -213,6 +214,7 @@ small {
 .grid--centered {
     grid-column: 4 / span 18;
 }
+
 .header--top {
     padding-top: 55px;
     padding-bottom: 0px;
@@ -232,6 +234,17 @@ small {
 
 .left {
     text-align: left;
+}
+
+.message-project {
+    max-width: 53em;
+    border-radius: 0.2em 0.2em 0 0;
+    padding: 0.2rem 0;
+    margin: 0.2rem auto 0;
+    background: #fff;
+    border-bottom: 1px solid #00000008;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1), 0 10px 30px #f3ece8;
+    cursor: pointer;
 }
 
 .messages-table_avatar {
@@ -484,20 +497,17 @@ img {
     margin: 0 auto;
     font-size: 1.3rem;
 }
+
 .project-header {
     padding-bottom: 1rem;
-}
-
-.project-header_description {
-    margin: 0 auto;
-    max-width: 80rem;
-}
-
-.project-header--for-home {
     margin-bottom: -1.5rem;
 }
 
-.project-header_name--overview {
+.project-header_description {
+    max-width: 80rem;
+}
+
+.project-header_name {
     margin: 0 auto;
     max-width: 72rem;
     font-size: 2em;

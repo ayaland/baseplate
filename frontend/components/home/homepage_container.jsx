@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { createProject, fetchProjects } from '../../actions/project_actions'
-import ProjectCard from './projects/project_card';
+import ProjectCard from '../projects/project_card';
 
 class HomepageContainer extends React.Component {
     componentDidMount() {

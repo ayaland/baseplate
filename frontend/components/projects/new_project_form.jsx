@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
-import { createProject } from '../../../actions/project_actions';
+import { createProject } from '../../actions/project_actions';
 
 class NewProjectForm extends React.Component {
     constructor(props) {
