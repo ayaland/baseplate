@@ -1,0 +1,122 @@
+.card_add-project {
+    vertical-align: top;
+    text-align: center;
+    padding-top: 4rem;
+/* Ayanote: use 'image-url' for deploying to Heroku. See AA Heroku instructions and/or Abel */
+    /* background-image: url('./green_plus.svg'); */
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 4rem 6rem;
+    font-size: 1.5rem;
+}
+
+.card_avatar {
+    position: absolute;
+    bottom: 0.8em;
+    left: 1em;
+    right: 1em;
+    padding: 2px;
+}
+
+.card_content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    padding: 0.85em;
+    overflow: hidden;
+}
+
+.card_description {
+    font-size: 0.6em;
+}
+
+.card-grid {
+    display:flex;
+    text-align: center;
+    justify-content: center;
+    align-content: flex-start;
+}
+
+.card_link {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+.card_title {
+    font-size: 0.85em;
+    margin-right: 2em;
+
+}
+.project-card {
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    background: #fff;
+    vertical-align: top;
+    margin: 0.35em;
+    padding-top: 33%;
+    font-size: 1.8rem;
+    border-radius: 0.6rem;
+    line-height: 1.3;
+    text-align: left;
+    box-shadow: 0 0 1px rgba(0,0,0,0.25), 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.project-index {
+    margin: 0 auto;
+    max-width: 85%;
+}
+
+/* App card specific CSS */
+
+.card {
+    position: relative;
+    vertical-align: top;
+    line-height: 1.3;
+    margin: 0.75em;
+    font-size: 1.2rem;
+    text-align: left;
+    word-wrap: break-word;
+    border-radius: 0.6rem;
+    box-shadow: 0 0 2px rgba(0,0,0,0.35), 0 1px 3px rgba(0,0,0,0.1);
+    background: #fff;
+}
+
+.card:before {
+    content: '';
+    display: block;
+    padding-top: 133%;
+}
+
+.card--app {
+    width: 31%;
+    border-radius: 0.5rem;
+}
+
+.card--app .card_header {
+    margin: -1.5em 0 0;
+    padding: 1.5em 0 1em;
+    background-position: 0.5em center;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    border-bottom: 1px solid #d9d9d9;
+    border-radius: 0.5rem 0.5rem 0 0;
+    position: relative;
+}
+
+.card--app:before {
+    padding-top: 100%;
+}
+
+/* for toggling between blank and customized */
+/* .card_blank-slate {
+    display: none;
+} */
+
+.card h1 {
+    font-size: 1.0em;
+}

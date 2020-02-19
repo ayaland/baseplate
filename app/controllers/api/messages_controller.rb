@@ -2,7 +2,8 @@ class Api::MessagesController < ApplicationController
     before_action :require_logged_in
 
     def create
-        @message = Message.new(message_params)
+        project = Project.find_by(id: params[:project_id])
+        @message = project.messages.new(message_params)
 
         if @message.save
             render :show
@@ -16,8 +17,13 @@ class Api::MessagesController < ApplicationController
     end
 
     def index
-        @messages = current_project.messages
-        render :index
+        project = Project.find_by(id: params[:project_id])
+        @messages = project.messages
+    end
+
+    def destroy
+        @message = Message.find_by(id: params[:id])
+        @message.destroy
     end
 
     private
