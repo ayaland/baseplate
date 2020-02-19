@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import { fetchMessages } from '../../actions/message_actions';
 import { fetchProject } from '../../actions/project_actions';
@@ -15,9 +16,27 @@ class MessageHome extends React.Component {
         let project = this.props.project;
         let messages = this.props.messages;
         return (
-            <nav className="message-project centered">
-                <h1>{project.name}</h1>
-            </nav>
+            <main>
+                <nav className="messages-project centered">
+                    <img className="lego_brick" src={window.lego_brick} />
+                    <h3 className="messages-project--name">{project.name}</h3>
+                </nav>
+
+                <div className="panel panel--perma panel--padding">
+                    <article>
+                        <header className="perma_header push--bottom">
+                            <h1 className="perma_title">Message Board</h1>
+                            <label className="perma_btn">
+                                <Link to="" className="btn btn--small">+ New Message</Link>
+                            </label>
+                        </header>
+                        {this.props.messages.map((message) => (
+                            message.title
+                        ))}
+                    </article>
+                </div>
+
+            </main>
         )
 
     }

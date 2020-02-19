@@ -1,0 +1,67 @@
+
+.dropdown-menu {
+    flex-direction: column;
+    display: flex;
+    position: fixed;
+    top: 2.4rem;
+    left: auto;
+    right: 0;
+    width: 350px;
+    text-align: left;
+    border: 0;
+    border-radius: 0.2em 0.2em 0 0;
+    background-color: #fff;
+    box-shadow: 0 0 4px rgba(0,0,0,0.15), 0 5px 10px rgba(0,0,0,0.05);
+    z-index: 1;
+}
+
+.dropdown-settings:after {
+    content: ' ';
+    position: absolute;
+    bottom: 100%;
+    left: 91%;
+    width: 0;
+    height: 0;
+    margin-left: -9px;
+    border: 9px solid rgba(255,255,255,0);
+    border-bottom-color: #fff;
+    z-index: 5;
+}
+
+.dropdown-settings {
+    overflow-x: hidden;
+    overflow-y: overlay;
+    padding-top: 1rem;   
+}
+
+.nav_accounts {
+    display: flex;
+    margin-right: auto;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.navbar-menu {
+    display: flex;
+    line-height: 1.5;
+    justify-content: space-between;
+}
+
+.navbar-menu > li {
+    padding: .25em 1em;
+}
+
+.nav_link {
+    vertical-align: middle;
+    text-align: center;
+    font-weight: bold;
+}
+
+.nav-menu_section {
+    padding: 1rem 2rem;
+}
+
+.nav_settings {
+    display: flex;
+    margin-left: auto;
+}
