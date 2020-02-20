@@ -18,8 +18,10 @@ class MessageIndex extends React.Component {
         return (
             <main>
                 <nav className="messages-project centered">
-                    <img className="lego_brick" src={window.lego_brick} />
-                    <h3 className="messages-project--name">{project.name}</h3>
+                    <Link to={`/projects/${project.id}`}>
+                        <img className="lego_brick" src={window.lego_brick} />
+                        <h3 className="layer-out_project">{project.name}</h3>
+                    </Link>
                 </nav>
 
                 <div className="panel panel--perma panel--padding">
@@ -28,7 +30,7 @@ class MessageIndex extends React.Component {
                             <h1 className="perma_title">Message Board</h1>
 
                             <label className="perma_btn">
-                                <Link to={`messages/new`} className="btn btn--small">+ New Message</Link>
+                                <Link to={`messages/new`} project={this.props.project} className="btn btn--small">+ New Message</Link>
                             </label>
 
                         </header>

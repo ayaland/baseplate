@@ -22,7 +22,7 @@ import NewMessageForm from './message_board/new_message_form';
 
 const App = () => (
     <div>
-        <ProtectedRoute path="/:userId" component={HomeNavbar} />
+        <ProtectedRoute path="/:anything" component={HomeNavbar} />
         <Switch>
             <AuthRoute exact path="/" component={SplashContainer} />
             <AuthRoute path="/login" component={LoginFormContainer} />
@@ -30,8 +30,8 @@ const App = () => (
 
             <ProtectedRoute exact path="/:userId" component={ProjectIndex} />
             {/* Ayanote: Do not under threat of death reverse the order of these routes. It breaks. */}
-            <ProtectedRoute exact path="/:userId/projects/new" component={NewProjectForm} />
-            <ProtectedRoute exact path="/:userId/projects/:projectId" component={ProjectHome} />
+            <ProtectedRoute exact path="/projects/new" component={NewProjectForm} />
+            <ProtectedRoute exact path="/projects/:projectId" component={ProjectHome} />
 
             <ProtectedRoute exact path="/projects/:projectId/messages" component={MessageIndex} />
             <ProtectedRoute exact path="/projects/:projectId/messages/new" component={NewMessageForm} />  

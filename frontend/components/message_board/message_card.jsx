@@ -12,9 +12,15 @@ function MessageCard(props) {
             className="message_link">
 
             <div className="message_content">
-                <h1>{props.message.title}</h1>
-                <p className="message">{props.message.body}</p>
-
+                <tr>
+                    <td className="message_avatar">
+                        <img className="" src={window.forestman_avatar} />
+                    </td>
+                    <td>
+                        <h1 className="message_title flush">{props.message.title}</h1>                       
+                        <p className="message flush">{props.message.body}</p>
+                    </td>
+                </tr>
             </div>
             
             </Link>
