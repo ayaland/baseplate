@@ -29,8 +29,9 @@ const App = () => (
             <AuthRoute path="/signup" component={SignupFormContainer} />
 
             <ProtectedRoute exact path="/:userId" component={ProjectIndex} />
-            <ProtectedRoute exact path="/:userId/projects/:projectId" component={ProjectHome} />
+            {/* Ayanote: Do not under threat of death reverse the order of these routes. It breaks. */}
             <ProtectedRoute exact path="/:userId/projects/new" component={NewProjectForm} />
+            <ProtectedRoute exact path="/:userId/projects/:projectId" component={ProjectHome} />
 
             <ProtectedRoute exact path="/projects/:projectId/messages" component={MessageIndex} />
             <ProtectedRoute exact path="/projects/:projectId/messages/new" component={NewMessageForm} />  
