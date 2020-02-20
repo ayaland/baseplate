@@ -25,7 +25,7 @@ class ProjectHome extends React.Component {
         if (!this.props.project) return null;
         let project = this.props.project;
         return (
-            <div className="panel panel--perma push_double--bottom centered">
+            <div className="panel panel--perma panel--project push_double--bottom centered">
                 <header className="project-header centered">
                     <h1 className="project-header_name">{project.name}</h1>
                     <h4 className="project-header_description normal">{project.description}</h4>

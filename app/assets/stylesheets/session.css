@@ -276,7 +276,7 @@ small {
     line-height: 1.4;
     margin-top: 0.5em;
     margin-bottom: 0.5em;
-    padding-left: 2em;
+    padding-left: 0.5em;
     padding-right: 2em;
 }
 
@@ -320,6 +320,9 @@ small {
     min-height: 100vh;
 }
 
+.panel--project {
+    margin-top: 0.2rem;
+}
 
 @media screen and (min-width: 768px) {
     .panel--padding {
@@ -330,6 +333,10 @@ small {
         width: 90%;
         box-shadow: 0 -1px 10px rgba(0,0,0,0.05), 0 1px 4px rgba(0,0,0,0.1), 0 10px 30px #f3ece8;
         border-radius: 0.2em 0.2em 0 0;
+    }
+
+    .panel--project {
+        padding: 2.5rem;
     }
     
     .perma_btn {

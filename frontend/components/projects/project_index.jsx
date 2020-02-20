@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { createProject, fetchProjects } from '../../actions/project_actions'
-import ProjectCard from '../projects/project_card';
+import ProjectCard from './project_card';
 
-class HomepageContainer extends React.Component {
+class ProjectIndex extends React.Component {
     componentDidMount() {
         this.props.fetchProjects();
     }
@@ -68,4 +68,4 @@ const mapDispatchToProps = (dispatch) => ({
     fetchProject: (id) => dispatch(fetchProject(id)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomepageContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(ProjectIndex);
