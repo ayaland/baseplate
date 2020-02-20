@@ -26,9 +26,11 @@ class MessageIndex extends React.Component {
                     <article>
                         <header className="perma_header push--bottom">
                             <h1 className="perma_title">Message Board</h1>
+
                             <label className="perma_btn">
-                                <Link to="" className="btn btn--small">+ New Message</Link>
+                                <Link to={`messages/new`} className="btn btn--small">+ New Message</Link>
                             </label>
+
                         </header>
                         <section className="message-board push--top">
                             {this.props.messages.map((message) => (

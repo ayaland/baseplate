@@ -30,7 +30,7 @@ class ProjectIndex extends React.Component {
 
                         <div className="">
                             {this.props.projects.map((project) => (
-                                <ProjectCard project={project} key={project.id} title={this.makeTitle} userId={this.props.userId} />
+                                <ProjectCard project={project} key={project.id} title={this.makeTitle} userId={this.props.sessionId} />
                             ))}
 
                             <article className="project-card">
@@ -58,7 +58,7 @@ class ProjectIndex extends React.Component {
 const mapStateToProps = (state) => {
     return {
         projects: Object.values(state.entities.projects),
-        userId: state.session.id
+        sessionId: state.session.id
     };
 };
 

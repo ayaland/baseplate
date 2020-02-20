@@ -12,11 +12,13 @@ import SignupFormContainer from './session_form/signup_form_container';
 import LoginFormContainer from './session_form/login_form_container';
 
 import HomeNavbar from './navbar/home_navbar';
+
 import ProjectIndex from './projects/project_index';
+import ProjectHome from './projects/project_home';
 import NewProjectForm from './projects/new_project_form';
 
-import ProjectHome from './projects/project_home';
 import MessageIndex from './message_board/message_index';
+import NewMessageForm from './message_board/new_message_form';
 
 const App = () => (
     <div>
@@ -25,10 +27,13 @@ const App = () => (
             <AuthRoute exact path="/" component={SplashContainer} />
             <AuthRoute path="/login" component={LoginFormContainer} />
             <AuthRoute path="/signup" component={SignupFormContainer} />
+
             <ProtectedRoute exact path="/:userId" component={ProjectIndex} />
-            <ProtectedRoute exact path="/:userId/projects/new" component={NewProjectForm} />
             <ProtectedRoute exact path="/:userId/projects/:projectId" component={ProjectHome} />
+            <ProtectedRoute exact path="/:userId/projects/new" component={NewProjectForm} />
+
             <ProtectedRoute exact path="/projects/:projectId/messages" component={MessageIndex} />
+            <ProtectedRoute exact path="/projects/:projectId/messages/new" component={NewMessageForm} />  
         </Switch>
     </div>
 );

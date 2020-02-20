@@ -7,6 +7,7 @@ import { createProject } from '../../actions/project_actions';
 class NewProjectForm extends React.Component {
     constructor(props) {
         super(props);
+        console.log("inside the form constructor")
         this.state = {
             name: '',
             description: '',
@@ -16,6 +17,7 @@ class NewProjectForm extends React.Component {
     }
 
     componentDidMount() {
+        console.log("component mounted")
         this.setState({
             owner_id: this.props.sessionId
         })
@@ -101,13 +103,15 @@ class NewProjectForm extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
+    console.log('mstp')
     return {
         errors: state.errors.session,
-        sessionId: state.session.id
+        sessionId: state.session.id,
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
+    console.log('mdtp')
     return {
         processForm: (project) => dispatch(createProject(project))
     };
