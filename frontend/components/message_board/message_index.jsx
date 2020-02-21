@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { fetchMessages } from '../../actions/message_actions';
 import { fetchProject } from '../../actions/project_actions';
+import { fetchMessages } from '../../actions/message_actions';
 import MessageCard from './message_card';
 
 class MessageIndex extends React.Component {

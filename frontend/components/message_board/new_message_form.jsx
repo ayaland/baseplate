@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
+import trix from 'trix';
 
+import { fetchProject } from '../../actions/project_actions';
 import { createMessage } from '../../actions/message_actions'
 
 class NewMessageForm extends React.Component {
@@ -17,8 +19,8 @@ class NewMessageForm extends React.Component {
     }
 
     componentDidMount () {
+        this.props.fetchProject(this.props.match.params.projectId)
         this.setState({
-            project_id: this.props.project.id,
             owner_id: this.props.sessionId
         })
     }
@@ -50,6 +52,7 @@ class NewMessageForm extends React.Component {
     }
 
     render () {
+        if (!this.props.project) return null;
         let project = this.props.project
         return (
             <main>
@@ -82,10 +85,6 @@ class NewMessageForm extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    console.log("ownprops")
-    console.log(ownProps)
-    console.log("state")
-    console.log(state)
     return {
         errors: state.errors.session,
         sessionId: state.session.id,
@@ -95,6 +94,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        fetchProject: (projectId) => dispatch(fetchProject(projectId)),
         processForm: (message) => dispatch(createMessage(message))
     };
 };

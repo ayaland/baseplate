@@ -49,7 +49,7 @@ class ProjectHome extends React.Component {
 const mapStateToProps = (state, ownProps) => {
     return {
         errors: state.errors.session,
-        projectId: state.sessionId,
+        projectId: ownProps.match.params.projectId,
         project: state.entities.projects[ownProps.match.params.projectId]
     }
 };
