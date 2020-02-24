@@ -21,7 +21,8 @@ class NewMessageForm extends React.Component {
     componentDidMount () {
         this.props.fetchProject(this.props.match.params.projectId)
         this.setState({
-            owner_id: this.props.sessionId
+            owner_id: this.props.sessionId,
+            project_id: this.props.projectId
         })
     }
 
@@ -70,11 +71,24 @@ class NewMessageForm extends React.Component {
                     <form onSubmit={this.handleSubmit} className="">
                         <article className="flush--bottom">
                             {/* <header className="push--bottom"> */}
-                                <textarea rows="1" placeholder="Type a title..." className="input title" />
+                                <textarea rows="1" placeholder="Type a title..." autoFocus="autoFocus" className="input title" />
                             {/* </header> */}
 
-                            <section className="message-board">
-                                <trix-editor></trix-editor>
+                            <section className="message-content">
+                            <trix-toolbar id="baseplate_toolbar">
+                                <div className="trix-button-row">
+                                    <span className="trix-button-group trix-button-group--text-tools">
+                                    </span>
+                                    <span className="trix-button-group trix-button-group--block-tools"></span>
+                                </div>
+                            </trix-toolbar>
+                            <trix-editor 
+                                className="formatted_content flush--bottom"
+                                input="message_body" 
+                                toolbar="baseplate_toolbar"
+                                placeholder="Write away..."
+                                ></trix-editor>
+                            
                             </section>
                         </article>
                     </form>
@@ -85,9 +99,11 @@ class NewMessageForm extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
+    console.log(ownProps.match.params.projectId)
     return {
         errors: state.errors.session,
         sessionId: state.session.id,
+        projectId: ownProps.match.params.projectId,
         project: state.entities.projects[ownProps.match.params.projectId]
     };
 };
