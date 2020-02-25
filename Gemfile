@@ -22,6 +22,7 @@ gem 'annotate'
 gem 'jquery-rails'
 gem 'rails_12factor'
 gem 'trix'
+gem 'trix-gem'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
