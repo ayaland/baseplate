@@ -91,6 +91,10 @@ class NewMessageForm extends React.Component {
                             
                             </section>
                         </article>
+                        <footer className="new-message-footer">
+                            <div className="new-message-buttons push--bottom"></div>
+
+                        </footer>
                     </form>
                 </div>
             </main>

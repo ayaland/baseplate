@@ -354,6 +354,16 @@ trix-toolbar .button_row {
     padding: 0.5rem 0.2rem 0.3rem;
 }
 
+.new-message-buttons {
+    margin-top: 2rem;
+}
+
+.new-message-footer {
+    border-top: 1px solid #e5e5e5;
+    padding-top: 1.5em;
+    margin: 1.5em -1rem 0;
+}
+
 .normal {
     font-weight: normal;
 }
