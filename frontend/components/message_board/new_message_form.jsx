@@ -70,16 +70,13 @@ class NewMessageForm extends React.Component {
                 <div className="panel panel--perma panel--padding">
                     <form onSubmit={this.handleSubmit} className="">
                         <article className="flush--bottom">
-                            {/* <header className="push--bottom"> */}
                                 <textarea rows="1" placeholder="Type a title..." autoFocus="autoFocus" className="input title" />
-                            {/* </header> */}
 
                             <section className="message-content">
-                            <trix-toolbar id="baseplate_toolbar">
+                            <trix-toolbar id="baseplate_toolbar" class="message-body">
                                 <div className="trix-button-row">
-                                    <span className="trix-button-group trix-button-group--text-tools">
-                                    </span>
-                                    <span className="trix-button-group trix-button-group--block-tools"></span>
+                                    {/* <span className="trix-button-group trix-button-group--text-tools" />
+                                    <span className="trix-button-group trix-button-group--block-tools" />    */}
                                 </div>
                             </trix-toolbar>
                             <trix-editor 
@@ -87,12 +84,23 @@ class NewMessageForm extends React.Component {
                                 input="message_body" 
                                 toolbar="baseplate_toolbar"
                                 placeholder="Write away..."
-                                ></trix-editor>
+                            ></trix-editor>
                             
                             </section>
                         </article>
-                        <footer className="new-message-footer">
-                            <div className="new-message-buttons push--bottom"></div>
+                        <footer className="new-message-footer message-body">
+                            <div className="new-message-buttons push--bottom">
+                                <input 
+                                    className="btn btn--primary"
+                                    type="submit"
+                                    value="Save as a draft"
+                                />
+                                <input 
+                                    className="btn btn--secondary"
+                                    type="submit"
+                                    value="Post this message"
+                                />
+                            </div>
 
                         </footer>
                     </form>
