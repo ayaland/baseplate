@@ -2,10 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { fetchMessages } from '../../actions/message_actions';
 import { fetchProject } from '../../actions/project_actions';
+import { fetchMessages } from '../../actions/message_actions';
+import MessageCard from './message_card';
 
-class MessageHome extends React.Component {
+class MessageIndex extends React.Component {
     componentDidMount() {
         this.props.fetchProject(this.props.match.params.projectId),
         this.props.fetchMessages(this.props.match.params.projectId)
@@ -14,25 +15,31 @@ class MessageHome extends React.Component {
     render () {
         if (!this.props.project) return null;
         let project = this.props.project;
-        let messages = this.props.messages;
         return (
             <main>
                 <nav className="messages-project centered">
-                    <img className="lego_brick" src={window.lego_brick} />
-                    <h3 className="messages-project--name">{project.name}</h3>
+                    <Link to={`/projects/${project.id}`}>
+                        <img className="lego_brick" src={window.lego_brick} />
+                        <h3 className="layer-out_project">{project.name}</h3>
+                    </Link>
                 </nav>
 
                 <div className="panel panel--perma panel--padding">
                     <article>
                         <header className="perma_header push--bottom">
                             <h1 className="perma_title">Message Board</h1>
+
                             <label className="perma_btn">
-                                <Link to="" className="btn btn--small">+ New Message</Link>
+                                <Link to={`messages/new`} project={this.props.project} className="btn btn--small">+ New Message</Link>
                             </label>
+
                         </header>
-                        {this.props.messages.map((message) => (
-                            message.title
-                        ))}
+                        <section className="message-board push--top">
+                            {this.props.messages.map((message) => (
+                                <MessageCard message={message} key={message.id} />
+                            ))}
+
+                        </section>
                     </article>
                 </div>
 
@@ -57,4 +64,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MessageHome);
+export default connect(mapStateToProps, mapDispatchToProps)(MessageIndex);

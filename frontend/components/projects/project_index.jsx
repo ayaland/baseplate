@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { createProject, fetchProjects } from '../../actions/project_actions'
-import ProjectCard from '../projects/project_card';
+import ProjectCard from './project_card';
 
-class HomepageContainer extends React.Component {
+class ProjectIndex extends React.Component {
     componentDidMount() {
         this.props.fetchProjects();
     }
@@ -30,11 +30,11 @@ class HomepageContainer extends React.Component {
 
                         <div className="">
                             {this.props.projects.map((project) => (
-                                <ProjectCard project={project} key={project.id} title={this.makeTitle} userId={this.props.userId} />
+                                <ProjectCard project={project} key={project.id} title={this.makeTitle} />
                             ))}
 
                             <article className="project-card">
-                                <Link to={`/${this.props.sessionId}/projects/new`} className="card_link">
+                                <Link to={`/projects/new`} className="card_link">
                                     <div className="card_add-project">
                                         <img width="60" height="60" src={window.green_plus} />
                                         <br />
@@ -58,7 +58,7 @@ class HomepageContainer extends React.Component {
 const mapStateToProps = (state) => {
     return {
         projects: Object.values(state.entities.projects),
-        userId: state.session.id
+        sessionId: state.session.id
     };
 };
 
@@ -68,4 +68,4 @@ const mapDispatchToProps = (dispatch) => ({
     fetchProject: (id) => dispatch(fetchProject(id)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(HomepageContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(ProjectIndex);

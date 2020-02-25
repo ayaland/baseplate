@@ -46,11 +46,37 @@
     left: 0;
     bottom: 0;
 }
+
 .card_title {
     font-size: 0.85em;
     margin-right: 2em;
-
 }
+
+.message {
+    display: block;
+    line-height: 1.4em;
+    font-size: 1.0rem;
+    max-height: 2.8em;
+    overflow: hidden;
+}
+
+.message_avatar {
+    border: 1px solid green;
+}
+
+.message_content {
+    border: 1px solid red;
+}
+
+.message_content td {
+    padding: 1.1rem 0.5rem;
+}
+
+.message_title {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
 .project-card {
     display: inline-block;
     position: relative;

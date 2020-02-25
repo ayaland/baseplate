@@ -1,6 +1,10 @@
 class Api::ProjectsController < ApplicationController
     before_action :require_logged_in
 
+    def new
+        @project = Project.new
+    end
+
     def create
         @project = Project.new(project_params)
 

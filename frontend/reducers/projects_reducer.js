@@ -6,7 +6,10 @@ const projectsReducer = (state = {}, action) => {
     switch(action.type) {
         case RECEIVE_PROJECTS:
             return action.projects;
+            // return Object.assign({}, state, action.projects);
         case RECEIVE_PROJECT:
+            // return state;
+            // return Object.assign({}, state, {[action.project.id]: action.project })
             nextState[action.project.id] = action.project
             return nextState;
         default:

@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
+import trix from 'trix';
 
+import { fetchProject } from '../../actions/project_actions';
 import { createMessage } from '../../actions/message_actions'
 
 class NewMessageForm extends React.Component {
@@ -17,9 +19,10 @@ class NewMessageForm extends React.Component {
     }
 
     componentDidMount () {
+        this.props.fetchProject(this.props.match.params.projectId)
         this.setState({
-            project_id: this.props.projectId,
-            owner_id: this.props.sessionId
+            owner_id: this.props.sessionId,
+            project_id: this.props.projectId
         })
     }
 
@@ -33,7 +36,7 @@ class NewMessageForm extends React.Component {
         e.preventDefault();
         const message = Object.assign({}, this.state);
         this.props.processForm(message).then(
-            this.props.history.push(`/${this.props.sessionId}/projects/${this.props.projectId}/messages`)
+            this.props.history.push(`/projects/${this.props.projectId}/messages`)
         )
     }
 
@@ -50,24 +53,64 @@ class NewMessageForm extends React.Component {
     }
 
     render () {
+        if (!this.props.project) return null;
+        let project = this.props.project
         return (
             <main>
+                <nav className="messages-project centered">
+                    <Link to={`/projects/${project.id}`}>
+                        <img className="lego_brick" src={window.lego_brick} />
+                        <h3 className="layer-out_project">{project.name}</h3>
+                    </Link>
+                    <Link to={`/projects/${project.id}/messages`}>
+                        <h3 className="layer-out_project">> Message Board</h3>
+                    </Link>
+                </nav>
+                
+                <div className="panel panel--perma panel--padding">
+                    <form onSubmit={this.handleSubmit} className="">
+                        <article className="flush--bottom">
+                            {/* <header className="push--bottom"> */}
+                                <textarea rows="1" placeholder="Type a title..." autoFocus="autoFocus" className="input title" />
+                            {/* </header> */}
 
+                            <section className="message-content">
+                            <trix-toolbar id="baseplate_toolbar">
+                                <div className="trix-button-row">
+                                    <span className="trix-button-group trix-button-group--text-tools">
+                                    </span>
+                                    <span className="trix-button-group trix-button-group--block-tools"></span>
+                                </div>
+                            </trix-toolbar>
+                            <trix-editor 
+                                className="formatted_content flush--bottom"
+                                input="message_body" 
+                                toolbar="baseplate_toolbar"
+                                placeholder="Write away..."
+                                ></trix-editor>
+                            
+                            </section>
+                        </article>
+                    </form>
+                </div>
             </main>
         )
     }
 }
 
 const mapStateToProps = (state, ownProps) => {
+    console.log(ownProps.match.params.projectId)
     return {
         errors: state.errors.session,
         sessionId: state.session.id,
-        projectId: state.project.id
+        projectId: ownProps.match.params.projectId,
+        project: state.entities.projects[ownProps.match.params.projectId]
     };
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        fetchProject: (projectId) => dispatch(fetchProject(projectId)),
         processForm: (message) => dispatch(createMessage(message))
     };
 };

@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 function ProjectCard(props) {
         return (
                 <article className="project-card">
-                <Link to={{
-                        pathname: `/${props.userId}/projects/${props.project.id}`,
+                    <Link to={{
+                        pathname: `/projects/${props.project.id}`,
                         project: props.project,
                         customObject: "customValue"
                         }} 

@@ -14,8 +14,12 @@ prop_user1 = User.create!(name: 'Forestman2', bio: 'V-necks >> collars', passwor
 prop_user2 = User.create!(name: 'Blacktron', bio: 'We are smiling and industrious.', password: 'password', email: 'neon10@fgeneration.com')
 prop_user3 = User.create!(name: 'Harumi', bio: 'Definitely not vengeful at all', password: 'password', email: 'princess@royalpalace.gov')
 
-demo_project_1 = Project.create!(name: 'City Roads', description: 'Our cars should drive on something smooth and not get carpet fibers tangled in the tires', owner_id: demo_user.id)
-demo_project_2 = Project.create!(name: 'Buildings should fit together', description: 'Installing technic pins', owner_id: demo_user.id)
+demo_project_1 = Project.create!(name: 'City Roads', 
+                                description: 'Our cars should drive on something smooth and not get carpet fibers tangled in the tires', 
+                                owner_id: demo_user.id)
+demo_project_2 = Project.create!(name: 'Buildings should fit together', 
+                                description: 'Installing technic pins', 
+                                owner_id: demo_user.id)
 
 Message.create!(title: 'Road shape', 
                 body: 'How many T-intersections do we need?', 

@@ -103,7 +103,7 @@ class NewProjectForm extends React.Component {
 const mapStateToProps = (state, ownProps) => {
     return {
         errors: state.errors.session,
-        sessionId: state.session.id
+        sessionId: state.session.id,
     };
 };
 
