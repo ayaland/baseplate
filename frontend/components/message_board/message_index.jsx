@@ -30,7 +30,7 @@ class MessageIndex extends React.Component {
                             <h1 className="perma_title">Message Board</h1>
 
                             <label className="perma_btn">
-                                <Link to={`messages/new`} project={this.props.project} className="btn btn--small">+ New Message</Link>
+                                <Link to={`messages/new`} project={this.props.project} className="btn btn--small btn--primary">+ New Message</Link>
                             </label>
 
                         </header>

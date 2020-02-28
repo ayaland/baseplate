@@ -119,7 +119,7 @@ textarea.title {
     line-height: inherit;
 }
 
-trix-editor {
+/* trix-editor {
     border: none;
     padding-top: 1.5em;
     padding-left: 1rem;
@@ -127,7 +127,7 @@ trix-editor {
     margin-left: -1rem;
     margin-right: -1rem;
     min-height: 22em;
-}
+} */
 
 trix-toolbar {
     height: 1.8rem;

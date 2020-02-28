@@ -1,9 +1,13 @@
 class Api::MessagesController < ApplicationController
     before_action :require_logged_in
 
+    def new
+        @message = Message.new
+    end
+
     def create
         project = Project.find_by(id: params[:project_id])
-        @message = project.messages.new(message_params)
+        @message = Message.new(message_params)
 
         if @message.save
             render :show
@@ -29,6 +33,6 @@ class Api::MessagesController < ApplicationController
     private
 
     def message_params
-        params.require(:message).permit(:title, :body, :owner_id, :project_id)
+        params.require(:message).permit(:title, :body,  :project_id, :owner_id)
     end
 end

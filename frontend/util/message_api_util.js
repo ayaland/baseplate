@@ -12,10 +12,10 @@ export const fetchMessages = (projectId) => (
     })
 );
 
-export const createMessage = (message) => (
+export const createMessage = (projectId, message) => (
     $.ajax({
         method: 'POST',
-        url: '/api/messages',
+        url: `/api/projects/${projectId}/messages`,
         data: { message }
     })
 );

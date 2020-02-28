@@ -1,15 +1,17 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
-import Trix from 'trix';
+// import Trix from 'trix';
+import { TrixEditor } from 'react-trix';
 import { fetchProject } from '../../actions/project_actions';
 import { createMessage } from '../../actions/message_actions'
 
 class NewMessageForm extends React.Component {
     constructor(props) {
         super(props);
-        this.trixInput = React.createRef();
-        console.log("trixinput created")
+        // this.trixInput = React.createRef();
+        // console.log("trixinput created")
+        // console.log(this.trixInput)
         this.state = {
             title: '',
             body: '',
@@ -17,7 +19,9 @@ class NewMessageForm extends React.Component {
             owner_id: ''
         };
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleContentChange = this.handleContentChange.bind(this);
+        // this.handleContentChange = this.handleContentChange.bind(this);
+        this.handleEditorReady = this.handleEditorReady.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
     componentDidMount () {
@@ -26,12 +30,12 @@ class NewMessageForm extends React.Component {
             owner_id: this.props.sessionId,
             project_id: this.props.projectId
         })
-        window.onload = function () {
-            this.trixInput.current.addEventListener("trix-change", event => {
-                console.log("trix change event fired")
-                this.handleContentChange(event.target.innerHTML);
-            })
-        }
+        // window.onload = function () {
+        //     this.trixInput.current.addEventListener("trix-change", event => {
+        //         console.log("trix change event fired")
+        //         this.handleContentChange(event.target.innerHTML);
+        //     })
+        // }
     }
 
     update(field) {
@@ -44,21 +48,39 @@ class NewMessageForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const message = Object.assign({}, this.state);
-        this.props.processForm(message).then(
+        console.log(message.title);
+        console.log(message.body);
+        console.log(message.project_id);
+        console.log(message.owner_id);
+        this.props.processForm(this.props.projectId, message).then(
             this.props.history.push(`/projects/${this.props.projectId}/messages`)
         )
     }
 
-    handleContentChange(content) {
-        console.log("handlecontentchange")
-        this.setState({body: content});
-    };
+    // handleContentChange(content) {
+    //     console.log("handlecontentchange")
+    //     this.setState({body: content});
+    // };
 
-    // handleChange(html, text) {
-    //     this.setState({
-    //         [body]: text
-    //     });
-    // }
+    handleEditorReady(e) {
+        // this.setState({body: e});
+        // console.log("editor");
+        // console.log(this.state.body);
+    }
+
+    handleChange(html, text) {
+        console.log("handleChange")
+        // console.log(text)
+        // return e => this.setState({
+        //     [field]: text
+        // });
+        this.setState({
+            body: text
+        });
+        console.log("before body")
+        console.log(this.state.body)
+        console.log("after body")
+    }
 
     renderErrors() {
         return (
@@ -100,31 +122,32 @@ class NewMessageForm extends React.Component {
                                     />
 
                             <section className="message-content">
-                                <input 
+                                {/* <input 
                                     type="hidden" 
                                     id="message_body"
-                                    value={this.state.body}
-                                onChange={this.handleContentChange}
-                                />
-                                {/* <TrixEditor 
-                                    placeholder="Write away..."
-                                    onChange={this.handleChange} 
+                                value={this.state.body}
+                                onChange={this.update('body')}
                                 /> */}
+                                <TrixEditor 
+                                    value="ok"
+                                    placeholder="Write away..."
+                                    onChange={this.handleChange}
+                                    onEditorReady={this.handleEditorReady}
+                                />
 
                             {/* <trix-toolbar id="baseplate_toolbar" class="message-body">
                                 <div className="trix-button-row">
                                     <span className="trix-button-group trix-button-group--text-tools" />
                                     <span className="trix-button-group trix-button-group--block-tools" />   
                                 </div>
+                                ref={this.trixInput}
                             </trix-toolbar> */}
                                 {/* className="formatted_content flush--bottom" */}
                                 {/* toolbar="baseplate_toolbar" */}
-                            <trix-editor
+                            {/* <trix-editor
                                 input="message_body" 
                                 placeholder="Write away..."
-                                ref={this.trixInput}
-                                onChange={this.handleContentChange}
-                            />                            
+                            />                             */}
                             </section>
                         </article>
                         <footer className="new-message-footer message-body">
@@ -140,7 +163,6 @@ class NewMessageForm extends React.Component {
                                     value="Post this message"
                                 />
                             </div>
-
                         </footer>
                     </form>
                 </div>
@@ -161,8 +183,65 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchProject: (projectId) => dispatch(fetchProject(projectId)),
-        processForm: (message) => dispatch(createMessage(message))
+        processForm: (projectId, message) => dispatch(createMessage(projectId, message))
     };
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NewMessageForm));
+
+// import React, { Component } from 'react';
+
+// import { TrixEditor } from "react-trix";
+
+// export default class NewMessageForm extends Component {
+//     constructor() {
+//         super();
+
+//         this.state = {
+//             editor: null
+//         }
+//     }
+//     handleChange(html, text) {
+//         console.log(html, text);
+//     }
+//     handleEditorReady(e) {
+//         this.setState({ editor: e });
+//         console.log("editor ready");
+//         console.log(e);
+//     }
+//     render() {
+//         return (
+//             <div>
+//                 <h1>Hello, World!</h1>
+//                 <TrixEditor autoFocus={true} onChange={this.handleChange} value="ok"
+//                     onEditorReady={this.handleEditorReady.bind(this)} />
+//             </div>
+//         );
+//     }
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
