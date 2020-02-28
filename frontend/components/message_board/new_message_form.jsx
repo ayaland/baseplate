@@ -119,7 +119,7 @@ class NewMessageForm extends React.Component {
                             </trix-toolbar> */}
                                 {/* className="formatted_content flush--bottom" */}
                                 {/* toolbar="baseplate_toolbar" */}
-                            <trix-editor @trix-initialize="onInit"
+                            <trix-editor
                                 input="message_body" 
                                 placeholder="Write away..."
                                 ref={this.trixInput}
