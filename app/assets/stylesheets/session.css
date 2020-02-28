@@ -135,7 +135,6 @@ trix-toolbar {
     border-bottom: 1px solid #e5e5e5;
     z-index: 4;
     top: 38px;
-
 }
 
 trix-toolbar .trix-button-group {
@@ -181,9 +180,6 @@ trix-toolbar .button_row {
     display: inline-block;
     padding: 0.5em 1em;
     border-radius: 1.5em;
-    background-color: #2da562;
-    border-color: #2da562;
-    color: #fff;
     max-width: 100%;
     border: 1px solid #d9d9d9;
     line-height: 1.5;
@@ -191,6 +187,19 @@ trix-toolbar .button_row {
     cursor: pointer;
     text-decoration: none;
     text-align: center;
+}
+
+.btn--primary {
+    background-color: #2da562;
+    border-color: #2da562;
+    color: #fff;
+}
+
+.btn--secondary {
+    background-color: #fff;
+    border-color: #2da562;
+    color: #2da562;
+    margin-left: 0.5rem;
 }
 
 .btn--small {
@@ -354,6 +363,16 @@ trix-toolbar .button_row {
     padding: 0.5rem 0.2rem 0.3rem;
 }
 
+.new-message-buttons {
+    margin-top: 2rem;
+}
+
+.new-message-footer {
+    border-top: 1px solid #e5e5e5;
+    padding-top: 1.5em;
+    margin: 1.5em -1rem 0;
+}
+
 .normal {
     font-weight: normal;
 }
@@ -382,6 +401,13 @@ trix-toolbar .button_row {
 }
 
 @media screen and (min-width: 525px) {
+    .message-body {
+        padding-left: 2rem;
+        padding-right: 2rem;
+        margin-left: -2rem;
+        margin-right: -2rem;
+    }
+
     trix-editor {
         border: none;
         padding-left: 3.5rem;
@@ -390,20 +416,13 @@ trix-toolbar .button_row {
         margin-right: -3.5rem;
     }
 
-    trix-toolbar {
-        padding-left: 2rem;
-        padding-right: 2rem;
-        margin-left: -2rem;
-        margin-right: -2rem;
-    }
-
     trix-toolbar .trix-button-group {
         float: left;
     }
 }
 
 @media screen and (min-width: 768px) {
-    trix-toolbar {
+    .message-body {
         padding-left: 3rem;
         padding-right: 3rem;
         margin-left: -3.8rem;
@@ -453,19 +472,19 @@ trix-toolbar .button_row {
 }
 
 @media screen and (min-width: 992px) {    
+    .message-body {
+        margin-left: -7.6rem;
+        margin-right: -7.6rem;
+        padding-left: 8rem;
+        padding-right: 8rem;
+    }
+
     .panel--padding {
         padding: 60px 120px;
     }
 
     .perma_header {
         margin: 0 -4 rem;
-    }
-
-    trix-toolbar {
-        margin-left: -7.6rem;
-        margin-right: -7.6rem;
-        padding-left: 8rem;
-        padding-right: 8rem;
     }
 }
 

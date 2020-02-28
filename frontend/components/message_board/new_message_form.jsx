@@ -1,14 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
-import trix from 'trix';
-
+import Trix from 'trix';
 import { fetchProject } from '../../actions/project_actions';
 import { createMessage } from '../../actions/message_actions'
 
 class NewMessageForm extends React.Component {
     constructor(props) {
         super(props);
+        this.trixInput = React.createRef();
+        console.log("trixinput created")
         this.state = {
             title: '',
             body: '',
@@ -16,6 +17,7 @@ class NewMessageForm extends React.Component {
             owner_id: ''
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleContentChange = this.handleContentChange.bind(this);
     }
 
     componentDidMount () {
@@ -24,9 +26,16 @@ class NewMessageForm extends React.Component {
             owner_id: this.props.sessionId,
             project_id: this.props.projectId
         })
+        window.onload = function () {
+            this.trixInput.current.addEventListener("trix-change", event => {
+                console.log("trix change event fired")
+                this.handleContentChange(event.target.innerHTML);
+            })
+        }
     }
 
     update(field) {
+        console.log("update is called")
         return e => this.setState({
             [field]: e.currentTarget.value
         });
@@ -39,6 +48,17 @@ class NewMessageForm extends React.Component {
             this.props.history.push(`/projects/${this.props.projectId}/messages`)
         )
     }
+
+    handleContentChange(content) {
+        console.log("handlecontentchange")
+        this.setState({body: content});
+    };
+
+    // handleChange(html, text) {
+    //     this.setState({
+    //         [body]: text
+    //     });
+    // }
 
     renderErrors() {
         return (
@@ -70,27 +90,58 @@ class NewMessageForm extends React.Component {
                 <div className="panel panel--perma panel--padding">
                     <form onSubmit={this.handleSubmit} className="">
                         <article className="flush--bottom">
-                            {/* <header className="push--bottom"> */}
-                                <textarea rows="1" placeholder="Type a title..." autoFocus="autoFocus" className="input title" />
-                            {/* </header> */}
+                                <textarea 
+                                    rows="1" 
+                                    placeholder="Type a title..." 
+                                    autoFocus="autoFocus" 
+                                    className="input title"
+                                    value={this.state.title}
+                                    onChange={this.update('title')} 
+                                    />
 
                             <section className="message-content">
-                            <trix-toolbar id="baseplate_toolbar">
+                                <input 
+                                    type="hidden" 
+                                    id="message_body"
+                                    value={this.state.body}
+                                onChange={this.handleContentChange}
+                                />
+                                {/* <TrixEditor 
+                                    placeholder="Write away..."
+                                    onChange={this.handleChange} 
+                                /> */}
+
+                            {/* <trix-toolbar id="baseplate_toolbar" class="message-body">
                                 <div className="trix-button-row">
-                                    <span className="trix-button-group trix-button-group--text-tools">
-                                    </span>
-                                    <span className="trix-button-group trix-button-group--block-tools"></span>
+                                    <span className="trix-button-group trix-button-group--text-tools" />
+                                    <span className="trix-button-group trix-button-group--block-tools" />   
                                 </div>
-                            </trix-toolbar>
-                            <trix-editor 
-                                className="formatted_content flush--bottom"
+                            </trix-toolbar> */}
+                                {/* className="formatted_content flush--bottom" */}
+                                {/* toolbar="baseplate_toolbar" */}
+                            <trix-editor @trix-initialize="onInit"
                                 input="message_body" 
-                                toolbar="baseplate_toolbar"
                                 placeholder="Write away..."
-                                ></trix-editor>
-                            
+                                ref={this.trixInput}
+                                onChange={this.handleContentChange}
+                            />                            
                             </section>
                         </article>
+                        <footer className="new-message-footer message-body">
+                            <div className="new-message-buttons push--bottom">
+                                <input 
+                                    className="btn btn--primary"
+                                    type="submit"
+                                    value="Save as a draft"
+                                />
+                                <input 
+                                    className="btn btn--secondary"
+                                    type="submit"
+                                    value="Post this message"
+                                />
+                            </div>
+
+                        </footer>
                     </form>
                 </div>
             </main>
@@ -99,7 +150,6 @@ class NewMessageForm extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    console.log(ownProps.match.params.projectId)
     return {
         errors: state.errors.session,
         sessionId: state.session.id,
