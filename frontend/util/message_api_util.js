@@ -12,6 +12,14 @@ export const fetchMessages = (projectId) => (
     })
 );
 
+export const fetchAuthor = (id) => (
+    $.ajax({
+        method: 'GET',
+        url: `/api/users/${id}`,
+        data: { id }
+    })
+);
+
 export const createMessage = (projectId, message) => (
     $.ajax({
         method: 'POST',
@@ -25,4 +33,4 @@ export const deleteMessage = (projectId, messageId) => (
         method: 'DELETE',
         url: `/api/projects/${projectId}/messages/${messageId}`
     })
-)
+);

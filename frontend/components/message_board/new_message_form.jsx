@@ -4,7 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 // import Trix from 'trix';
 import { TrixEditor } from 'react-trix';
 import { fetchProject } from '../../actions/project_actions';
-import { createMessage } from '../../actions/message_actions'
+import { createMessage } from '../../actions/message_actions';
 
 class NewMessageForm extends React.Component {
     constructor(props) {
@@ -19,12 +19,12 @@ class NewMessageForm extends React.Component {
             owner_id: ''
         };
         this.handleSubmit = this.handleSubmit.bind(this);
-        // this.handleContentChange = this.handleContentChange.bind(this);
         this.handleEditorReady = this.handleEditorReady.bind(this);
-        this.handleChange = this.handleChange.bind(this);
+        // this.handleContentChange = this.handleContentChange.bind(this);
+        // this.handleChange = this.handleChange.bind(this);
     }
 
-    componentDidMount () {
+    componentDidMount() {
         this.props.fetchProject(this.props.match.params.projectId)
         this.setState({
             owner_id: this.props.sessionId,
@@ -48,10 +48,6 @@ class NewMessageForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const message = Object.assign({}, this.state);
-        console.log(message.title);
-        console.log(message.body);
-        console.log(message.project_id);
-        console.log(message.owner_id);
         this.props.processForm(this.props.projectId, message).then(
             this.props.history.push(`/projects/${this.props.projectId}/messages`)
         )
@@ -63,23 +59,12 @@ class NewMessageForm extends React.Component {
     // };
 
     handleEditorReady(e) {
-        // this.setState({body: e});
-        // console.log("editor");
-        // console.log(this.state.body);
-    }
-
-    handleChange(html, text) {
-        console.log("handleChange")
-        // console.log(text)
-        // return e => this.setState({
-        //     [field]: text
-        // });
+        console.log("handle editor")
         this.setState({
-            body: text
+            body: e
         });
-        console.log("before body")
-        console.log(this.state.body)
-        console.log("after body")
+        console.log("editor");
+        console.log(this.state.body);
     }
 
     renderErrors() {
@@ -94,7 +79,7 @@ class NewMessageForm extends React.Component {
         );
     }
 
-    render () {
+    render() {
         if (!this.props.project) return null;
         let project = this.props.project
         return (
@@ -122,32 +107,10 @@ class NewMessageForm extends React.Component {
                                     />
 
                             <section className="message-content">
-                                {/* <input 
-                                    type="hidden" 
-                                    id="message_body"
-                                value={this.state.body}
-                                onChange={this.update('body')}
-                                /> */}
                                 <TrixEditor 
-                                    value="ok"
                                     placeholder="Write away..."
-                                    onChange={this.handleChange}
-                                    onEditorReady={this.handleEditorReady}
+                                    onChange={this.handleEditorReady}
                                 />
-
-                            {/* <trix-toolbar id="baseplate_toolbar" class="message-body">
-                                <div className="trix-button-row">
-                                    <span className="trix-button-group trix-button-group--text-tools" />
-                                    <span className="trix-button-group trix-button-group--block-tools" />   
-                                </div>
-                                ref={this.trixInput}
-                            </trix-toolbar> */}
-                                {/* className="formatted_content flush--bottom" */}
-                                {/* toolbar="baseplate_toolbar" */}
-                            {/* <trix-editor
-                                input="message_body" 
-                                placeholder="Write away..."
-                            />                             */}
                             </section>
                         </article>
                         <footer className="new-message-footer message-body">
@@ -188,38 +151,6 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NewMessageForm));
-
-// import React, { Component } from 'react';
-
-// import { TrixEditor } from "react-trix";
-
-// export default class NewMessageForm extends Component {
-//     constructor() {
-//         super();
-
-//         this.state = {
-//             editor: null
-//         }
-//     }
-//     handleChange(html, text) {
-//         console.log(html, text);
-//     }
-//     handleEditorReady(e) {
-//         this.setState({ editor: e });
-//         console.log("editor ready");
-//         console.log(e);
-//     }
-//     render() {
-//         return (
-//             <div>
-//                 <h1>Hello, World!</h1>
-//                 <TrixEditor autoFocus={true} onChange={this.handleChange} value="ok"
-//                     onEditorReady={this.handleEditorReady.bind(this)} />
-//             </div>
-//         );
-//     }
-// }
-
 
 
 
