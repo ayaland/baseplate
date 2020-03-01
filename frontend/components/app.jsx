@@ -14,11 +14,12 @@ import LoginFormContainer from './session_form/login_form_container';
 import HomeNavbar from './navbar/home_navbar';
 
 import ProjectIndex from './projects/project_index';
-import ProjectHome from './projects/project_home';
+import ProjectShow from './projects/project_show';
 import NewProjectForm from './projects/new_project_form';
 
 import MessageIndex from './message_board/message_index';
 import NewMessageForm from './message_board/new_message_form';
+import MessageShow from './message_board/message_show';
 
 const App = () => (
     <div>
@@ -31,10 +32,11 @@ const App = () => (
             <ProtectedRoute exact path="/:userId" component={ProjectIndex} />
             {/* Ayanote: Do not under threat of death reverse the order of these routes. It breaks. */}
             <ProtectedRoute exact path="/projects/new" component={NewProjectForm} />
-            <ProtectedRoute exact path="/projects/:projectId" component={ProjectHome} />
+            <ProtectedRoute exact path="/projects/:projectId" component={ProjectShow} />
 
             <ProtectedRoute exact path="/projects/:projectId/messages" component={MessageIndex} />
-            <ProtectedRoute exact path="/projects/:projectId/messages/new" component={NewMessageForm} />  
+            <ProtectedRoute exact path="/projects/:projectId/messages/new" component={NewMessageForm} />
+            <ProtectedRoute exact path="/projects/:projectId/messages/:messageId" component={MessageShow} />  
         </Switch>
     </div>
 );

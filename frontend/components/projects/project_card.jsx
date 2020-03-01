@@ -7,7 +7,6 @@ function ProjectCard(props) {
                     <Link to={{
                         pathname: `/projects/${props.project.id}`,
                         project: props.project,
-                        customObject: "customValue"
                         }} 
                         className="card_link">
 

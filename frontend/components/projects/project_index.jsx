@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 import { createProject, fetchProjects } from '../../actions/project_actions'
 import ProjectCard from './project_card';
@@ -68,4 +68,4 @@ const mapDispatchToProps = (dispatch) => ({
     fetchProject: (id) => dispatch(fetchProject(id)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProjectIndex);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ProjectIndex));

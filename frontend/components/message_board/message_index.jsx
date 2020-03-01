@@ -1,15 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 import { fetchProject } from '../../actions/project_actions';
-import { fetchMessages } from '../../actions/message_actions';
+import { fetchAuthor, fetchMessages } from '../../actions/message_actions';
 import MessageCard from './message_card';
 
 class MessageIndex extends React.Component {
     componentDidMount() {
         this.props.fetchProject(this.props.match.params.projectId),
-        this.props.fetchMessages(this.props.match.params.projectId)
+        this.props.fetchMessages(this.props.match.params.projectId),
+        console.log("mounted")
     }
 
     render () {
@@ -30,14 +31,27 @@ class MessageIndex extends React.Component {
                             <h1 className="perma_title">Message Board</h1>
 
                             <label className="perma_btn">
-                                <Link to={`messages/new`} project={this.props.project} className="btn btn--small">+ New Message</Link>
+                                <Link 
+                                    to={`messages/new`} 
+                                    project={this.props.project} 
+                                    className="btn btn--small btn--primary"
+                                >+ New Message</Link>
                             </label>
 
                         </header>
                         <section className="message-board push--top">
+                                <ul>
                             {this.props.messages.map((message) => (
-                                <MessageCard message={message} key={message.id} />
+                                <li key={message.id}>
+                                    <MessageCard 
+                                        message={message} 
+                                        projectId={this.props.project.id} 
+                                        project={this.props.project} 
+                                        key={message.id} 
+                                        />
+                                </li>
                             ))}
+                                </ul>
 
                         </section>
                     </article>
@@ -50,7 +64,10 @@ class MessageIndex extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
+    console.log("state")
     console.log(state)
+    console.log("ownProps")
+    console.log(ownProps)
     return {
         project: state.entities.projects[ownProps.match.params.projectId],
         messages: Object.values(state.entities.messages)
@@ -60,8 +77,9 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchProject: (projectId) => dispatch(fetchProject(projectId)),
-        fetchMessages: (projectId) => dispatch(fetchMessages(projectId))
+        fetchMessages: (projectId) => dispatch(fetchMessages(projectId)),
+        fetchAuthor: (authorId) => dispatch(fetchAuthor(authorId))
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MessageIndex);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MessageIndex));

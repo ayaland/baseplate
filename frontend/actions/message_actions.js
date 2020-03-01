@@ -2,6 +2,7 @@ import * as APIUtil from '../util/message_api_util';
 
 export const RECEIVE_MESSAGES = 'RECEIVE_MESSAGES';
 export const RECEIVE_MESSAGE = 'RECEIVE_MESSAGE';
+export const RECEIVE_AUTHOR = 'RECEIVE_AUTHOR';
 
 export const receiveMessage = (message) => ({
     type: RECEIVE_MESSAGE,
@@ -12,6 +13,11 @@ export const receiveMessages = (messages) => ({
     type: RECEIVE_MESSAGES,
     messages
 });
+
+export const receiveAuthor = (author) => ({
+    type: RECEIVE_AUTHOR,
+    author
+})
 
 
 // ---- THUNKS ----
@@ -31,5 +37,11 @@ export const fetchMessage = (projectId, messageId) => dispatch => (
 export const createMessage = (projectId, message) => dispatch => (
     APIUtil.createMessage(projectId, message).then(message => (
         dispatch(receiveMessage(message))
+    ))
+);
+
+export const fetchAuthor = (id) => (dispatch) => (
+    APIUtil.fetchAuthor(id).then(author => (
+        dispatch(receiveAuthor(author))
     ))
 );

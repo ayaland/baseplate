@@ -87,7 +87,11 @@ class NewProjectForm extends React.Component {
 
                                 </article>
 
-                                <input className="btn" type="submit" value="Create this project" />
+                                <input 
+                                    className="btn btn--primary" 
+                                    type="submit" 
+                                    value="Create this project" 
+                                />
                                 <div className="session-errors">{this.renderErrors()}</div>
                             </form>
                         </section>
