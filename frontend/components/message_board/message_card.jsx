@@ -9,7 +9,6 @@ function MessageCard(props) {
     // console.log(d.toString())
     let date = d.split(' ')
     // console.log(d.getDate())
-    console.log(date)
     return (
         <article className="message-card">
             <Link to={{
@@ -38,10 +37,14 @@ function MessageCard(props) {
                                     <img className="" src={window.demo_avatar} />
                                 }
                             </td>
-                            <td>
-                                <h1 className="message_title flush">{props.message.title}</h1>
-                                    <span>{props.message.author_name} •  {date[0]} {date[1]} {date[2]}</span>               
-                                <span className="message flush">{ ReactHtmlParser (props.message.body) }</span>
+           
+                            <td className="">
+                                <h1 className="message_title flush">{props.message.title}</h1>             
+                                    <span className="message-date-and-body message flush txt-uncolor">
+                                        {props.message.author_name} • {' '}  
+                                        {date[0]} {date[1]} {date[2]} — {' '}
+                                        {ReactHtmlParser(props.message.body)}
+                                    </span>
                             </td>
                         </tr>
                     </tbody>
