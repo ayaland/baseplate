@@ -3,12 +3,9 @@ import { Link } from 'react-router-dom';
 import ReactHtmlParser from 'react-html-parser';
 
 function MessageCard(props) {
-    
     let name = props.message.author_name
     let d = new Date(props.message.created_at).toString()
-    // console.log(d.toString())
     let date = d.split(' ')
-    // console.log(d.getDate())
     return (
         <article className="message-card">
             <Link to={{

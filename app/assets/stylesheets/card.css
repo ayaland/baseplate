@@ -60,10 +60,6 @@
     border: 1px solid red;
 } */
 
-/* .message_content td {
-    padding: 1.1rem 0.5rem;
-} */
-
 /* App card specific CSS */
 
 .card {
@@ -105,11 +101,6 @@
     padding-top: 100%;
 }
 
-/* for toggling between blank and customized */
-/* .card_blank-slate {
-    display: none;
-} */
-
 .card h1 {
     font-size: 1.0em;
 }
@@ -130,6 +121,7 @@
 .message-date-and-body div {
     display: inline-block;
 }
+
 .messages-table {
     line-height: 1.4em;
     font-size: 1.5rem;
@@ -141,7 +133,7 @@
 
 .messages-table_avatar {
     max-width: 9rem;
-    padding-left: 0 !important;
+    padding-left: 0w2;
     text-align: right;
     white-space: nowrap;
     vertical-align: top;

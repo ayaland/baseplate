@@ -112,13 +112,14 @@ class NewMessageForm extends React.Component {
                         </article>
                         <footer className="new-message-footer message-body">
                             <div className="new-message-buttons push--bottom">
-                                <input 
+                                {/* <input 
                                     className="btn btn--primary"
                                     type="submit"
                                     value="Save as a draft"
-                                />
+                                /> */}
+                                {/* #Ayanote: if implement draft saving, change Post button to btn--secondary*/}
                                 <input 
-                                    className="btn btn--secondary"
+                                    className="btn btn--primary"
                                     type="submit"
                                     value="Post this message"
                                 />

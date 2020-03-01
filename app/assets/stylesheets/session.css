@@ -176,6 +176,42 @@ trix-toolbar .button_row {
     background-color: fbf7f0;
 }
 
+.break {
+    z-index: 0;
+    position: relative;
+}
+
+.break:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    border-bottom: 1px solid #d9d9d9;
+    z-index: -1;
+}
+
+.break__content {
+    color: #7f7f7f;
+    display: inline-block;
+    padding: 0 0.5em;
+    background: #fff;
+}
+
+.break--flush-left> span {
+    padding-left: 0;
+}
+
+.break> span {
+    display: inline-block;
+    padding: 0 0.5em;
+    background: #fff;
+}
+
+.break--thick:before {
+    border-bottom: 3px solid #000;
+}
+
 .btn {
     display: inline-block;
     padding: 0.5em 1em;
@@ -212,37 +248,6 @@ trix-toolbar .button_row {
     outline: none;
 }
 
-.break {
-    z-index: 0;
-    position: relative;
-}
-
-.break:before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    border-bottom: 1px solid #d9d9d9;
-    z-index: -1;
-}
-
-.break__content {
-    color: #7f7f7f;
-    display: inline-block;
-    padding: 0 0.5em;
-    background: #fff;
-}
-
-.break--flush-left> span {
-    padding-left: 0;
-}
-
-.break> span {
-    display: inline-block;
-    padding: 0 0.5em;
-    background: #fff;
-}
 
 .centered {
   text-align: center;
@@ -430,6 +435,23 @@ trix-toolbar .button_row {
     border-radius: 50%;
 } */
 
+.message_attribution {
+    display: flex;
+    width: 100%;
+    line-height: 1.2;
+    /* padding: 1.1rem 0.5rem; */
+    padding: 0.4em 0;
+    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.message-meta {
+    padding: 0 0.5em;
+    width: calc(100% - 1em);
+}
+
 .messages-project {
     width: 80%;
     border-radius: 0.2em 0.2em 0 0;
@@ -440,17 +462,6 @@ trix-toolbar .button_row {
     border-bottom: 1px solid #00000008;
     box-shadow: 0 1px 4px rgba(0,0,0,0.1), 0 10px 30px #f3ece8;
     cursor: pointer;
-}
-
-.message_attribution {
-    display: flex;
-    width: 100%;
-    line-height: 1.2;
-    padding: 0.4em 0;
-    border-top: 1px solid #e5e5e5;
-    border-bottom: 1px solid #e5e5e5;
-    align-items: center;
-    justify-content: space-between;
 }
 
 /* .messages-table {
@@ -510,7 +521,7 @@ trix-toolbar .button_row {
     max-width: 58em;
     margin-bottom: 0;
     min-height: 100vh;
-    padding: 1.6rem;
+    padding: 3rem 5rem;
 }
 
 .panel--project {
@@ -541,10 +552,15 @@ trix-toolbar .button_row {
 }
 
 .prompt {
-    color: #a9a9a9;
     display: block;
-    text-align: left;
+    padding: 0.5em;
+    color: #a9a9a9;
+    background-color: #fff;
     width: 100%;
+    text-align: left;
+    border: 1px solid #d9d9d9;
+    border-radius: 0.4rem;
+    line-height: 1.5;
 }
 
 .push--bottom {

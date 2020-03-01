@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { TrixEditor } from 'react-trix';
 
 import { fetchProject } from '../../actions/project_actions';
-import { fetchAuthor, fetchMessage } from '../../actions/message_actions';
+import { fetchMessage } from '../../actions/message_actions';
 
 class MessageShow extends React.Component {
     constructor(props) {
@@ -46,6 +46,10 @@ class MessageShow extends React.Component {
         if (!this.props.project || !this.props.message) return null;
         let project = this.props.project;
         let message = this.props.message;
+        let name = this.props.message.author_name;
+
+        let d = new Date(this.props.message.created_at).toString()
+        let date = d.split(' ')
         return (
             <main>
                 <nav className="messages-project centered">
@@ -60,11 +64,32 @@ class MessageShow extends React.Component {
 
                 <div className="panel panel--perma panel--padding">
                     <h1 className="message-top flush--top push_quarter--bottom">{message.title}</h1>
-                    <div className="message_attribution">{message.owner_id}</div>
+                    <div className="message_attribution">
+                        {
+                            name === "Forestman2" &&
+                            <img className="" src={window.forestman_avatar} />
+                        }
+                        {
+                            name === "Blacktron" &&
+                            <img className="" src={window.blacktron_avatar} />
+                        }
+                        {
+                            name === "Minifig" &&
+                            <img className="" src={window.demo_avatar} />
+                        }
+                        <div className="message-meta">
+                            {message.author_name}
+                            <br />
+                            {date[1]} {date[2]} •                            
+                        </div>
+                    </div>
                     <section className="formatted_content push--ends">{message.body}</section>
 
                     <div className="collapsed_content">
-                        <button className="comment_field prompt" type="button">Add a comment or upload a file...</button>
+                        <h2 className="break--thick :before break :before">
+                            <span>Comments</span>
+                        </h2>
+                        <button className="comment_field prompt" type="button">Add a comment...</button>
                     </div>
                 </div>
             </main>
