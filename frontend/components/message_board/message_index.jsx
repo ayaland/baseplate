@@ -10,11 +10,7 @@ class MessageIndex extends React.Component {
     componentDidMount() {
         this.props.fetchProject(this.props.match.params.projectId),
         this.props.fetchMessages(this.props.match.params.projectId),
-        console.log("CDM")
-    }
-
-    componentDidUpdate() {
-        console.log("CDU")
+        console.log("mounted")
     }
 
     render () {
@@ -44,13 +40,18 @@ class MessageIndex extends React.Component {
 
                         </header>
                         <section className="message-board push--top">
+                                <ul>
                             {this.props.messages.map((message) => (
-                                <MessageCard 
-                                    message={message} 
-                                    projectId={this.props.project.id} 
-                                    project={this.props.project} 
-                                    key={message.id} />
+                                <li key={message.id}>
+                                    <MessageCard 
+                                        message={message} 
+                                        projectId={this.props.project.id} 
+                                        project={this.props.project} 
+                                        key={message.id} 
+                                        />
+                                </li>
                             ))}
+                                </ul>
 
                         </section>
                     </article>
@@ -63,7 +64,10 @@ class MessageIndex extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
+    console.log("state")
     console.log(state)
+    console.log("ownProps")
+    console.log(ownProps)
     return {
         project: state.entities.projects[ownProps.match.params.projectId],
         messages: Object.values(state.entities.messages)

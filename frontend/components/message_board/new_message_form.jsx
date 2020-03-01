@@ -9,14 +9,12 @@ import { createMessage } from '../../actions/message_actions';
 class NewMessageForm extends React.Component {
     constructor(props) {
         super(props);
-        // this.trixInput = React.createRef();
-        // console.log("trixinput created")
-        // console.log(this.trixInput)
         this.state = {
             title: '',
             body: '',
             project_id: '',
-            owner_id: ''
+            owner_id: '',
+            author_name: ''
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleEditorReady = this.handleEditorReady.bind(this);
@@ -27,8 +25,9 @@ class NewMessageForm extends React.Component {
     componentDidMount() {
         this.props.fetchProject(this.props.match.params.projectId)
         this.setState({
-            owner_id: this.props.sessionId,
-            project_id: this.props.projectId
+            owner_id: this.props.userId,
+            project_id: this.props.projectId,
+            author_name: this.props.author.name
         })
         // window.onload = function () {
         //     this.trixInput.current.addEventListener("trix-change", event => {
@@ -39,7 +38,6 @@ class NewMessageForm extends React.Component {
     }
 
     update(field) {
-        console.log("update is called")
         return e => this.setState({
             [field]: e.currentTarget.value
         });
@@ -59,7 +57,6 @@ class NewMessageForm extends React.Component {
     // };
 
     handleEditorReady(e) {
-        console.log("handle editor")
         this.setState({
             body: e
         });
@@ -135,11 +132,13 @@ class NewMessageForm extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
+    console.log(state.entities.users.first)
     return {
         errors: state.errors.session,
-        sessionId: state.session.id,
+        userId: state.session.id,
         projectId: ownProps.match.params.projectId,
-        project: state.entities.projects[ownProps.match.params.projectId]
+        project: state.entities.projects[ownProps.match.params.projectId],
+        author: state.entities.users[state.session.id]
     };
 };
 

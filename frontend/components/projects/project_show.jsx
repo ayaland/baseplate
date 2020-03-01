@@ -5,7 +5,7 @@ import { fetchProject } from '../../actions/project_actions';
 import AppCard from '../app/app_card';
 
 
-class ProjectHome extends React.Component {
+class ProjectShow extends React.Component {
     // constructor(props) {
     //     super(props)
     // }
@@ -33,11 +33,6 @@ class ProjectHome extends React.Component {
                 <section className="project-dock centered">
                     <div className="card-grid">
                         <AppCard project={project}/>
-
-                        {/* <AppCard projectId={this.props.projects.projectId} projectId={this.props.projectId} /> */}
-                        {/* (this.props.apps.map((app) => (
-                                <AppCard app={app} />
-                            )) */}
                     </div>
                 </section>
             </div>
@@ -60,4 +55,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProjectHome);
+export default connect(mapStateToProps, mapDispatchToProps)(ProjectShow);

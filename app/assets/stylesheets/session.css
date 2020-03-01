@@ -425,6 +425,11 @@ trix-toolbar .button_row {
     }
 }
 
+.message_avatar {
+    vertical-align: middle;
+    border-radius: 50%;
+}
+
 .messages-project {
     width: 80%;
     border-radius: 0.2em 0.2em 0 0;
@@ -446,6 +451,10 @@ trix-toolbar .button_row {
     border-bottom: 1px solid #e5e5e5;
     align-items: center;
     justify-content: space-between;
+}
+
+.messages-table td {
+    padding: 1.1rem 0.5rem;
 }
 
 .messages-table_avatar {

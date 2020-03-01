@@ -6,7 +6,7 @@ import { TrixEditor } from 'react-trix';
 import { fetchProject } from '../../actions/project_actions';
 import { fetchAuthor, fetchMessage } from '../../actions/message_actions';
 
-class MessageHome extends React.Component {
+class MessageShow extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -92,4 +92,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MessageHome);
+export default connect(mapStateToProps, mapDispatchToProps)(MessageShow);

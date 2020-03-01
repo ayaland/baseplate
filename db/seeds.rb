@@ -23,10 +23,12 @@ demo_project_2 = Project.create!(name: 'Buildings should fit together',
 
 Message.create!(title: 'Road shape', 
                 body: 'How many T-intersections do we need?', 
-                owner_id: demo_user.id, 
-                project_id: demo_project_1.id)
+                project_id: demo_project_1.id,
+                owner_id: prop_user2.id, 
+                author_name: 'Blacktron')
                 
 Message.create!(title: 'Building density', 
                 body: 'Remember that we can build on both sides of the road! Make sure to leave room for trees, though.', 
+                project_id: demo_project_1.id,
                 owner_id: prop_user1.id, 
-                project_id: demo_project_1.id)
+                author_name: 'Forestman2')
