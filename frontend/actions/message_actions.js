@@ -14,12 +14,6 @@ export const receiveMessages = (messages) => ({
     messages
 });
 
-export const receiveAuthor = (author) => ({
-    type: RECEIVE_AUTHOR,
-    author
-})
-
-
 // ---- THUNKS ----
 
 export const fetchMessages = (projectId) => dispatch => (
@@ -37,11 +31,5 @@ export const fetchMessage = (projectId, messageId) => dispatch => (
 export const createMessage = (projectId, message) => dispatch => (
     APIUtil.createMessage(projectId, message).then(message => (
         dispatch(receiveMessage(message))
-    ))
-);
-
-export const fetchAuthor = (id) => (dispatch) => (
-    APIUtil.fetchAuthor(id).then(author => (
-        dispatch(receiveAuthor(author))
     ))
 );

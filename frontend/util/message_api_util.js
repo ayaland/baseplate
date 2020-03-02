@@ -12,14 +12,6 @@ export const fetchMessages = (projectId) => (
     })
 );
 
-export const fetchAuthor = (id) => (
-    $.ajax({
-        method: 'GET',
-        url: `/api/users/${id}`,
-        data: { id }
-    })
-);
-
 export const createMessage = (projectId, message) => (
     $.ajax({
         method: 'POST',
