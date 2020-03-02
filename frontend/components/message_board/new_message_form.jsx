@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
-// import Trix from 'trix';
 import { TrixEditor } from 'react-trix';
+
 import { fetchProject } from '../../actions/project_actions';
 import { createMessage } from '../../actions/message_actions';
 
@@ -60,8 +60,6 @@ class NewMessageForm extends React.Component {
         this.setState({
             body: e
         });
-        console.log("editor");
-        console.log(this.state.body);
     }
 
     renderErrors() {
@@ -133,7 +131,6 @@ class NewMessageForm extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    console.log(state.entities.users.first)
     return {
         errors: state.errors.session,
         userId: state.session.id,

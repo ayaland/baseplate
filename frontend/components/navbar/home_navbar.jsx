@@ -11,9 +11,9 @@ class HomeNavbar extends React.Component {
         this.state = {
             showMenu: false
         }
-        this.showMenu = this.showMenu.bind(this)
-        this.hideMenu = this.hideMenu.bind(this)
-        this.userLogout = this.userLogout.bind(this)
+        this.showMenu = this.showMenu.bind(this);
+        this.hideMenu = this.hideMenu.bind(this);
+        this.userLogout = this.userLogout.bind(this);
     }
 
     showMenu(e) {
@@ -52,26 +52,32 @@ class HomeNavbar extends React.Component {
                         <li className="nav_link"><Link className="text-link" to={`/`}>Activity</Link></li>
 
                         <li className="nav_settings">
-                            <img className="nav_icon" height="30" onClick={this.showMenu} src={window.demo_avatar} data-toggle="dropdown-menu" />
-                                <div className="dropdown-menu">
-                                    { this.state.showMenu
-                                        ? (
-                                            <div
-                                                className="dropdown-settings"
-                                                ref={(element) => {
-                                                    this.dropdownMenu = element;
-                                                }}>
-                                                <section className="nav-menu_section">
-                                                    <h3 className="flush--top push_half--bottom break :before">
-                                                        <span>Personal Settings</span>
-                                                    </h3>
-                                                    <p className="notatag" onClick={this.userLogout}>Log out</p>
-                                                </section>
-                                            </div>)
-                                        : (
-                                            null)
-                                    }
-                                </div>
+                            <img 
+                                className="nav_icon" 
+                                height="30" 
+                                onClick={this.showMenu} 
+                                src={window.demo_avatar} 
+                                data-toggle="dropdown-menu" 
+                            />
+                            <div className="dropdown-menu">
+                                { this.state.showMenu
+                                    ? (
+                                        <div
+                                            className="dropdown-settings"
+                                            ref={(element) => {
+                                                this.dropdownMenu = element;
+                                            }}>
+                                            <section className="nav-menu_section">
+                                                <h3 className="flush--top push_half--bottom break :before">
+                                                    <span>Personal Settings</span>
+                                                </h3>
+                                                <p className="notatag" onClick={this.userLogout}>Log out</p>
+                                            </section>
+                                        </div>)
+                                    : (
+                                        null)
+                                }
+                            </div>
                         </li>
                     </ul>
                 </nav>

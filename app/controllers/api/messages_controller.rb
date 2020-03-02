@@ -6,7 +6,7 @@ class Api::MessagesController < ApplicationController
     end
 
     def create
-        project = Project.find_by(id: params[:project_id])
+        # project = Project.find_by(id: params[:project_id])
         @message = Message.new(message_params)
 
         if @message.save
@@ -33,6 +33,6 @@ class Api::MessagesController < ApplicationController
     private
 
     def message_params
-        params.require(:message).permit(:title, :body,  :project_id, :owner_id, :author_name)
+        params.require(:message).permit(:title, :body, :project_id, :owner_id, :author_name)
     end
 end

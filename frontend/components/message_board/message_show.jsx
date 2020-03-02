@@ -10,24 +10,58 @@ class MessageShow extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            comment: '',
+            body: '',
+            message_id: '',
+            owner_id: '',
+            author_name: '',
+            showTrixEditor: false
         }
+        this.showTrixEditor = this.showTrixEditor.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleEditorReady = this.handleEditorReady.bind(this);
     }
 
     componentDidMount() {
         this.props.fetchProject(this.props.match.params.projectId)
         this.props.fetchMessage(this.props.match.params.projectId, this.props.match.params.messageId)
-        // this.props.fetchAuthor(this.props.location.message.owner_id)
-        // const { st } = this.props.location.state
-        // console.log(st)
     }
 
     showTrixEditor(e) {
         e.preventDefault();
+        this.setState({ showTrixEditor: true})
+        // this.setState({ showTrixEditor: true}, () => {
+        //     document.addEventListener('click', this.hideTrixEditor);
+        // })
     }
 
-    hideTrixEditor(e) {
+    // hideTrixEditor(e) {
+    //     if (!this.trixEditor.contains(e.target)) {
+    //         this.setState({ showTrixEditor: false}, () => {
+    //             document.removeEventListener('click', this.hideTrixEditor);
+    //         });
+    //     }
+    // }
 
+    update(field) {
+        return e => this.setState({
+            [field]: e.currentTarget.value
+        });
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        const message = Object.assign({}, this.state);
+        this.props.processForm(this.props.projectId, message).then(
+            this.props.history.push(`/projects/${this.props.projectId}/messages/${this.props.messageId}`)
+        )
+    }
+
+    handleEditorReady(e) {
+        this.setState({
+            body: e
+        });
+        console.log("editor");
+        console.log(this.state.body);
     }
 
     renderErrors() {
@@ -85,12 +119,43 @@ class MessageShow extends React.Component {
                     </div>
                     <section className="formatted_content push--ends">{message.body}</section>
 
-                    <div className="collapsed_content">
-                        <h2 className="break--thick :before break :before">
-                            <span>Comments</span>
-                        </h2>
-                        <button className="comment_field prompt" type="button">Add a comment...</button>
-                    </div>
+                    <h2 className="break--thick :before break :before">
+                        <span>Comments</span>
+                    </h2>
+                        { this.state.showTrixEditor
+                            ? (
+                                <div className="expanded_content">
+                                <form onSubmit={this.handleSubmit} className="">
+                                    <article className="flush--bottom">
+                                        <section className="message-content">
+                                            <TrixEditor
+                                                placeholder="Type your comment here..."
+                                                onChange={this.handleEditorReady}
+                                            />
+                                        </section>
+                                    </article>
+                                    <footer className="new-message-footer message-body">
+                                        <div className="new-message-buttons push--bottom">
+                                            <input
+                                                className="btn btn--primary"
+                                                type="submit"
+                                                value="Add this comment"
+                                            />
+                                        </div>
+                                    </footer>
+                                </form>
+                                </div>)
+                            : (
+                                <div className="collapsed_content">
+                                    <button 
+                                        className="comment_field prompt" 
+                                        type="button"
+                                        onClick={this.showTrixEditor}
+                                    >
+                                        Add a comment...
+                                    </button>
+                                </div>)
+                        }
                 </div>
             </main>
         )
@@ -105,16 +170,15 @@ const mapStateToProps = (state, ownProps) => {
         messageId: ownProps.match.params.messageId,
         project: state.entities.projects[ownProps.match.params.projectId],
         message: state.entities.messages[ownProps.match.params.messageId],
-        authorId: state.entities.messages[ownProps.match.params.messageId.owner_id]
-    }
-}
+        authorId: state.entities.users[state.session.id]
+    };
+};
 
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchProject: (projectId) => dispatch(fetchProject(projectId)),
         fetchMessage: (projectId, messageId) => dispatch(fetchMessage(projectId, messageId)),
-        fetchAuthor: (id) => dispatch(fetchAuthor(id))
-    }
-}
+    };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(MessageShow);
