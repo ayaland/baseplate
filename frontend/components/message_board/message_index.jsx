@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 
 import { fetchProject } from '../../actions/project_actions';
-import { fetchAuthor, fetchMessages } from '../../actions/message_actions';
+import { fetchMessages } from '../../actions/message_actions';
 import MessageCard from './message_card';
 
 class MessageIndex extends React.Component {

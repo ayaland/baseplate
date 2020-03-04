@@ -11,7 +11,8 @@ class User < ApplicationRecord
   foreign_key: :owner_id
     
   has_many :messages, dependent: :destroy,
-  through: :subscribed
+  foreign_key: :owner_id
+  # through: :subscribed
   
   has_many :comments,
   foreign_key: :owner_id
