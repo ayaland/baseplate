@@ -11,4 +11,7 @@ class Message < ApplicationRecord
     foreign_key: :project_id,
     primary_key: :id
 
+    has_many :comments, dependent: :destroy,
+    foreign_key: :message_id
+
 end

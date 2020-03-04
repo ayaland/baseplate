@@ -8,13 +8,16 @@ class User < ApplicationRecord
   after_initialize :ensure_session_token
 
   has_many :projects, dependent: :destroy,
-    foreign_key: :owner_id
+  foreign_key: :owner_id
+    
+  has_many :messages, dependent: :destroy,
+  through: :subscribed
+  
+  has_many :comments,
+  foreign_key: :owner_id
     
   has_many :todos,
-    through: :subscribed
-
-  has_many :messages,
-    through: :subscribed
+  through: :subscribed
 
   def self.find_by_credentials(name, password)
     user = User.find_by(name: name)

@@ -8,9 +8,8 @@ import MessageCard from './message_card';
 
 class MessageIndex extends React.Component {
     componentDidMount() {
-        this.props.fetchProject(this.props.match.params.projectId),
-        this.props.fetchMessages(this.props.match.params.projectId),
-        console.log("mounted")
+        this.props.fetchProject(this.props.match.params.projectId);
+        this.props.fetchMessages(this.props.match.params.projectId);
     }
 
     render () {
@@ -33,25 +32,25 @@ class MessageIndex extends React.Component {
                             <label className="perma_btn">
                                 <Link 
                                     to={`messages/new`} 
-                                    project={this.props.project} 
+                                    project={project} 
                                     className="btn btn--small btn--primary"
                                 >+ New Message</Link>
                             </label>
 
                         </header>
                         <section className="message-board push--top">
-                                <ul>
-                            {this.props.messages.map((message) => (
-                                <li key={message.id}>
-                                    <MessageCard 
-                                        message={message} 
-                                        projectId={this.props.project.id} 
-                                        project={this.props.project} 
-                                        key={message.id} 
-                                        />
-                                </li>
-                            ))}
-                                </ul>
+                            <ul>
+                                {this.props.messages.map((message) => (
+                                    <li key={message.id}>
+                                        <MessageCard 
+                                            message={message} 
+                                            projectId={project.id} 
+                                            project={project} 
+                                            key={message.id} 
+                                            />
+                                    </li>
+                                ))}
+                            </ul>
 
                         </section>
                     </article>
@@ -64,10 +63,6 @@ class MessageIndex extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    console.log("state")
-    console.log(state)
-    console.log("ownProps")
-    console.log(ownProps)
     return {
         project: state.entities.projects[ownProps.match.params.projectId],
         messages: Object.values(state.entities.messages)

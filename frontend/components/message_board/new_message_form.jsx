@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
-// import Trix from 'trix';
 import { TrixEditor } from 'react-trix';
+
 import { fetchProject } from '../../actions/project_actions';
 import { createMessage } from '../../actions/message_actions';
 
@@ -18,23 +18,17 @@ class NewMessageForm extends React.Component {
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleEditorReady = this.handleEditorReady.bind(this);
-        // this.handleContentChange = this.handleContentChange.bind(this);
-        // this.handleChange = this.handleChange.bind(this);
     }
 
     componentDidMount() {
-        this.props.fetchProject(this.props.match.params.projectId)
+        this.props.fetchProject(this.props.match.params.projectId);
         this.setState({
             owner_id: this.props.userId,
             project_id: this.props.projectId,
             author_name: this.props.author.name
-        })
-        // window.onload = function () {
-        //     this.trixInput.current.addEventListener("trix-change", event => {
-        //         console.log("trix change event fired")
-        //         this.handleContentChange(event.target.innerHTML);
-        //     })
-        // }
+        });
+        console.log("this.state")
+        console.log(this.state)
     }
 
     update(field) {
@@ -51,17 +45,10 @@ class NewMessageForm extends React.Component {
         )
     }
 
-    // handleContentChange(content) {
-    //     console.log("handlecontentchange")
-    //     this.setState({body: content});
-    // };
-
     handleEditorReady(e) {
         this.setState({
             body: e
         });
-        console.log("editor");
-        console.log(this.state.body);
     }
 
     renderErrors() {
@@ -112,13 +99,14 @@ class NewMessageForm extends React.Component {
                         </article>
                         <footer className="new-message-footer message-body">
                             <div className="new-message-buttons push--bottom">
-                                <input 
+                                {/* <input 
                                     className="btn btn--primary"
                                     type="submit"
                                     value="Save as a draft"
-                                />
+                                /> */}
+                                {/* #Ayanote: if implement draft saving, change Post button to btn--secondary*/}
                                 <input 
-                                    className="btn btn--secondary"
+                                    className="btn btn--primary"
                                     type="submit"
                                     value="Post this message"
                                 />
@@ -132,7 +120,6 @@ class NewMessageForm extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    console.log(state.entities.users.first)
     return {
         errors: state.errors.session,
         userId: state.session.id,
