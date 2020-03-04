@@ -9,7 +9,7 @@ class Api::CommentsController < ApplicationController
         @comment = Comment.new(comment_params)
 
         if @comment.save
-            render: show
+            render :show
         else
             render json: @comment.errors.full_messages, status: 422
         end
@@ -32,6 +32,6 @@ class Api::CommentsController < ApplicationController
     private
 
     def comment_params
-        comment.require(:comment).permit(:body, :project_id, :owner_id, :author_name)
+        params.require(:comment).permit(:body, :message_id, :owner_id, :author_name)
     end
 end

@@ -8,14 +8,14 @@
 export const fetchComments = (messageId) => (
     $.ajax({
         method: 'GET',
-        url: `/api/projects/${projectId}/messages/${messageId}`
+        url: `/api/messages/${messageId}/comments`
     })
 );
 
 export const createComment = (messageId, comment) => (
     $.ajax({
         method: 'POST',
-        url: `/api/projects/${projectId}/messages/${messageId}`,
+        url: `/api/messages/${messageId}/comments`,
         data: { comment }
     })
 );
@@ -23,6 +23,6 @@ export const createComment = (messageId, comment) => (
 export const deleteComment = (messageId, commentId) => (
     $.ajax({
         method: 'DELETE',
-        url: `/api/projects/${projectId}/messages/${messageId}/${commentId}`
+        url: `/api/messages/${messageId}/comments/${commentId}`
     })
 );

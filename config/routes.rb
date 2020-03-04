@@ -6,9 +6,10 @@ Rails.application.routes.draw do
       resources :users, only: [:create]
       resource :session, only: [:create, :destroy]
       resources :projects do
-        resources :messages do
-          resources :comments
-        end
+        resources :messages, only: [:index, :show, :create]
+      end
+      resources :messages do
+        resources :comments
       end
   end
 

@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import ReactHtmlParser from 'react-html-parser';
+import { Link } from 'react-router-dom';
 
 function MessageCard(props) {
     let name = props.message.author_name

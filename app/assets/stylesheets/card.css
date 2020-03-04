@@ -105,6 +105,36 @@
     font-size: 1.0em;
 }
 
+.comment_avatar {
+    position: absolute;
+    top: 0.75em;
+    left: -3rem;
+    /* box-shadow: 0 0 0 1px #faf8f7, 0 0 0 5px #fff; */
+}
+
+.comment-card {
+    margin: 0 0 1.2em 4rem;
+    padding: 1.2em 1.2em 0.2em;
+    min-height: 5rem;
+    position: relative;
+    background: #faf8f7;
+    /* background: pink; */
+    border-radius: 1.0rem;
+}
+
+.comment_corner {
+    position: absolute;
+    top: 0;
+    right: 0.5rem;
+}
+
+.comment_date {
+    position: relative;
+    font-size: 0.8em;
+    color: rgba(0,0,0,0.5);
+    padding-right: 0.5rem;
+}
+
 .message {
     display: block;
     line-height: 1.4em;

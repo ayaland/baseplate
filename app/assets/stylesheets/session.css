@@ -360,6 +360,13 @@ trix-toolbar .button_row {
 }
 
 @media screen and (min-width: 768px) {
+    .comment_author {
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
     .message-body {
         padding-left: 3rem;
         padding-right: 3rem;

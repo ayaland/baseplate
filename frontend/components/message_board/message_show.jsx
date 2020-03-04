@@ -1,10 +1,13 @@
 import React from 'react';
+import ReactHtmlParser from 'react-html-parser';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { TrixEditor } from 'react-trix';
 
 import { fetchProject } from '../../actions/project_actions';
 import { fetchMessage } from '../../actions/message_actions';
+import { fetchComments, createComment } from '../../actions/comment_actions';
+import CommentCard from './comment_card';
 
 class MessageShow extends React.Component {
     constructor(props) {
@@ -17,30 +20,33 @@ class MessageShow extends React.Component {
             showTrixEditor: false
         }
         this.showTrixEditor = this.showTrixEditor.bind(this);
+        this.hideTrixEditor = this.hideTrixEditor.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleEditorReady = this.handleEditorReady.bind(this);
     }
 
     componentDidMount() {
-        this.props.fetchProject(this.props.match.params.projectId)
-        this.props.fetchMessage(this.props.match.params.projectId, this.props.match.params.messageId)
+        this.props.fetchProject(this.props.match.params.projectId);
+        this.props.fetchMessage(this.props.match.params.projectId, this.props.match.params.messageId);
+        this.props.fetchComments(this.props.match.params.messageId)
+        this.setState({
+            message_id: this.props.messageId,
+            owner_id: this.props.userId,
+            author_name: this.props.author.name
+        });
+        console.log("this.state")
+        console.log(this.state)
     }
 
     showTrixEditor(e) {
         e.preventDefault();
-        this.setState({ showTrixEditor: true})
-        // this.setState({ showTrixEditor: true}, () => {
-        //     document.addEventListener('click', this.hideTrixEditor);
-        // })
+        this.setState({ showTrixEditor: true });
     }
 
-    // hideTrixEditor(e) {
-    //     if (!this.trixEditor.contains(e.target)) {
-    //         this.setState({ showTrixEditor: false}, () => {
-    //             document.removeEventListener('click', this.hideTrixEditor);
-    //         });
-    //     }
-    // }
+    hideTrixEditor(e) {
+        this.setState({ body: '' });
+        this.setState({ showTrixEditor: false });
+    }
 
     update(field) {
         return e => this.setState({
@@ -50,18 +56,19 @@ class MessageShow extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        const message = Object.assign({}, this.state);
-        this.props.processForm(this.props.projectId, message).then(
-            this.props.history.push(`/projects/${this.props.projectId}/messages/${this.props.messageId}`)
-        )
+        const comment = Object.assign({}, this.state);
+        delete comment.showTrixEditor;
+        this.props.processForm(this.props.messageId, comment);
+        this.hideTrixEditor();
+        // .then(
+        //     this.props.history.push(`/projects/${this.props.projectId}/messages/${this.props.messageId}`)
+        // )
     }
 
     handleEditorReady(e) {
         this.setState({
             body: e
         });
-        console.log("editor");
-        console.log(this.state.body);
     }
 
     renderErrors() {
@@ -97,31 +104,47 @@ class MessageShow extends React.Component {
                 </nav>
 
                 <div className="panel panel--perma panel--padding">
-                    <h1 className="message-top flush--top push_quarter--bottom">{message.title}</h1>
-                    <div className="message_attribution">
-                        {
-                            name === "Forestman2" &&
-                            <img className="" src={window.forestman_avatar} />
-                        }
-                        {
-                            name === "Blacktron" &&
-                            <img className="" src={window.blacktron_avatar} />
-                        }
-                        {
-                            name === "Minifig" &&
-                            <img className="" src={window.demo_avatar} />
-                        }
-                        <div className="message-meta">
-                            {message.author_name}
-                            <br />
-                            {date[1]} {date[2]} •                            
+                    <article>
+                        <h1 className="message-top flush--top push_quarter--bottom">{message.title}</h1>
+                        <div className="message_attribution">
+                            {
+                                name === "Forestman2" &&
+                                <img className="" src={window.forestman_avatar} />
+                            }
+                            {
+                                name === "Blacktron" &&
+                                <img className="" src={window.blacktron_avatar} />
+                            }
+                            {
+                                name === "Minifig" &&
+                                <img className="" src={window.demo_avatar} />
+                            }
+                            <div className="message-meta">
+                                {message.author_name}
+                                <br />
+                                {date[1]} {date[2]} •                            
+                            </div>
                         </div>
-                    </div>
-                    <section className="formatted_content push--ends">{message.body}</section>
-
+                        <section className="formatted_content push--ends">{ReactHtmlParser(message.body)}</section>
+                    </article>
+<div></div>
                     <h2 className="break--thick :before break :before">
                         <span>Comments</span>
                     </h2>
+
+                    <section className="comments">
+                        <div>
+                            <ul className="comment-cards">
+                                {this.props.comments.map((comment) => (
+                                    <li key={comment.id}>
+                                        <CommentCard
+                                            comment={comment}
+                                        />
+                                    </li>
+                                ))}
+                            </ul>
+
+                        </div>
                         { this.state.showTrixEditor
                             ? (
                                 <div className="expanded_content">
@@ -156,6 +179,8 @@ class MessageShow extends React.Component {
                                     </button>
                                 </div>)
                         }
+                    </section>
+
                 </div>
             </main>
         )
@@ -164,13 +189,17 @@ class MessageShow extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
+    console.log(state)
+    console.log(ownProps)
     return {
+        userId: state.session.id,
+        author: state.entities.users[state.session.id],
         errors: state.errors.session,
-        projectId: ownProps.match.params.projectId,
         messageId: ownProps.match.params.messageId,
-        project: state.entities.projects[ownProps.match.params.projectId],
         message: state.entities.messages[ownProps.match.params.messageId],
-        authorId: state.entities.users[state.session.id]
+        projectId: ownProps.match.params.projectId,
+        project: state.entities.projects[ownProps.match.params.projectId],
+        comments: Object.values(state.entities.comments)
     };
 };
 
@@ -178,6 +207,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         fetchProject: (projectId) => dispatch(fetchProject(projectId)),
         fetchMessage: (projectId, messageId) => dispatch(fetchMessage(projectId, messageId)),
+        fetchComments: (messageId) => dispatch(fetchComments(messageId)),
+        processForm: (messageId, comment) => dispatch(createComment(messageId, comment))
     };
 };
 
