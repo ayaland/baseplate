@@ -56,10 +56,6 @@
     border: 1px solid green;
 } */
 
-/* .message_content {
-    border: 1px solid red;
-} */
-
 /* App card specific CSS */
 
 .card {
@@ -88,7 +84,7 @@
 
 .card--app .card_header {
     margin: -1.5em 0 0;
-    padding: 1.5em 0 1em;
+    padding: 1.5em 0 0.5em;
     background-position: 0.5em center;
     background-repeat: no-repeat;
     background-size: auto 100%;
@@ -146,42 +142,65 @@
 .message_avatar {
     vertical-align: middle;
     border-radius: 50%;
+    white-space: nowrap;
+}
+
+.message_body {
+    vertical-align: text-top;
+    overflow-wrap: normal;
+}
+
+.message_content {
+    padding: 0.5rem 0.5rem;
+    width: 99%;
 }
 
 .message-date-and-body div {
     display: inline-block;
 }
 
-.messages-table {
-    line-height: 1.4em;
-    font-size: 1.5rem;
+.message-preview {
+    font-size: 0.8rem;
 }
 
-.messages-table td {
-    padding: 1.1rem 0.5rem;
+.messageboard_card {
+    display: block;
+    overflow: hidden;
+    max-height: 1.4em;
 }
 
-.messages-table_avatar {
-    max-width: 9rem;
-    padding-left: 0w2;
-    text-align: right;
-    white-space: nowrap;
-    vertical-align: top;
-    padding-top: 0.9rem;
-}
-
-.messages-table--for-card .messages-table_avatar {
-    max-width: 4.8rem;
-}
-
-.messages-table--for-card .messages-table_cell {
-    display: table-cell;
+.messageboard_card-outer {
     padding: 0.5rem 0.2rem 0.3rem;
+    border-top: 1px solid #f2f2f2;
+    /* border-top: 1px solid green; */
+    word-break: break-word;
 }
 
 .message_title {
     font-weight: bold;
     font-size: 1.2rem;
+    padding: 0.3rem 0;
+}
+
+/* DO NOT TOUCH .messages-div */
+
+.messages-div {
+    width: 100%;
+    line-height: 1.2em;
+}
+
+.messages-div div:first-child {
+    border-top: 0;
+}
+/* ---------------------------- */
+
+.messages-list li {
+    border-top: 1px solid #f2f2f2;
+}
+
+.messages-list li:first-child {
+    border-top: 0;
+    /* background-color: purple; */
 }
 
 .project-card {

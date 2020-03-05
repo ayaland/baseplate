@@ -13,9 +13,9 @@ import LoginFormContainer from './session_form/login_form_container';
 
 import HomeNavbar from './navbar/home_navbar';
 
-import ProjectIndex from './projects/project_index';
-import ProjectShow from './projects/project_show';
-import NewProjectForm from './projects/new_project_form';
+import ProjectIndex from './project/project_index';
+import ProjectShow from './project/project_show';
+import NewProjectForm from './project/new_project_form';
 
 import MessageIndex from './message_board/message_index';
 import NewMessageForm from './message_board/new_message_form';

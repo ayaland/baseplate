@@ -34,8 +34,6 @@ class MessageShow extends React.Component {
             owner_id: this.props.userId,
             author_name: this.props.author.name
         });
-        console.log("this.state")
-        console.log(this.state)
     }
 
     showTrixEditor(e) {

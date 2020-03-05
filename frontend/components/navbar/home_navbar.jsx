@@ -9,10 +9,13 @@ class HomeNavbar extends React.Component {
     constructor(props) {  
         super(props);
         this.state = {
-            showMenu: false
+            showMenu: false,
+            showPints: false
         }
         this.showMenu = this.showMenu.bind(this);
         this.hideMenu = this.hideMenu.bind(this);
+        this.showPints = this.showPints.bind(this);
+        this.hidePints = this.hidePints.bind(this);
         this.userLogout = this.userLogout.bind(this);
     }
 
@@ -24,9 +27,24 @@ class HomeNavbar extends React.Component {
     }
 
     hideMenu(e) {
-        if (!this.dropdownMenu.contains(e.target)) {
+        if (!this.dropdownMenu || !this.dropdownMenu.contains(e.target)) {
             this.setState({ showMenu: false }, () => {
                 document.removeEventListener('click', this.hideMenu);
+            });
+        }
+    }
+
+    showPints(e) {
+        e.preventDefault();
+        this.setState({ showPints: true}, () => {
+            document.addEventListener('click', this.hidePints);
+        });
+    }
+
+    hidePints(e) {
+        if (!this.dropdownMenu.contains(e.target)) {
+            this.setState({ showPints: false }, () => {
+                document.removeEventListener('click', this.hidePints);
             });
         }
     }
@@ -38,18 +56,30 @@ class HomeNavbar extends React.Component {
     }
 
     render () {
+        {/* navbar icons are 24 x 24 */}
         return(
             <div className="outer-container">
                 <nav className="navbar navbar-default navbar-fixed-top">
                     <ul className="navbar-menu">
-                        <li className="nav_accounts nav_link"><img className="nav_icon" src={window.nav_accounts} /></li>
-                        {/* img here will have a popup mobile ad */}
-                        {/* navbar icons are 24 x 24 */}
-                        <li className="nav_link"><Link className="text-link" to={`/`}><img src={window.nav_home} /> Home</Link></li>
-                        <li className="nav_link"><Link className="text-link" to={`/`}><img src={window.nav_pint} /> Pints</Link></li>
+                        <li className="nav_accounts nav_link">
+                            {/* img here will have a popup mobile ad */}
+                            <Link to={`/`}><img className="nav_icon" src={window.nav_accounts} /></Link>
+                        </li>
+
+                        <li className="nav_link">
+                            <Link to={`/`}><img src={window.nav_home} /> Home</Link>
+                        </li>
+
+                        <li className="nav_link">
+                            <Link to={`/`}><img src={window.nav_pint} /> Pints</Link>
+                        </li>
+
                         {/* suggestion from Phil: can I prevent default to prevent the browser from wiping the props and state when clicking on this link? */}
-                        <li className="nav_link"><a href={`https://www.youtube.com/watch?v=prgm4eKq6d4`}><img src={window.nav_hey} /> Hey!</a></li>
-                        <li className="nav_link"><Link className="text-link" to={`/`}>Activity</Link></li>
+                        <li className="nav_link">
+                            <Link to={`https://www.youtube.com/watch?v=prgm4eKq6d4`}><img src={window.nav_hey} /> Hey!</Link>
+                        </li>
+                        
+                        <li className="nav_link"><Link to={`/`}>Activity</Link></li>
 
                         <li className="nav_settings">
                             <img 

@@ -15,6 +15,7 @@ class MessageIndex extends React.Component {
     render () {
         if (!this.props.project) return null;
         let project = this.props.project;
+        let messages = this.props.messages.reverse();
         return (
             <main>
                 <nav className="messages-project centered">
@@ -38,20 +39,23 @@ class MessageIndex extends React.Component {
                             </label>
 
                         </header>
-                        <section className="message-board push--top">
-                            <ul>
-                                {this.props.messages.map((message) => (
-                                    <li key={message.id}>
-                                        <MessageCard 
-                                            message={message} 
-                                            projectId={project.id} 
-                                            project={project} 
-                                            key={message.id} 
-                                            />
-                                    </li>
-                                ))}
-                            </ul>
-
+                        <section className="message-board message-stack push--top">
+                            <table className="messages-table">     
+                                <tbody>
+                                    <ul className="messages-list">
+                                        {messages.map((message) => (
+                                                <li key={message.id}>
+                                                    <MessageCard 
+                                                        message={message} 
+                                                        projectId={project.id} 
+                                                        project={project} 
+                                                        key={message.id} 
+                                                        />
+                                                </li>
+                                        ))}
+                                    </ul>
+                                </tbody>
+                            </table>
                         </section>
                     </article>
                 </div>
