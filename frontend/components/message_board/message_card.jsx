@@ -16,10 +16,10 @@ function MessageCard(props) {
             }}
             className="message_link">
 
-            <div className="message_content">
+            <div className="">
                 <table className="messages-table">
                     <tbody>
-                        <tr>
+                        <tr className="message-row">
                             <td className="message_avatar">
                                 {
                                 name === "Forestman2"  &&
@@ -35,13 +35,17 @@ function MessageCard(props) {
                                 }
                             </td>
            
-                            <td className="">
+                            <td className="message_content">
                                 <h1 className="message_title flush">{props.message.title}</h1>             
-                                    <span className="message-date-and-body message flush txt-uncolor">
+                                <div className="message-date-and-body message flush txt-uncolor">
+                                    <div>
                                         {props.message.author_name} • {' '}  
                                         {date[0]} {date[1]} {date[2]} — {' '}
+                                    </div>
+                                    <div className="message_body">
                                         {ReactHtmlParser(props.message.body)}
-                                    </span>
+                                    </div>
+                                </div>
                             </td>
                         </tr>
                     </tbody>

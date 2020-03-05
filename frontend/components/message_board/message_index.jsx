@@ -15,6 +15,7 @@ class MessageIndex extends React.Component {
     render () {
         if (!this.props.project) return null;
         let project = this.props.project;
+        let messages = this.props.messages.reverse();
         return (
             <main>
                 <nav className="messages-project centered">
@@ -40,15 +41,17 @@ class MessageIndex extends React.Component {
                         </header>
                         <section className="message-board push--top">
                             <ul>
-                                {this.props.messages.map((message) => (
-                                    <li key={message.id}>
-                                        <MessageCard 
-                                            message={message} 
-                                            projectId={project.id} 
-                                            project={project} 
-                                            key={message.id} 
-                                            />
-                                    </li>
+                                {messages.map((message) => (
+                                    <div>
+                                        <li key={message.id}>
+                                            <MessageCard 
+                                                message={message} 
+                                                projectId={project.id} 
+                                                project={project} 
+                                                key={message.id} 
+                                                />
+                                        </li>
+                                    </div>
                                 ))}
                             </ul>
 

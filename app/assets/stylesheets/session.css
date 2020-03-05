@@ -130,11 +130,11 @@ textarea.title {
 } */
 
 trix-toolbar {
-    height: 1.8rem;
     border-top: 1px solid #e5e5e5;
     border-bottom: 1px solid #e5e5e5;
     z-index: 4;
     top: 38px;
+    white-space: nowrap;
 }
 
 trix-toolbar .trix-button-group {
@@ -471,33 +471,6 @@ trix-toolbar .button_row {
     cursor: pointer;
 }
 
-/* .messages-table {
-    line-height: 1.4em;
-    font-size: 1.5rem;
-}
-
-.messages-table td {
-    padding: 1.1rem 0.5rem;
-}
-
-.messages-table_avatar {
-    max-width: 9rem;
-    padding-left: 0 !important;
-    text-align: right;
-    white-space: nowrap;
-    vertical-align: top;
-    padding-top: 0.9rem;
-}
-
-.messages-table--for-card .messages-table_avatar {
-    max-width: 4.8rem;
-}
-
-.messages-table--for-card .messages-table_cell {
-    display: table-cell;
-    padding: 0.5rem 0.2rem 0.3rem;
-} */
-
 .new-message-buttons {
     margin-top: 2rem;
 }
@@ -617,11 +590,6 @@ trix-toolbar .button_row {
 .sheet--signup {
     animation: scale-fade-in 0.3s ease;
     border-radius: 1rem;
-}
-
-.text-link {
-    color: inherit;
-    text-decoration: inherit;
 }
 
 .txt-bold {
