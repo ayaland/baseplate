@@ -12,12 +12,14 @@ class NewMessageForm extends React.Component {
         this.state = {
             title: '',
             body: '',
+            text_body: '',
             project_id: '',
             owner_id: '',
             author_name: ''
         };
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleEditorReady = this.handleEditorReady.bind(this);
+        // this.handleEditorReady = this.handleEditorReady.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
     componentDidMount() {
@@ -45,10 +47,19 @@ class NewMessageForm extends React.Component {
         )
     }
 
-    handleEditorReady(e) {
+    // handleEditorReady(e) {
+    //     this.setState({
+    //         body: e
+    //     });
+    // }
+
+    handleChange(html, text) {
         this.setState({
-            body: e
-        });
+            body: html,
+            text_body: text
+        })
+        console.log(this.state.body)
+        console.log(this.state.text_body)
     }
 
     renderErrors() {
@@ -81,19 +92,19 @@ class NewMessageForm extends React.Component {
                 <div className="panel panel--perma panel--padding">
                     <form onSubmit={this.handleSubmit} className="">
                         <article className="flush--bottom">
-                                <textarea 
-                                    rows="1" 
-                                    placeholder="Type a title..." 
-                                    autoFocus="autoFocus" 
-                                    className="input title"
-                                    value={this.state.title}
-                                    onChange={this.update('title')} 
-                                    />
+                            <textarea 
+                                rows="1" 
+                                placeholder="Type a title..." 
+                                autoFocus="autoFocus" 
+                                className="input title"
+                                value={this.state.title}
+                                onChange={this.update('title')} 
+                            />
 
                             <section className="message-content">
                                 <TrixEditor 
                                     placeholder="Write away..."
-                                    onChange={this.handleEditorReady}
+                                    onChange={this.handleChange}
                                 />
                             </section>
                         </article>

@@ -12,6 +12,7 @@ body {
 
 header, main, nav, footer {
     display: block;
+    border-bottom: 0;
 }
 
 article {
@@ -22,6 +23,8 @@ section {
     display: block;
     position: relative;
     margin-top: 0px;
+    border-width: 0px;
+    border-top: 0;
 }
 
 a {

@@ -15,8 +15,6 @@ function MessageboardCard(props) {
                     </header>
 
                     <section className="push_half--top">
-                        <div className="card_blank-slate">
-                            <div className="card_icon card_icon--messages"></div>
                             { messages.length < 1 
                                 ? (
                                     <div className="card_description align--center">
@@ -25,26 +23,20 @@ function MessageboardCard(props) {
                                         </p>
                                     </div>)
                                 : (
-                                    <ul className="message-preview">
-                                        <div className="messages-table">
+                                    <div className="messages-div message-preview flush--top">
                                             {messages.map((message) => (
-                                                <div className="card_body-content">
-                                                {ReactHtmlParser(message.body)}
+                                                <div className="messageboard_card-outer">
+                                                    <div className="messageboard_card messageboard_card-title txt-bold">
+                                                        {ReactHtmlParser(message.title)}
+                                                    </div>
+                                                    <div className="messageboard_card messageboard_card-body">
+                                                        {message.text_body}
+                                                    </div>
                                                 </div>
                                         ))}
                                         </div>
-                                    </ul>
                                 )
                             }
-
-
-                                <div className="messages-table messages-table--for-card">
-                                    {/* one of these is made for each message rendered */}
-                                    <div className="messages-table_cell messages-table_avatar">
-                                        {/* 64x64 avatar goes here */}
-                                    </div>
-                                </div>
-                        </div>
                     </section>
                 </div>
             </Link>

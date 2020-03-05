@@ -39,22 +39,23 @@ class MessageIndex extends React.Component {
                             </label>
 
                         </header>
-                        <section className="message-board push--top">
-                            <ul>
-                                {messages.map((message) => (
-                                    <div>
-                                        <li key={message.id}>
-                                            <MessageCard 
-                                                message={message} 
-                                                projectId={project.id} 
-                                                project={project} 
-                                                key={message.id} 
-                                                />
-                                        </li>
-                                    </div>
-                                ))}
-                            </ul>
-
+                        <section className="message-board message-stack push--top">
+                            <table className="messages-table">     
+                                <tbody>
+                                    <ul className="messages-list">
+                                        {messages.map((message) => (
+                                                <li key={message.id}>
+                                                    <MessageCard 
+                                                        message={message} 
+                                                        projectId={project.id} 
+                                                        project={project} 
+                                                        key={message.id} 
+                                                        />
+                                                </li>
+                                        ))}
+                                    </ul>
+                                </tbody>
+                            </table>
                         </section>
                     </article>
                 </div>

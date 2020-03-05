@@ -1,5 +1,5 @@
 class Message < ApplicationRecord
-    validates :body, :project_id, :owner_id, :author_name, presence: true
+    validates :body, :text_body, :project_id, :owner_id, :author_name, presence: true
 
     belongs_to :user,
     class_name: 'User',

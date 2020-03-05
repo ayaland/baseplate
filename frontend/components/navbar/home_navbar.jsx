@@ -27,7 +27,7 @@ class HomeNavbar extends React.Component {
     }
 
     hideMenu(e) {
-        if (!this.dropdownMenu.contains(e.target)) {
+        if (!this.dropdownMenu || !this.dropdownMenu.contains(e.target)) {
             this.setState({ showMenu: false }, () => {
                 document.removeEventListener('click', this.hideMenu);
             });
