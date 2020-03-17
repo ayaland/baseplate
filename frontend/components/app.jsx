@@ -7,10 +7,11 @@ import {
 
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 
-import SplashContainer from './splash/splash_container';
+import Splash from './splash/splash';
 import SignupFormContainer from './session_form/signup_form_container';
 import LoginFormContainer from './session_form/login_form_container';
 
+import SplashNavbar from './navbar/splash_navbar';
 import HomeNavbar from './navbar/home_navbar';
 
 import ProjectIndex from './project/project_index';
@@ -22,10 +23,11 @@ import NewMessageForm from './message_board/new_message_form';
 import MessageShow from './message_board/message_show';
 
 const App = () => (
-    <div>
+    <div className="app">
+        <AuthRoute exact path="/" component={SplashNavbar} />
         <ProtectedRoute path="/:anything" component={HomeNavbar} />
         <Switch>
-            <AuthRoute exact path="/" component={SplashContainer} />
+            <AuthRoute exact path="/" component={Splash} />
             <AuthRoute path="/login" component={LoginFormContainer} />
             <AuthRoute path="/signup" component={SignupFormContainer} />
 

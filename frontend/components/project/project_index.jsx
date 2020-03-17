@@ -19,7 +19,7 @@ class ProjectIndex extends React.Component {
 
     render() {
         return (
-            <main>
+            <main id="session">
                 <div className="panel">
                     <section className="project-index">
                         <header className="centered">
