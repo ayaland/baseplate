@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { fetchProject } from '../../actions/project_actions';
 import { fetchMessages } from '../../actions/message_actions';
 import MessageboardCard from '../app/messageboard_card';
+import TodosCard from '../app/todos_card';
 
 
 class ProjectShow extends React.Component {
@@ -27,6 +28,7 @@ class ProjectShow extends React.Component {
         if (!this.props.project || !this.props.messages) return null;
         let project = this.props.project;
         let messages = this.props.messages;
+
         return (
             <div className="panel panel--perma panel--project push_double--bottom centered">
                 <header className="project-header centered">
@@ -36,10 +38,10 @@ class ProjectShow extends React.Component {
                 <section className="project-dock centered">
                     <div className="card-grid">
                         <MessageboardCard project={project} messages={messages} />
+                        <TodosCard />
                     </div>
                 </section>
             </div>
-
         );
     }
 }

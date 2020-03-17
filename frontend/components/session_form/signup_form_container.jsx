@@ -87,7 +87,7 @@ class SignupFormContainer extends React.Component {
                         </div>
                         <br />
 
-                        <input className="btn action_button" type="submit" value="Next →" />
+                        <input className="btn btn--primary action_button" type="submit" value="Next →" />
 
                     </form>
                     </div>

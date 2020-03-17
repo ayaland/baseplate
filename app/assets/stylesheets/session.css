@@ -8,6 +8,7 @@ body {
     /* font-size: 16px; */
     background-color: #f6f2ef;
     color: #283c46;
+    overflow-x: hidden;
 }
 
 header, main, nav, footer {
@@ -31,6 +32,18 @@ a {
     color: inherit;
     text-decoration: none;
     background: transparent;
+    vertical-align: baseline;
+}
+
+a {
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  transition: all 0.2s ease;
+  transition-property: text-decoration-color, text-decoration-thickness, text-decoration-width;
 }
 
 form {
@@ -70,8 +83,8 @@ h1 {
     display: block;
     font-size: 1.8rem;
     line-height: 1.2;
-    font-weight: bold;
     margin: 0.27em 0;
+    letter-spacing: -0.03em;
 }
 
 h2 {
@@ -101,9 +114,20 @@ h4 {
     font-weight: bold; 
 }
 
+p {
+    margin: 0 0 1em 0;
+    padding: 0;
+    letter-spacing: -0.02em;
+    line-height: 1.5;
+}
+
 small {
     font-size: 13px;
     color: #7f7f7f;
+}
+
+strong {
+    font-weight: 950;
 }
 
 textarea {
@@ -251,7 +275,6 @@ trix-toolbar .button_row {
     outline: none;
 }
 
-
 .centered {
   text-align: center;
   margin: 0px;
@@ -282,17 +305,6 @@ trix-toolbar .button_row {
 
 .full-width {
     width: 100%;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr) repeat(18, 2.45em) repeat(3, 1fr);
-    margin: 0;
-    padding: 0;
-}
-
-.grid--centered {
-    grid-column: 4 / span 18;
 }
 
 .header--top {
@@ -359,84 +371,6 @@ trix-toolbar .button_row {
 
     trix-toolbar .trix-button-group {
         float: left;
-    }
-}
-
-@media screen and (min-width: 768px) {
-    .comment_author {
-        display: block;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .message-body {
-        padding-left: 3rem;
-        padding-right: 3rem;
-        margin-left: -3.8rem;
-        margin-right: -3.8rem;
-    }
-    
-    .message-subject {
-        font-size: 2.4em;
-    }
-    
-    .panel--padding {
-        padding: 60px;
-    }
-    
-    .panel--perma {
-        width: 90%;
-        box-shadow: 0 -1px 10px rgba(0,0,0,0.05), 0 1px 4px rgba(0,0,0,0.1), 0 10px 30px #f3ece8;
-        border-radius: 0.2em 0.2em 0 0;
-    }
-
-    .panel--project {
-        padding: 2.5rem;
-    }
-    
-    .perma_btn {
-        position: absolute;
-        bottom: 1.4rem;
-        left: 0;
-    }
-    
-    .perma_header {
-        position: relative;
-        text-align: center;
-        padding-bottom: 0.625em;
-        border-bottom: 3px solid #283c46;
-    }
-    
-    .perma_title {
-        margin-left: 16rem;
-        margin-right: 16rem;
-        white-space: nowrap;
-        overflow-x: hidden;
-        text-overflow: ellipsis;
-        font-size: 2em;
-        letter-spacing: -0.5px;
-        line-height: 1;
-        padding-bottom: 0.5rem;
-        text-align: center;
-        margin: 0;
-    }
-}
-
-@media screen and (min-width: 992px) {    
-    .message-body {
-        margin-left: -7.6rem;
-        margin-right: -7.6rem;
-        padding-left: 8rem;
-        padding-right: 8rem;
-    }
-    
-    .panel--padding {
-        padding: 60px 120px;
-    }
-    
-    .perma_header {
-        margin: 0 -4 rem;
     }
 }
 
@@ -572,11 +506,16 @@ trix-toolbar .button_row {
 }
 
 .push--top {
-    margin-top: 1.25em;
+    /* margin-top: 1.25em; */
+    margin-top: 1em;
 }
 
 .right-align {
     margin-left: auto;
+}
+
+.session-errors {
+    font-size: 1.5rem;
 }
 
 .sheet {
@@ -605,10 +544,85 @@ trix-toolbar .button_row {
     overflow: hidden;
 }
 
-.x-large {
-    font-size: 330%;
-}
-
 [title="Attach Files"], [title="Decrease Level"], [title="Increase Level"] {
     display: none;
+}
+
+    
+@media screen and (min-width: 768px) {
+    .comment_author {
+        display: block;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .message-body {
+        padding-left: 3rem;
+        padding-right: 3rem;
+        margin-left: -3.8rem;
+        margin-right: -3.8rem;
+    }
+    
+    .message-subject {
+        font-size: 2.4em;
+    }
+    
+    .panel--padding {
+        padding: 60px;
+    }
+    
+    .panel--perma {
+        width: 90%;
+        box-shadow: 0 -1px 10px rgba(0,0,0,0.05), 0 1px 4px rgba(0,0,0,0.1), 0 10px 30px #f3ece8;
+        border-radius: 0.2em 0.2em 0 0;
+    }
+
+    .panel--project {
+        padding: 2.5rem;
+    }
+    
+    .perma_btn {
+        position: absolute;
+        bottom: 1.4rem;
+        left: 0;
+    }
+    
+    .perma_header {
+        position: relative;
+        text-align: center;
+        padding-bottom: 0.625em;
+        border-bottom: 3px solid #283c46;
+    }
+    
+    .perma_title {
+        margin-left: 16rem;
+        margin-right: 16rem;
+        white-space: nowrap;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+        font-size: 2em;
+        letter-spacing: -0.5px;
+        line-height: 1;
+        padding-bottom: 0.5rem;
+        text-align: center;
+        margin: 0;
+    }
+}
+
+@media screen and (min-width: 992px) {    
+    .message-body {
+        margin-left: -7.6rem;
+        margin-right: -7.6rem;
+        padding-left: 8rem;
+        padding-right: 8rem;
+    }
+    
+    .panel--padding {
+        padding: 60px 120px;
+    }
+    
+    .perma_header {
+        margin: 0 -4 rem;
+    }
 }
