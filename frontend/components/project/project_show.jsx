@@ -38,7 +38,7 @@ class ProjectShow extends React.Component {
                 <section className="project-dock centered">
                     <div className="card-grid">
                         <MessageboardCard project={project} messages={messages} />
-                        <TodosCard />
+                        <TodosCard project={project} />
                     </div>
                 </section>
             </div>
