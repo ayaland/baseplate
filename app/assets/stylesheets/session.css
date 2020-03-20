@@ -396,7 +396,8 @@ trix-toolbar .button_row {
     width: calc(100% - 1em);
 }
 
-.messages-project {
+/* don't move this. breaks alignment of message show */
+.apps-project {
     width: 80%;
     border-radius: 0.2em 0.2em 0 0;
     max-width: 53em;

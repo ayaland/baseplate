@@ -79,7 +79,7 @@ class NewMessageForm extends React.Component {
         let project = this.props.project
         return (
             <main>
-                <nav className="messages-project centered">
+                <nav className="apps-project centered">
                     <Link to={`/projects/${project.id}`}>
                         <img className="lego_brick" src={window.lego_brick} />
                         <h3 className="layer-out_project">{project.name}</h3>

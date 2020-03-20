@@ -8,7 +8,7 @@ function TodosCard(props) {
     let todos=[];
     return (
         <article className="card card--app">
-            {/* <Link to={`/projects/${props.project.id}/todos`} className="card_link"> */}
+            <Link to={`/projects/${props.project.id}/lists`} className="card_link">
                 <div className="card_content">
                     <header className="card_header centered">
                         {/* <h1 className="flush txt--truncate">{props.app.name}</h1> */}
@@ -40,7 +40,7 @@ function TodosCard(props) {
                         }
                     </section>
                 </div>
-            {/* </Link> */}
+            </Link>
         </article>
     )
 }

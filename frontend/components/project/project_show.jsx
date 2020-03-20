@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { fetchProject } from '../../actions/project_actions';
 import { fetchMessages } from '../../actions/message_actions';
 import MessageboardCard from '../app/messageboard_card';
-import TodosCard from '../app/todos_card';
+import TodolistCard from '../app/todolist_card';
 
 
 class ProjectShow extends React.Component {
@@ -38,7 +38,7 @@ class ProjectShow extends React.Component {
                 <section className="project-dock centered">
                     <div className="card-grid">
                         <MessageboardCard project={project} messages={messages} />
-                        <TodosCard project={project} />
+                        <TodolistCard project={project} />
                     </div>
                 </section>
             </div>
