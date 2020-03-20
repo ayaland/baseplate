@@ -19,7 +19,7 @@ import ProjectShow from './project/project_show';
 import NewProjectForm from './project/new_project_form';
 
 import MessageIndex from './message_board/message_index';
-import ListIndex from './list/list_index';
+import ListIndex from './todo/list_index';
 import NewMessageForm from './message_board/new_message_form';
 import MessageShow from './message_board/message_show';
 

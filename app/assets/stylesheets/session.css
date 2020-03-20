@@ -97,7 +97,7 @@ h2 {
 }
 
 h3 {
-    line-height: 1.2;
+    line-height: 1.0;
     font-size: 1.0em;
     font-weight: bold;
     margin-block-start: 1em;
@@ -327,6 +327,18 @@ trix-toolbar .button_row {
     resize: none;
 }
 
+.input--borderless {
+    background-color: rgba(255,255,255,0);
+    box-shadow: none !important;
+    border: 0;
+    border-radius: 0;
+    outline: 0;
+}
+
+.input--unpadded {
+    padding: 0 !important;
+}
+
 .layer-out_project {
     display: inline-block;
     font-weight: normal;
@@ -396,7 +408,7 @@ trix-toolbar .button_row {
     width: calc(100% - 1em);
 }
 
-/* don't move this. breaks alignment of message show */
+/* #Ayanote: don't move this. breaks alignment of message show */
 .apps-project {
     width: 80%;
     border-radius: 0.2em 0.2em 0 0;
@@ -407,6 +419,11 @@ trix-toolbar .button_row {
     border-bottom: 1px solid #00000008;
     box-shadow: 0 1px 4px rgba(0,0,0,0.1), 0 10px 30px #f3ece8;
     cursor: pointer;
+}
+
+.new-list-form {
+    border: 1px solid #e5e5e5;
+    border-radius: 0.6em;
 }
 
 .new-message-buttons {
@@ -535,6 +552,15 @@ trix-toolbar .button_row {
     border-radius: 1rem;
 }
 
+.todos-form_details {
+    padding: 0 2.8rem 0.5rem;
+}
+
+.todos-form_header {
+    padding-bottom: 0.5rem;
+    padding: 0.5rem 2.0rem 0;  
+}
+
 .txt-bold {
     font-weight: bold;
 }
@@ -623,6 +649,11 @@ trix-toolbar .button_row {
         padding: 60px 120px;
     }
     
+    /* #Ayanote: this will narrow new todo form but cards and other input/trix as well
+    .panel--perma {
+        padding: 6rem 12rem;
+    } */
+
     .perma_header {
         margin: 0 -4 rem;
     }
