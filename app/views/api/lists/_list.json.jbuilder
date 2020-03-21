@@ -1,1 +1,1 @@
-json.extract! message, :id, :title, :owner_id, :project_id,  :created_at
+json.extract! list, :id, :title, :owner_id, :project_id,  :created_at

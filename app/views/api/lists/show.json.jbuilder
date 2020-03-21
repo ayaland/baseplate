@@ -1,1 +1,1 @@
-json.partial! 'list', list: list
+json.partial! 'list', list: @list

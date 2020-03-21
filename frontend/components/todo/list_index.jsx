@@ -12,7 +12,8 @@ class ListIndex extends React.Component {
             title: '',
             project_id: '',
             owner_id: '',
-        }
+        };
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidMount() {
@@ -25,6 +26,7 @@ class ListIndex extends React.Component {
     }
 
     update(field) {
+        console.log(field)
         return e => this.setState({
             [field]: e.currentTarget.value
         });
@@ -33,9 +35,11 @@ class ListIndex extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const list = Object.assign({}, this.state);
-        this.props.processForm(this.props.projectId, list).then(
-            this.props.history.push(`/projects/${this.props.projectId}/lists`)
-        );
+        console.log(list)
+        this.props.processForm(this.props.projectId, list)
+        // .then(
+        //     this.props.history.push(`/projects/${this.props.projectId}/lists`)
+        // );
     }
     
     render() {
@@ -73,7 +77,7 @@ class ListIndex extends React.Component {
                                             rows="1"
                                             placeholder="Name this list..."
                                             autoFocus="autoFocus"
-                                            className="input input--borderless input--upadded list-title"
+                                            className="input input--borderless input--unpadded list-title"
                                             maxLength="160"
                                             value={this.state.title}
                                             onChange={this.update('title')}
@@ -115,6 +119,9 @@ class ListIndex extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
+        errors: state.errors.session,
+        userId: state.session.id,
+        projectId: ownProps.match.params.projectId,
         project: state.entities.projects[ownProps.match.params.projectId]
     }
 }
