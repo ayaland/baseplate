@@ -4,6 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 
 import { fetchProject } from '../../actions/project_actions';
 import { fetchLists, createList } from '../../actions/todo_actions';
+import ListCard from './list_card';
 
 class ListIndex extends React.Component {
     constructor(props) {
@@ -45,6 +46,7 @@ class ListIndex extends React.Component {
     render() {
         if (!this.props.project) return null;
         let project = this.props.project;
+        let lists = this.props.lists.reverse();
         return (
             <main>
                 <nav className="apps-project centered">
@@ -66,8 +68,22 @@ class ListIndex extends React.Component {
                                     className="btn btn--small btn--primary"
                                 >+ New List</Link>
                             </label>
-
                         </header>
+
+                        <section>
+                            <ul className="lists-list">
+                                {lists.map((list) => (
+                                    <li key={list.id}>
+                                        <ListCard
+                                            list={list}
+                                            projectId={project.id}
+                                            key={list.id}
+                                        />
+                                    </li>
+                                ))}
+
+                            </ul>
+                        </section>
 
                         <section className="new-list-form">
                             <form onSubmit={this.handleSubmit} className="">
@@ -122,7 +138,8 @@ const mapStateToProps = (state, ownProps) => {
         errors: state.errors.session,
         userId: state.session.id,
         projectId: ownProps.match.params.projectId,
-        project: state.entities.projects[ownProps.match.params.projectId]
+        project: state.entities.projects[ownProps.match.params.projectId],
+        lists: Object.values(state.entities.lists)
     }
 }
 

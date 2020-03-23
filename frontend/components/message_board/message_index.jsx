@@ -37,8 +37,8 @@ class MessageIndex extends React.Component {
                                     className="btn btn--small btn--primary"
                                 >+ New Message</Link>
                             </label>
-
                         </header>
+
                         <section className="message-board message-stack push--top">
                             <table className="messages-table">     
                                 <tbody>
