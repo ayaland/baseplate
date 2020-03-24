@@ -14,6 +14,7 @@ class MessageShow extends React.Component {
         super(props);
         this.state = {
             body: '',
+            text_body: '',
             message_id: '',
             owner_id: '',
             author_name: '',
@@ -22,7 +23,7 @@ class MessageShow extends React.Component {
         this.showTrixEditor = this.showTrixEditor.bind(this);
         this.hideTrixEditor = this.hideTrixEditor.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleEditorReady = this.handleEditorReady.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
     componentDidMount() {
@@ -67,6 +68,13 @@ class MessageShow extends React.Component {
         this.setState({
             body: e
         });
+    }
+
+    handleChange(html, text) {
+        this.setState({
+            body: html,
+            text_body: text
+        })
     }
 
     renderErrors() {
@@ -151,7 +159,7 @@ class MessageShow extends React.Component {
                                         <section className="message-content">
                                             <TrixEditor
                                                 placeholder="Type your comment here..."
-                                                onChange={this.handleEditorReady}
+                                                onChange={this.handleChange}
                                             />
                                         </section>
                                     </article>

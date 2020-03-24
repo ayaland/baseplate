@@ -13,7 +13,10 @@ class ListIndex extends React.Component {
             title: '',
             project_id: '',
             owner_id: '',
+            showListForm: false
         };
+        this.showListForm = this.showListForm.bind(this);
+        this.hideListForm = this.hideListForm.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
@@ -26,8 +29,17 @@ class ListIndex extends React.Component {
         });
     }
 
+    showListForm(e) {
+        e.preventDefault();
+        this.setState({ showListForm: true });
+    }
+
+    hideListForm(e) {
+        this.setState({ title: '' });
+        this.setState({ showListForm: false });
+    }
+
     update(field) {
-        console.log(field)
         return e => this.setState({
             [field]: e.currentTarget.value
         });
@@ -36,8 +48,9 @@ class ListIndex extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const list = Object.assign({}, this.state);
-        console.log(list)
-        this.props.processForm(this.props.projectId, list)
+        delete list.showListForm;
+        this.props.processForm(this.props.projectId, list);
+        this.hideListForm();
         // .then(
         //     this.props.history.push(`/projects/${this.props.projectId}/lists`)
         // );
@@ -62,11 +75,14 @@ class ListIndex extends React.Component {
                             <h1 className="perma_title">To-dos</h1>
 
                             <label className="perma_btn">
-                                <Link
-                                    to={`lists/new`}
-                                    project={project}
+                                <button 
                                     className="btn btn--small btn--primary"
-                                >+ New List</Link>
+                                    type="button"
+                                    onClick={this.showListForm}
+                                >
+                                    + New List
+                                </button>
+                                    
                             </label>
                         </header>
 
@@ -85,39 +101,47 @@ class ListIndex extends React.Component {
                             </ul>
                         </section>
 
-                        <section className="new-list-form">
-                            <form onSubmit={this.handleSubmit} className="">
-                                <header className="todos-form_header">
-                                    <h3 className="flush">
-                                        <textarea
-                                            rows="1"
-                                            placeholder="Name this list..."
-                                            autoFocus="autoFocus"
-                                            className="input input--borderless input--unpadded list-title"
-                                            maxLength="160"
-                                            value={this.state.title}
-                                            onChange={this.update('title')}
-                                        />
-                                    </h3>
-                                </header>
-                                <section className="todos-form_details">
-                                    <div className="submit push--top push_half--bottom">
-                                        <input 
-                                            type="submit" 
-                                            name="commit" 
-                                            value="Add this list" 
-                                            className="btn btn--small btn--primary" 
-                                        />
-                                        <button
-                                            name="button"
-                                            type="submit"
-                                            className="btn btn--small btn--secondary todos-form_todolist-cancel">Cancel</button>
+                    { this.state.showListForm
+                        ? (
+                            <section className="new-list-form">
+                                <form onSubmit={this.handleSubmit} className="">
+                                    <header className="todos-form_header">
+                                        <h3 className="flush">
+                                            <textarea
+                                                rows="1"
+                                                placeholder="Name this list..."
+                                                autoFocus="autoFocus"
+                                                className="input input--borderless input--unpadded list-title"
+                                                maxLength="160"
+                                                value={this.state.title}
+                                                onChange={this.update('title')}
+                                            />
+                                        </h3>
+                                    </header>
+                                    <section className="todos-form_details">
+                                        <div className="submit push--top push_half--bottom">
+                                            <input 
+                                                type="submit" 
+                                                name="commit" 
+                                                value="Add this list" 
+                                                className="btn btn--small btn--primary" 
+                                            />
+                                            <button
+                                                className="btn btn--small btn--secondary todos-form_todolist-cancel"
+                                                name="button"
+                                                type="submit"
+                                                onClick={this.hideListForm}
+                                            >Cancel</button>
 
-                                    </div>
-
-                                </section>
-                            </form>
-                        </section>
+                                        </div>
+                                    </section>
+                                </form>
+                            </section>
+                        ): (
+                            <div className="collapsed_content">
+                                Placeholder
+                            </div>
+                        ) }
 
                         <section className="lists list-stack push--top">
                             <table className="lists-table">
