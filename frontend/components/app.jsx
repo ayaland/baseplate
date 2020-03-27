@@ -19,8 +19,10 @@ import ProjectShow from './project/project_show';
 import NewProjectForm from './project/new_project_form';
 
 import MessageIndex from './message_board/message_index';
+import ListIndex from './todo/list_index';
 import NewMessageForm from './message_board/new_message_form';
 import MessageShow from './message_board/message_show';
+import ListShow from './todo/list_show';
 
 const App = () => (
     <div className="app">
@@ -38,7 +40,10 @@ const App = () => (
 
             <ProtectedRoute exact path="/projects/:projectId/messages" component={MessageIndex} />
             <ProtectedRoute exact path="/projects/:projectId/messages/new" component={NewMessageForm} />
-            <ProtectedRoute exact path="/projects/:projectId/messages/:messageId" component={MessageShow} />  
+            <ProtectedRoute exact path="/projects/:projectId/messages/:messageId" component={MessageShow} /> 
+
+            <ProtectedRoute exact path="/projects/:projectId/lists" component={ListIndex} /> 
+            <ProtectedRoute exact path="/projects/:projectId/lists/:listId" component={ListShow} /> 
         </Switch>
     </div>
 );

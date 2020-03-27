@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  body: MyString
+  owner_id: 1
+  list_id: 1
+  project_id: 1
+  due_date: 2020-03-17 13:56:05
+  done: false
+
+two:
+  body: MyString
+  owner_id: 1
+  list_id: 1
+  project_id: 1
+  due_date: 2020-03-17 13:56:05
+  done: false

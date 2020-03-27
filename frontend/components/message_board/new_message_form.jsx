@@ -27,10 +27,8 @@ class NewMessageForm extends React.Component {
         this.setState({
             owner_id: this.props.userId,
             project_id: this.props.projectId,
-            author_name: this.props.author.name
+            author_name: this.props.author.name,
         });
-        console.log("this.state")
-        console.log(this.state)
     }
 
     update(field) {
@@ -58,8 +56,6 @@ class NewMessageForm extends React.Component {
             body: html,
             text_body: text
         })
-        console.log(this.state.body)
-        console.log(this.state.text_body)
     }
 
     renderErrors() {
@@ -79,7 +75,7 @@ class NewMessageForm extends React.Component {
         let project = this.props.project
         return (
             <main>
-                <nav className="messages-project centered">
+                <nav className="apps-project centered">
                     <Link to={`/projects/${project.id}`}>
                         <img className="lego_brick" src={window.lego_brick} />
                         <h3 className="layer-out_project">{project.name}</h3>

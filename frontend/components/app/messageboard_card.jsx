@@ -24,17 +24,17 @@ function MessageboardCard(props) {
                                     </div>)
                                 : (
                                     <div className="messages-div message-preview flush--top">
-                                            {messages.map((message) => (
-                                                <div className="messageboard_card-outer">
-                                                    <div className="messageboard_card messageboard_card-title txt-bold">
-                                                        {ReactHtmlParser(message.title)}
-                                                    </div>
-                                                    <div className="messageboard_card messageboard_card-body">
-                                                        {message.text_body}
-                                                    </div>
+                                        {messages.map((message) => (
+                                            <div className="messageboard_card-outer" key={message.id}>
+                                                <div className="messageboard_card messageboard_card-title txt-bold">
+                                                    {ReactHtmlParser(message.title)}
                                                 </div>
+                                                <div className="messageboard_card messageboard_card-body">
+                                                    {message.text_body}
+                                                </div>
+                                            </div>
                                         ))}
-                                        </div>
+                                    </div>
                                 )
                             }
                     </section>

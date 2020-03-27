@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_05_222401) do
+ActiveRecord::Schema.define(version: 2020_03_21_032048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,14 @@ ActiveRecord::Schema.define(version: 2020_03_05_222401) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "text_body"
+  end
+
+  create_table "lists", force: :cascade do |t|
+    t.string "title"
+    t.integer "owner_id"
+    t.integer "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "messages", force: :cascade do |t|
@@ -39,7 +47,17 @@ ActiveRecord::Schema.define(version: 2020_03_05_222401) do
   create_table "projects", force: :cascade do |t|
     t.string "name"
     t.integer "owner_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "description"
+  end
+
+  create_table "todos", force: :cascade do |t|
+    t.string "body"
+    t.integer "owner_id"
+    t.integer "list_id"
+    t.datetime "due_date"
+    t.boolean "done"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -49,9 +67,9 @@ ActiveRecord::Schema.define(version: 2020_03_05_222401) do
     t.text "bio"
     t.string "email"
     t.string "password_digest"
-    t.string "session_token", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "session_token", null: false
   end
 
 end

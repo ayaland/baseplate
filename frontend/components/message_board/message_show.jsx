@@ -14,6 +14,7 @@ class MessageShow extends React.Component {
         super(props);
         this.state = {
             body: '',
+            text_body: '',
             message_id: '',
             owner_id: '',
             author_name: '',
@@ -22,7 +23,7 @@ class MessageShow extends React.Component {
         this.showTrixEditor = this.showTrixEditor.bind(this);
         this.hideTrixEditor = this.hideTrixEditor.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleEditorReady = this.handleEditorReady.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
     componentDidMount() {
@@ -69,6 +70,13 @@ class MessageShow extends React.Component {
         });
     }
 
+    handleChange(html, text) {
+        this.setState({
+            body: html,
+            text_body: text
+        })
+    }
+
     renderErrors() {
         return (
             <ul>
@@ -91,7 +99,7 @@ class MessageShow extends React.Component {
         let date = d.split(' ')
         return (
             <main>
-                <nav className="messages-project centered">
+                <nav className="apps-project centered">
                     <Link to={`/projects/${project.id}`}>
                         <img className="lego_brick" src={window.lego_brick} />
                         <h3 className="layer-out_project">{project.name}</h3>
@@ -151,7 +159,7 @@ class MessageShow extends React.Component {
                                         <section className="message-content">
                                             <TrixEditor
                                                 placeholder="Type your comment here..."
-                                                onChange={this.handleEditorReady}
+                                                onChange={this.handleChange}
                                             />
                                         </section>
                                     </article>
@@ -187,8 +195,6 @@ class MessageShow extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    console.log(state)
-    console.log(ownProps)
     return {
         userId: state.session.id,
         author: state.entities.users[state.session.id],

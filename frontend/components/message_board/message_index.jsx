@@ -18,7 +18,7 @@ class MessageIndex extends React.Component {
         let messages = this.props.messages.reverse();
         return (
             <main>
-                <nav className="messages-project centered">
+                <nav className="apps-project centered">
                     <Link to={`/projects/${project.id}`}>
                         <img className="lego_brick" src={window.lego_brick} />
                         <h3 className="layer-out_project">{project.name}</h3>
@@ -37,8 +37,8 @@ class MessageIndex extends React.Component {
                                     className="btn btn--small btn--primary"
                                 >+ New Message</Link>
                             </label>
-
                         </header>
+
                         <section className="message-board message-stack push--top">
                             <table className="messages-table">     
                                 <tbody>
@@ -77,7 +77,6 @@ const mapDispatchToProps = (dispatch) => {
     return {
         fetchProject: (projectId) => dispatch(fetchProject(projectId)),
         fetchMessages: (projectId) => dispatch(fetchMessages(projectId)),
-        fetchAuthor: (authorId) => dispatch(fetchAuthor(authorId))
     }
 }
 

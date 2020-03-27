@@ -3,8 +3,10 @@ import { connect } from 'react-redux';
 
 import { fetchProject } from '../../actions/project_actions';
 import { fetchMessages } from '../../actions/message_actions';
+import { fetchLists } from '../../actions/todo_actions';
+
 import MessageboardCard from '../app/messageboard_card';
-import TodosCard from '../app/todos_card';
+import TodolistCard from '../app/todolist_card';
 
 
 class ProjectShow extends React.Component {
@@ -15,6 +17,7 @@ class ProjectShow extends React.Component {
     componentDidMount() {
         this.props.fetchProject(this.props.match.params.projectId);
         this.props.fetchMessages(this.props.match.params.projectId);
+        this.props.fetchLists(this.props.match.params.projectId);
     }
     
     // From Jay to address manually typing in an address and having project load
@@ -38,7 +41,7 @@ class ProjectShow extends React.Component {
                 <section className="project-dock centered">
                     <div className="card-grid">
                         <MessageboardCard project={project} messages={messages} />
-                        <TodosCard />
+                        <TodolistCard project={project} />
                     </div>
                 </section>
             </div>
@@ -58,7 +61,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         fetchProject: (projectId) => dispatch(fetchProject(projectId)),
-        fetchMessages: (projectId) => dispatch(fetchMessages(projectId))
+        fetchMessages: (projectId) => dispatch(fetchMessages(projectId)),
+        fetchLists: (projectId) => dispatch(fetchLists(projectId))
     }
 }
 
