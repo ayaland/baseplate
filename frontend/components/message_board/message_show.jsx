@@ -195,8 +195,6 @@ class MessageShow extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    console.log(state)
-    console.log(ownProps)
     return {
         userId: state.session.id,
         author: state.entities.users[state.session.id],

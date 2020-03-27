@@ -19,3 +19,27 @@ export const createList = (projectId, list) => (
         data: { list }
     })
 );
+
+// ------------------ Todos-----------------
+
+export const fetchTodos = (listId) => (
+    $.ajax({
+        method: 'GET',
+        url: `/api/lists/${listId}/todos`
+    })
+)
+
+export const createTodo = (listId, todo) => (
+    $.ajax({
+        method: 'POST',
+        url: `/api/projects/${projectId}/lists/${listId}`,
+        data: { todo }
+    })
+)
+
+export const deleteTodo = (listId, todoId) => (
+    $.ajax({
+        method: 'DELETE',
+        url: `/api/lists/${listId}/todos/${todoId}`
+    })
+)

@@ -365,6 +365,14 @@ trix-toolbar .button_row {
     text-indent: -9999px;
 }
 
+.list-progress {
+    position: static;
+    display: inline-block;
+    margin: 0 0 0 0.125em;
+    font-weight: normal;
+    line-height: 1;
+}
+
 @media screen and (min-width: 525px) {
     .message-body {
         padding-left: 2rem;

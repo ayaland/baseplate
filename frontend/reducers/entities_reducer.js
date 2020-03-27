@@ -4,6 +4,7 @@ import projects from './projects_reducer';
 import messages from './messages_reducer';
 import comments from './comments_reducer';
 import lists from './lists_reducer';
+import todos from './todos_reducer';
 
 export default combineReducers({
     users,
@@ -11,4 +12,5 @@ export default combineReducers({
     messages,
     comments,
     lists,
+    todos
 });

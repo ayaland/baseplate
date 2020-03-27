@@ -1,10 +1,11 @@
-class TodosController < ApplicationController
-  before_action :set_todo, only: [:show, :edit, :update, :destroy]
+class Api::TodosController < ApplicationController
+  before_action :require_logged_in
 
   # GET /todos
   # GET /todos.json
   def index
-    @todos = Todo.all
+    list = List.find_by(id: params[:list_id])
+    @todos = list.todos
   end
 
   # GET /todos/1
