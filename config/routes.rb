@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :todos
+  # resources :todos
   # Ayanote watch resource vs resources : one requires an id to find, the other assumes there can only be one
   # show/edit/update/destroy need an id for 'resources'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

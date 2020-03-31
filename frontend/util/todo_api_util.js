@@ -32,7 +32,7 @@ export const fetchTodos = (listId) => (
 export const createTodo = (listId, todo) => (
     $.ajax({
         method: 'POST',
-        url: `/api/projects/${projectId}/lists/${listId}`,
+        url: `/api/lists/${listId}/todos`,
         data: { todo }
     })
 )

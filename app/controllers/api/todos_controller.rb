@@ -1,45 +1,33 @@
 class Api::TodosController < ApplicationController
   before_action :require_logged_in
+  
+  def new
+    @todo = Todo.new
+  end
+  
+  def create
+    @todo = Todo.new(todo_params)
 
-  # GET /todos
-  # GET /todos.json
+    if @todo.save
+        render :show
+    else
+        render json: @todo.errors.full_messages, status: 422
+    end
+  end
+    
+  def show
+    @todo = Todo.find(params[:id])
+  end
+  
   def index
     list = List.find_by(id: params[:list_id])
     @todos = list.todos
   end
 
-  # GET /todos/1
-  # GET /todos/1.json
-  def show
-  end
 
-  # GET /todos/new
-  def new
-    @todo = Todo.new
-  end
-
-  # GET /todos/1/edit
   def edit
   end
 
-  # POST /todos
-  # POST /todos.json
-  def create
-    @todo = Todo.new(todo_params)
-
-    respond_to do |format|
-      if @todo.save
-        format.html { redirect_to @todo, notice: 'Todo was successfully created.' }
-        format.json { render :show, status: :created, location: @todo }
-      else
-        format.html { render :new }
-        format.json { render json: @todo.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # PATCH/PUT /todos/1
-  # PATCH/PUT /todos/1.json
   def update
     respond_to do |format|
       if @todo.update(todo_params)
@@ -52,8 +40,6 @@ class Api::TodosController < ApplicationController
     end
   end
 
-  # DELETE /todos/1
-  # DELETE /todos/1.json
   def destroy
     @todo.destroy
     respond_to do |format|
@@ -63,13 +49,8 @@ class Api::TodosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_todo
-      @todo = Todo.find(params[:id])
-    end
-
     # Only allow a list of trusted parameters through.
     def todo_params
-      params.require(:todo).permit(:body, :owner_id, :list_id, :project_id, :due_date, :done)
+      params.require(:todo).permit(:body, :owner_id, :list_id, :due_date, :done)
     end
 end
