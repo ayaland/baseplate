@@ -29,7 +29,7 @@ class MessageShow extends React.Component {
     componentDidMount() {
         this.props.fetchProject(this.props.match.params.projectId);
         this.props.fetchMessage(this.props.match.params.projectId, this.props.match.params.messageId);
-        this.props.fetchComments(this.props.match.params.messageId)
+        this.props.fetchComments(this.props.match.params.messageId);
         this.setState({
             message_id: this.props.messageId,
             owner_id: this.props.userId,
@@ -43,6 +43,7 @@ class MessageShow extends React.Component {
     }
 
     hideTrixEditor(e) {
+        e.preventDefault();
         this.setState({ body: '' });
         this.setState({ showTrixEditor: false });
     }
@@ -154,7 +155,7 @@ class MessageShow extends React.Component {
                         { this.state.showTrixEditor
                             ? (
                                 <div className="expanded_content">
-                                <form onSubmit={this.handleSubmit} className="">
+                                <form onSubmit={this.handleSubmit}>
                                     <article className="flush--bottom">
                                         <section className="message-content">
                                             <TrixEditor

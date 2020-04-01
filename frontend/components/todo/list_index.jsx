@@ -31,12 +31,10 @@ class ListIndex extends React.Component {
     }
 
     showListForm(e) {
-        e.preventDefault();
         this.setState({ showListForm: true });
     }
 
     hideListForm(e) {
-        e.preventDefault();
         this.setState({ title: '' });
         this.setState({ showListForm: false });
     }
@@ -53,11 +51,10 @@ class ListIndex extends React.Component {
     }
 
     handleSubmit(e) {
-        e.preventDefault();
         const list = Object.assign({}, this.state);
         delete list.showListForm;
         this.props.processForm(this.props.projectId, list);
-        this.hideListForm();
+        this.setState({ showListForm: false});
         // .then(
         //     this.props.history.push(`/projects/${this.props.projectId}/lists`)
         // );

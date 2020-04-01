@@ -5,7 +5,7 @@
 body {
     font-family: "Graphik", "Helvetica Neue", helvetica, "Apple Color Emoji", arial, sans-serif;
     line-height: 1.5;
-    /* font-size: 16px; */
+    font-size: 1.0rem;
     background-color: #f6f2ef;
     color: #283c46;
     overflow-x: hidden;
@@ -244,6 +244,7 @@ trix-toolbar .button_row {
     padding: 0.5em 1em;
     border-radius: 1.5em;
     max-width: 100%;
+    background-color: #fff;
     border: 1px solid #d9d9d9;
     line-height: 1.5;
     white-space: normal;
@@ -283,6 +284,30 @@ trix-toolbar .button_row {
 
 .center-align {
     margin-right: auto;
+}
+
+.checkbox {
+    padding: 0.25em 0 0.25em 1.9em;
+    position: relative;
+    min-height: 1.4em;
+    display: block;
+}
+
+.checkbox_button {
+    display: inline-block;
+    width: 1.4em;
+    height: 1.4em;
+    border: 1px solid rgba(0,0,0,0.25);
+    background-color: #fff;
+    border-radius: 0.3em;
+    vertical-align: top;
+}
+
+.checkbox_label {
+    position: absolute;
+    left: 0;
+    top: 0.25em;
+    cursor: pointer;
 }
 
 .flush {
@@ -560,6 +585,11 @@ trix-toolbar .button_row {
     border-radius: 1rem;
 }
 
+.todos-form {
+    border: 1px solid #e5e5e5;
+    margin-bottom: 1rem;
+    border-radius: 0.6rem;
+}
 .todos-form_details {
     padding: 0 2.8rem 0.5rem;
 }
