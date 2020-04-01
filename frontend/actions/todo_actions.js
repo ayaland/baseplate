@@ -51,8 +51,19 @@ export const fetchTodos = (listId) => dispatch => (
     ))
 );
 
+export const fetchTodo = (listId, todoId) => dispatch => (
+    APIUtil.fetchTodo(listId, todoId).then(todo =>
+        dispatch(receiveTodo(todo)))
+)
+
 export const createTodo = (listId, todo) => dispatch => (
     APIUtil.createTodo(listId, todo).then(todo => (
+        dispatch(receiveTodo(todo))
+    ))
+);
+
+export const updateTodo = (listId, todoId, todo) => dispatch => (
+    APIUtil.updateTodo(listId, todoId, todo).then(todo => (
         dispatch(receiveTodo(todo))
     ))
 );

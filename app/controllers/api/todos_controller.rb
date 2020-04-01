@@ -29,14 +29,12 @@ class Api::TodosController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @todo.update(todo_params)
-        format.html { redirect_to @todo, notice: 'Todo was successfully updated.' }
-        format.json { render :show, status: :ok, location: @todo }
-      else
-        format.html { render :edit }
-        format.json { render json: @todo.errors, status: :unprocessable_entity }
-      end
+    @todo = Todo.find_by(id: params[:id])
+
+    if @todo.update(todo_params)
+      render :show
+    else
+      render json: @todo.errors.full_messages, status: 404
     end
   end
 
