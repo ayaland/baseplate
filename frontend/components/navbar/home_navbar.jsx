@@ -70,8 +70,28 @@ class HomeNavbar extends React.Component {
                             <Link to={`/`}><img src={window.nav_home} /> Home</Link>
                         </li>
 
-                        <li className="nav_link">
-                            <Link to={`/`}><img src={window.nav_pint} /> Pints</Link>
+                        <li 
+                            className="nav_link" 
+                            onClick={this.showPints} 
+                            data-toggle="dropdown-pints"
+                        >
+                            <img className="nav_icon" src={window.nav_pint}/> Pints
+                            { this.state.showPints
+                                ? (
+                                    <div
+                                        className="dropdown-pints"
+                                        ref={(element) => {
+                                            this.dropdownMenu = element;
+                                        }}>
+                                        <section className="nav-menu_section">
+                                            <h3 className="flush--top push_half--bottom break :before">
+                                                <span>Pints are glasses of delicious beverages drunk by one person or a few.</span>
+                                            </h3>
+                                        </section>
+                                    </div>)
+                                : (
+                                    null)
+                            }
                         </li>
 
                         {/* suggestion from Phil: can I prevent default to prevent the browser from wiping the props and state when clicking on this link? */}

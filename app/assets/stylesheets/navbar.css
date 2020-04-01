@@ -14,6 +14,20 @@
     z-index: 1;
 }
 
+.dropdown-pints {
+    flex-direction: column;
+    display: flex;
+    position: fixed;
+    top: 2.4rem;
+    left: auto;
+    text-align: left;
+    border: 0;
+    border-radius: 0.2em 0.2em 0 0;
+    background-color: #fff;
+    box-shadow: 0 0 4px rgba(0,0,0,0.15), 0 5px 10px rgba(0,0,0,0.05);
+    z-index: 1;
+}
+
 .dropdown-settings:after {
     content: ' ';
     position: absolute;
@@ -58,6 +72,7 @@
     vertical-align: middle;
     text-align: center;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .nav-menu_section {
