@@ -1,3 +1,13 @@
+.bg-butcher-paper {
+    background-color: #fbf7f0;
+    /* Ayanote: do not know if url will work on Heroku */
+    background: url('./butcher_paper_bottom.svg')
+        center bottom -0.1rem/105% no-repeat,
+        #fbf7f0 url('./butcher_paper_top.svg')
+        center top -0.1rem/105% no-repeat;
+
+}
+
 .button {
     transition: all 0.2s ease;
     transition-property: color, background-color, border-color;
@@ -75,7 +85,7 @@
 
 .heading {
     margin: 0 0 0.25em 0;
-    font-size: 250%;
+    font-size: 280%;
     line-height: 1.05;
     font-weight: 950;
 }
@@ -130,8 +140,10 @@
 .wrapper {
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
     max-width: 100%;
     margin: 0;
+    padding: 4em 0;
 }
 
 .wrapper--intro {
@@ -140,7 +152,7 @@
 }
 
 .x-small {
-    font-size: 75%;
+    font-size: 85%;
 }
 
 #splash {
@@ -160,6 +172,14 @@
         font-size: 65%;
         font-style: italic;
         color: #aa9c84;
+    }
+    
+    .footer {
+        padding: 10em 0 34em 0;
+        background: url('./colors_timeline')
+        center bottom;
+        background-repeat: no-repeat;
+        background-size: auto auto;
     }
 }
 
@@ -184,7 +204,18 @@
     .grid--centered > p {
         grid-column: 5 / span 16;
     }
-    
+
+    .grid--formatted.grid--centered > h1:not(.grid_item), 
+    .grid--formatted.grid--centered > h2:not(.grid_item), 
+    .grid--formatted.grid--centered > h3:not(.grid_item), 
+    .grid--formatted.grid--centered > p:not(.grid_item), 
+    .grid--formatted.grid--centered > ul:not(.grid_item), 
+    .grid--formatted.grid--centered > ol:not(.grid_item), 
+    .grid--formatted.grid--centered > hr:not(.grid_item), 
+    .grid--formatted.grid--centered > figure:not(.grid_item) {
+        grid-column: 5 / span 16;
+    }
+
     .grid_item--medium {
         grid-column: 4 / span 15;
     }

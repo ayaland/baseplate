@@ -1,11 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import ReactHtmlParser from 'react-html-parser';
 
 
 function TodosCard(props) {
-    // let todos = props.todos.reverse()
-    let todos=[];
+    let lists = props.lists.reverse()
+    // let todos=[];
     return (
         <article className="card card--app">
             <Link to={`/projects/${props.project.id}/lists`} className="card_link">
@@ -16,7 +15,7 @@ function TodosCard(props) {
                     </header>
 
                     <section className="push_half--top">
-                        {todos.length < 1
+                        {lists.length < 1
                             ? (
                                 <div className="card_description align--center">
                                     <p className="flush">
@@ -25,14 +24,14 @@ function TodosCard(props) {
                                 </div>)
                             : (
                                 <div className="messages-div message-preview flush--top">
-                                    {todos.map((message) => (
-                                        <div className="messageboard_card-outer">
-                                            <div className="messageboard_card messageboard_card-title txt-bold">
-                                                {ReactHtmlParser(message.title)}
+                                    {lists.map((list) => (
+                                        <div className="app_card-outer" key={list.id}>
+                                            <div className="app_card messageboard_card-title txt-bold">
+                                                {list.title}
                                             </div>
-                                            <div className="messageboard_card messageboard_card-body">
-                                                {message.text_body}
-                                            </div>
+                                            {/* <div className="app_card messageboard_card-body">
+                                                {list.title}
+                                            </div> */}
                                         </div>
                                     ))}
                                 </div>

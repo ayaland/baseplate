@@ -49,6 +49,49 @@ class Splash extends React.Component {
                     </div>
                 </section>
 
+                <section className="wrapper bg-butcher-paper">
+                    <div className="grid grid--centered grid--formatted centered">
+                        <h3 className="heading push--top">Do you play with LEGO?</h3>
+                        <p>
+                            <strong>
+                                <Link to="https://www.target.com/p/build-it-volume-1-brick-books-by-jennifer-kemmeter-paperback/-/A-51830555">
+                                    Read "Build It!", a book on how to make a LEGO city the Baseplate way
+                                </Link>
+                                
+                            </strong>
+                            {'.'}
+                        </p>
+
+                        <h3 className="heading push--top">Want to get better at Baseplate?</h3>
+                        <p>
+                            <strong>Take a look at our learning library</strong>
+                            {' or '}
+                            <strong>sign up for a free live class</strong>
+                            {'.'}
+                        </p>
+
+                        <h3 className="heading push--top">Need some help?</h3>
+                        <p className="push_double--bottom">
+                            <strong>Read Baseplate docs</strong>
+                            {' or '}
+                            <strong>send us a message for detailed help</strong>
+                            {'.'}
+                        </p>
+                    </div>
+                </section>
+
+                <footer className="footer app-android_hide">
+                    <div className="grid">
+                        <p className="x-small grid_item grid_item--medium">
+                            <strong>Baseplate apps: </strong>
+                            <br></br>
+                            <strong>More: </strong><Link to="https://store.bricklink.com/moreshelfspace&utm_content=globalnav#/shop">our shop</Link>
+
+                        </p>
+
+                    </div>
+
+                </footer>
             </main>
         )
     }

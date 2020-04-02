@@ -28,9 +28,10 @@ class ProjectShow extends React.Component {
     // }
 
     render() {
-        if (!this.props.project || !this.props.messages) return null;
+        if (!this.props.project || !this.props.messages || !this.props.lists) return null;
         let project = this.props.project;
         let messages = this.props.messages;
+        let lists = this.props.lists;
 
         return (
             <div className="panel panel--perma panel--project push_double--bottom centered">
@@ -41,7 +42,7 @@ class ProjectShow extends React.Component {
                 <section className="project-dock centered">
                     <div className="card-grid">
                         <MessageboardCard project={project} messages={messages} />
-                        <TodolistCard project={project} />
+                        <TodolistCard project={project} lists={lists}/>
                     </div>
                 </section>
             </div>
@@ -54,7 +55,8 @@ const mapStateToProps = (state, ownProps) => {
         errors: state.errors.session,
         projectId: ownProps.match.params.projectId,
         project: state.entities.projects[ownProps.match.params.projectId],
-        messages: Object.values(state.entities.messages)
+        messages: Object.values(state.entities.messages),
+        lists: Object.values(state.entities.lists)
     }
 };
 

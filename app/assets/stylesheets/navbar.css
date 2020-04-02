@@ -19,6 +19,7 @@
     display: flex;
     position: fixed;
     top: 2.4rem;
+    padding-top: 1rem;
     left: auto;
     text-align: left;
     border: 0;

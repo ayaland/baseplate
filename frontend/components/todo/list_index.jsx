@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 
 import { fetchProject } from '../../actions/project_actions';
-import { fetchLists, createList } from '../../actions/todo_actions';
+import { fetchLists, createList, fetchTodos } from '../../actions/todo_actions';
 import ListCard from './list_card';
 
 class ListIndex extends React.Component {
@@ -54,13 +54,14 @@ class ListIndex extends React.Component {
         const list = Object.assign({}, this.state);
         delete list.showListForm;
         this.props.processForm(this.props.projectId, list);
-        this.setState({ showListForm: false});
+        this.setState({ showListForm: false });
         // .then(
         //     this.props.history.push(`/projects/${this.props.projectId}/lists`)
         // );
     }
     
     render() {
+        // fetchTodos = { this.props.fetchTodos }
         if (!this.props.project) return null;
         let project = this.props.project;
         let lists = this.props.lists;
@@ -132,14 +133,14 @@ class ListIndex extends React.Component {
                                 </div>
                             ) }
 
-                        <section>
+                        <section className="todo-lists">
                             <ul className="lists-list">
                                 {lists.map((list) => (
                                     <li key={list.id}>
                                         <ListCard
+                                            todos={this.props.fetchTodos}
                                             list={list}
                                             projectId={project.id}
-                                            fetchTodos={this.props.fetchTodos}
                                             key={list.id}
                                         />
                                     </li>
