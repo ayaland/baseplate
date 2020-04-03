@@ -1,4 +1,4 @@
-.dropdown-menu {
+.settings-menu {
     flex-direction: column;
     display: flex;
     position: fixed;
@@ -14,19 +14,38 @@
     z-index: 1;
 }
 
-.dropdown-pints {
+.pints-menu {
     flex-direction: column;
     display: flex;
     position: fixed;
     top: 2.4rem;
-    padding-top: 1rem;
-    left: auto;
+    width: 63rem;
+    margin-left: -33rem;
     text-align: left;
     border: 0;
     border-radius: 0.2em 0.2em 0 0;
     background-color: #fff;
     box-shadow: 0 0 4px rgba(0,0,0,0.15), 0 5px 10px rgba(0,0,0,0.05);
     z-index: 1;
+}
+
+.dropdown-pints {
+    overflow-x: hidden;
+    overflow-y: overlay;
+    padding-top: 1rem; 
+}
+
+.dropdown-pints:after {
+    content: ' ';
+    position: absolute;
+    bottom: 100%;
+    right: 46%;
+    width: 0;
+    height: 0;
+    margin-left: -9px;
+    border: 9px solid rgba(255,255,255,0);
+    border-bottom-color: #fff;
+    z-index: 5;
 }
 
 .dropdown-settings:after {

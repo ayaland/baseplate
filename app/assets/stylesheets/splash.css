@@ -98,6 +98,10 @@
     padding: 0.1rem;
 }
 
+.splash-link {
+    text-decoration: underline;
+}
+
 .splash-nav {
     position: fixed;
     top: 0;
@@ -152,7 +156,7 @@
 }
 
 .x-small {
-    font-size: 85%;
+    font-size: 95%;
 }
 
 #splash {
@@ -175,7 +179,7 @@
     }
     
     .footer {
-        padding: 10em 0 34em 0;
+        padding: 10em 0 42em 0;
         background: url('./colors_timeline')
         center bottom;
         background-repeat: no-repeat;
@@ -190,7 +194,7 @@
     }
     
     .grid {
-        grid-template-columns: repeat(3, 1fr) repeat(18, 2.65em) repeat(3, 1fr);
+        grid-template-columns: repeat(3, 1fr) repeat(18, 3.65em) repeat(3, 1fr);
     }
     
     .grid--centered .grid_item--medium {
