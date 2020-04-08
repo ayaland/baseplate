@@ -68,6 +68,7 @@ class MessageIndex extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
+        errors: state.errors.session,
         project: state.entities.projects[ownProps.match.params.projectId],
         messages: Object.values(state.entities.messages)
     }

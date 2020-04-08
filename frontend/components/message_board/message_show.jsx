@@ -38,12 +38,10 @@ class MessageShow extends React.Component {
     }
 
     showTrixEditor(e) {
-        e.preventDefault();
         this.setState({ showTrixEditor: true });
     }
 
     hideTrixEditor(e) {
-        e.preventDefault();
         this.setState({ body: '' });
         this.setState({ showTrixEditor: false });
     }
@@ -60,9 +58,6 @@ class MessageShow extends React.Component {
         delete comment.showTrixEditor;
         this.props.processForm(this.props.messageId, comment);
         this.hideTrixEditor();
-        // .then(
-        //     this.props.history.push(`/projects/${this.props.projectId}/messages/${this.props.messageId}`)
-        // )
     }
 
     handleEditorReady(e) {

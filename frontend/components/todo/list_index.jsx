@@ -54,13 +54,14 @@ class ListIndex extends React.Component {
         const list = Object.assign({}, this.state);
         delete list.showListForm;
         this.props.processForm(this.props.projectId, list);
-        this.setState({ showListForm: false});
+        this.setState({ showListForm: false });
         // .then(
         //     this.props.history.push(`/projects/${this.props.projectId}/lists`)
         // );
     }
     
     render() {
+        // fetchTodos = { this.props.fetchTodos }
         if (!this.props.project) return null;
         let project = this.props.project;
         let lists = this.props.lists;
@@ -128,19 +129,17 @@ class ListIndex extends React.Component {
                                 </section>
                             ): (
                                 <div className="collapsed_content">
-                                    Placeholder
+                                    {' '}
                                 </div>
                             ) }
 
-                        <section>
+                        <section className="todo-lists">
                             <ul className="lists-list">
                                 {lists.map((list) => (
                                     <li key={list.id}>
                                         <ListCard
                                             list={list}
                                             projectId={project.id}
-                                            fetchTodos={this.props.fetchTodos}
-                                            key={list.id}
                                         />
                                     </li>
                                 ))}
@@ -177,9 +176,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         fetchProject: (projectId) => dispatch(fetchProject(projectId)),
         fetchLists: (projectId) => dispatch(fetchLists(projectId)),
-        fetchTodos: (listId) => dispatch(fetchTodos(listId)),
         processForm: (projectId, list) => dispatch(createList(projectId, list)),
     }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ListIndex))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ListIndex));

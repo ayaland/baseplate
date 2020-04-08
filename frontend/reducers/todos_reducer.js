@@ -5,7 +5,15 @@ const todosReducer = (state = {}, action) => {
     let nextState = Object.assign({}, state);
     switch (action.type) {
         case RECEIVE_TODOS:
-            return action.todos;
+            // #Ayanote: creating nested object of todos under listId in todos in state
+            Object.keys(action.todos).map(key => {
+                const listId = action.todos[key].list_id;
+                if (!nextState[listId]) {
+                    nextState[listId] = {}
+                } 
+                nextState[listId] = Object.assign(nextState[listId], {[key]: action.todos[key]})
+            });
+            return nextState;
         case RECEIVE_TODO:
             nextState[action.todo.id] = action.todo
             return nextState;

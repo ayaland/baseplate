@@ -76,22 +76,29 @@ class HomeNavbar extends React.Component {
                             data-toggle="dropdown-pints"
                         >
                             <img className="nav_icon" src={window.nav_pint}/> Pints
-                            { this.state.showPints
-                                ? (
-                                    <div
-                                        className="dropdown-pints"
-                                        ref={(element) => {
-                                            this.dropdownMenu = element;
-                                        }}>
-                                        <section className="nav-menu_section">
-                                            <h3 className="flush--top push_half--bottom break :before">
-                                                <span>Pints are glasses of delicious beverages drunk by one person or a few.</span>
-                                            </h3>
-                                        </section>
-                                    </div>)
-                                : (
-                                    null)
-                            }
+                            <div className="dropdown-menu pints-menu">
+                                { this.state.showPints
+                                    ? (
+                                        <div
+                                            className="dropdown-pints"
+                                            ref={(element) => {
+                                                this.dropdownMenu = element;
+                                            }}>
+                                            <section className="nav-menu_section">
+                                                <h3 className="flush--top push_half--bottom">
+                                                    <span>
+                                                        <img src={window.cheers} />
+                                                        &nbsp;
+                                                        Pints are glasses of delicious beverages drunk by one person or a few.
+                                                    </span>
+                                                </h3>
+                                            </section>
+                                        </div>)
+                                    : (
+                                        null)
+                                }
+
+                            </div>
                         </li>
 
                         {/* suggestion from Phil: can I prevent default to prevent the browser from wiping the props and state when clicking on this link? */}
@@ -107,9 +114,9 @@ class HomeNavbar extends React.Component {
                                 height="30" 
                                 onClick={this.showMenu} 
                                 src={window.demo_avatar} 
-                                data-toggle="dropdown-menu" 
+                                data-toggle="dropdown-menu settings-menu" 
                             />
-                            <div className="dropdown-menu">
+                            <div className="dropdown-menu settings-menu">
                                 { this.state.showMenu
                                     ? (
                                         <div

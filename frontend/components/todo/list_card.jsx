@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 
 import { fetchTodo, fetchTodos, createTodo, updateTodo } from '../../actions/todo_actions';
 
@@ -13,7 +12,7 @@ class ListCard extends React.Component {
             list_id: '',
             due_date: '',
             done: false,
-            showTodoForm: false
+            showTodoForm: false,
         }
         this.showTodoForm = this.showTodoForm.bind(this);
         this.hideTodoForm = this.hideTodoForm.bind(this);
@@ -23,25 +22,39 @@ class ListCard extends React.Component {
     }
 
     componentDidMount () {
-        this.props.fetchTodos(this.props.list.id);
+        console.log(this.props.list.id)
+        this.props.fetchTodos(this.props.listId).then(
+            console.log(this.props.todos)
+        );
         this.setState({
             list_id: this.props.list.id,
-            owner_id: this.props.userId
-        })
+            owner_id: this.props.userId,
+        });
+        console.log(this.props)
+
+        // this.props.fetchTodos(this.props.listId).then( () => (
+        // ));
+        // console.log(this.props.todos)
     }
 
+    // componentWillReceiveProps(nextProps) {
+    //     if(nextProps.todos!==this.props.todos) {
+    //         console.log(this.props.listId);
+    //         console.log(this.props.todos);
+    //         console.log(nextProps.todos);
+    //     }
+    // }
+
     showTodoForm(e) {
-        e.preventDefault();
         this.setState({ showTodoForm: true });
     }
 
     hideTodoForm(e) {
-        e.preventDefault();
-        this.setState({ showTodoForm: false })
+        this.setState({ showTodoForm: false });
     }
 
     toggleTodo(e) { 
-        this.props.fetchTodo(this.props.list.id, e);
+        this.props.fetchTodo(this.props.listId, e);
         console.log('request sent')
         // const updatedTodo = Object.assign({}, this.props.todo);
         // console.log(updatedTodo)
@@ -66,32 +79,34 @@ class ListCard extends React.Component {
         const todo = Object.assign({}, this.state);
         delete todo.showTodoForm;
         this.props.processForm(this.props.list.id, todo);
-        this.hideTodoForm;
+        this.hideTodoForm(e);
     }
 
     render() {
+        if (!this.props.list || !this.props.todos) return null;
+        let list = this.props.list;
+        let todos = this.props.todos;
+
         let undoneTodos = [];
         let doneTodos = [];
-        if (!this.props.list || !this.props.todos) return null;
-        const list = this.props.list;
-        const todos = this.props.todos;
 
-        // const checkbox = todo.done ? (
+        todos.forEach(todo => {
+            if (todo.list_id === this.props.listId) {
+                if (todo.done) {
+                    doneTodos.push(todo);
+                } else {
+                    undoneTodos.push(todo);
+                }
+            }
+        })
 
-        // ) 
-        // : (
-
-        // ) 
-
-        {/* onClick={this.toggleTodo} */}
         return (
             <article className="list-card">
                 <header className="list_header">
                     <h2 className="list_title">{list.title}</h2>
                 </header>
                 <ul className="todos-undone">
-                    {todos.map((todo) => (
-
+                    {undoneTodos.map((todo) => (
                         <li key={todo.id}>
                             <div className="checkbox">
                                 <input 
@@ -102,80 +117,78 @@ class ListCard extends React.Component {
                                     onClick={e => this.toggleTodo(todo.id)}
                                 />
                                 <label htmlFor="todo_body">
-                                    {' '}{todo.body}
+                                    {' '}{todo.list_id}{' '}{todo.body}
                                 </label>
                             </div>
                         </li>    
                     ))}
                 </ul>
-                    { this.state.showTodoForm
-                        ? (
-                            <div className="todos-form todos-form--todo checkbox">
-                                <form onSubmit={this.handleSubmit}>
-                                    <label className="checkbox_label">
-                                        <span className="checkbox_button"></span>
-                                    </label>
-                                    <textarea
-                                        rows="1"
-                                        placeholder="Describe this to-do..."
-                                        className="todos-form_title input input--full-width input--borderless input--unpadded"
-                                        onChange={this.handleChange}
+                { this.state.showTodoForm
+                    ? (
+                        <div className="todos-form todos-form--todo checkbox">
+                            <form onSubmit={this.handleSubmit}>
+                                <label className="checkbox_label">
+                                    <span className="checkbox_button"></span>
+                                </label>
+                                <textarea
+                                    rows="1"
+                                    placeholder="Describe this to-do..."
+                                    className="todos-form_title input input--full-width input--borderless input--unpadded"
+                                    onChange={this.handleChange}
+                                />
+                                <div>
+                                    <input
+                                        type="submit"
+                                        className="btn btn--small btn--primary"
+                                        value="Add this to-do"
                                     />
-                                    <div>
-                                        <input
-                                            type="submit"
-                                            className="btn btn--small btn--primary"
-                                            value="Add this to-do"
-                                        />
-                                        <button
-                                            type="reset"
-                                            className="btn btn--small btn--secondary"
-                                            onClick={this.hideTodoForm}
-                                        >
-                                        Cancel
-                                        </button>
-                                    </div>
-                                    {/* #Ayanote: if want to add notes field later
-                                    <div className="todos-form_field">
-                                        <label 
-                                            htmlFor="todo_expand_notes_field" 
-                                            className="todos-form_field-label"
-                                        >
-                                        Notes
-                                        </label>
-                                        <input type="text" placeholder="Add extra details...">
-                                        </input>
+                                    <button
+                                        type="reset"
+                                        className="btn btn--small btn--secondary"
+                                        onClick={this.hideTodoForm}
+                                    >
+                                    Cancel
+                                    </button>
+                                </div>
+                                {/* #Ayanote: if want to add notes field later
+                                <div className="todos-form_field">
+                                    <label 
+                                        htmlFor="todo_expand_notes_field" 
+                                        className="todos-form_field-label"
+                                    >
+                                    Notes
+                                    </label>
+                                    <input type="text" placeholder="Add extra details...">
+                                    </input>
 
-                                    </div> */}
-                                </form>
-                            </div>
-                        )
-                        : (
-                            <div className="todolist-actions push_quarter--top push_half--bottom">
-                                <button 
-                                    className="btn btn--small" 
-                                    type="button"
-                                    onClick={this.showTodoForm}
-                                >
-                                Add a to-do</button>
-                            </div>
-                        )
-                    }
+                                </div> */}
+                            </form>
+                        </div>
+                    )
+                    : (
+                        <div className="todolist-actions push_quarter--top push_half--bottom">
+                            <button 
+                                className="btn btn--small" 
+                                type="button"
+                                onClick={this.showTodoForm}
+                            >
+                            Add a to-do</button>
+                        </div>
+                    )
+                }
             </article>
         );
     }
 }
 
 const mapStateToProps = (state, ownProps) => {
-    console.log(ownProps)
-    console.log(state)
     return {
         errors: state.errors.session,
         userId: state.session.id,
         projectId: ownProps.projectId,
         list: ownProps.list,
         listId: ownProps.list.id,
-        todos: Object.values(state.entities.todos),
+        // todos: Object.values(state.entities.todos),
     }
 }
 

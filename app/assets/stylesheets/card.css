@@ -180,13 +180,13 @@
     font-size: 0.8rem;
 }
 
-.messageboard_card {
+.app_card {
     display: block;
     overflow: hidden;
     max-height: 1.4em;
 }
 
-.messageboard_card-outer {
+.app_card-outer {
     padding: 0.5rem 0.2rem 0.3rem;
     border-top: 1px solid #f2f2f2;
     /* border-top: 1px solid green; */
