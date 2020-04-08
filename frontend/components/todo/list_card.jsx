@@ -12,7 +12,7 @@ class ListCard extends React.Component {
             list_id: '',
             due_date: '',
             done: false,
-            showTodoForm: false
+            showTodoForm: false,
         }
         this.showTodoForm = this.showTodoForm.bind(this);
         this.hideTodoForm = this.hideTodoForm.bind(this);
@@ -22,12 +22,28 @@ class ListCard extends React.Component {
     }
 
     componentDidMount () {
-        this.props.fetchTodos(this.props.listId);
+        console.log(this.props.list.id)
+        this.props.fetchTodos(this.props.listId).then(
+            console.log(this.props.todos)
+        );
         this.setState({
             list_id: this.props.list.id,
-            owner_id: this.props.userId
-        })
+            owner_id: this.props.userId,
+        });
+        console.log(this.props)
+
+        // this.props.fetchTodos(this.props.listId).then( () => (
+        // ));
+        // console.log(this.props.todos)
     }
+
+    // componentWillReceiveProps(nextProps) {
+    //     if(nextProps.todos!==this.props.todos) {
+    //         console.log(this.props.listId);
+    //         console.log(this.props.todos);
+    //         console.log(nextProps.todos);
+    //     }
+    // }
 
     showTodoForm(e) {
         this.setState({ showTodoForm: true });
@@ -38,7 +54,7 @@ class ListCard extends React.Component {
     }
 
     toggleTodo(e) { 
-        this.props.fetchTodo(this.props.list.id, e);
+        this.props.fetchTodo(this.props.listId, e);
         console.log('request sent')
         // const updatedTodo = Object.assign({}, this.props.todo);
         // console.log(updatedTodo)
@@ -63,7 +79,7 @@ class ListCard extends React.Component {
         const todo = Object.assign({}, this.state);
         delete todo.showTodoForm;
         this.props.processForm(this.props.list.id, todo);
-        this.hideTodoForm;
+        this.hideTodoForm(e);
     }
 
     render() {
@@ -74,22 +90,23 @@ class ListCard extends React.Component {
         let undoneTodos = [];
         let doneTodos = [];
 
-        // const checkbox = todo.done ? (
+        todos.forEach(todo => {
+            if (todo.list_id === this.props.listId) {
+                if (todo.done) {
+                    doneTodos.push(todo);
+                } else {
+                    undoneTodos.push(todo);
+                }
+            }
+        })
 
-        // ) 
-        // : (
-
-        // ) 
-
-        {/* onClick={this.toggleTodo} */}
         return (
             <article className="list-card">
                 <header className="list_header">
                     <h2 className="list_title">{list.title}</h2>
                 </header>
                 <ul className="todos-undone">
-                    {todos.map((todo) => (
-
+                    {undoneTodos.map((todo) => (
                         <li key={todo.id}>
                             <div className="checkbox">
                                 <input 
@@ -100,7 +117,7 @@ class ListCard extends React.Component {
                                     onClick={e => this.toggleTodo(todo.id)}
                                 />
                                 <label htmlFor="todo_body">
-                                    {' '}{todo.id}{' '}{todo.body}
+                                    {' '}{todo.list_id}{' '}{todo.body}
                                 </label>
                             </div>
                         </li>    
@@ -165,15 +182,13 @@ class ListCard extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    console.log(ownProps.list.id)
-    console.log(state)
     return {
         errors: state.errors.session,
         userId: state.session.id,
         projectId: ownProps.projectId,
         list: ownProps.list,
         listId: ownProps.list.id,
-        todos: Object.values(state.entities.todos),
+        // todos: Object.values(state.entities.todos),
     }
 }
 

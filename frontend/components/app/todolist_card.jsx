@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 function TodosCard(props) {
     let lists = props.lists.reverse()
-    // let todos=[];
     return (
         <article className="card card--app">
             <Link to={`/projects/${props.project.id}/lists`} className="card_link">
@@ -29,9 +28,6 @@ function TodosCard(props) {
                                             <div className="app_card messageboard_card-title txt-bold">
                                                 {list.title}
                                             </div>
-                                            {/* <div className="app_card messageboard_card-body">
-                                                {list.title}
-                                            </div> */}
                                         </div>
                                     ))}
                                 </div>

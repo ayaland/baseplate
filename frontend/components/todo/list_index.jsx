@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 
 import { fetchProject } from '../../actions/project_actions';
-import { fetchLists, createList, fetchTodos } from '../../actions/todo_actions';
+import { fetchLists, createList } from '../../actions/todo_actions';
 import ListCard from './list_card';
 
 class ListIndex extends React.Component {
@@ -129,7 +129,7 @@ class ListIndex extends React.Component {
                                 </section>
                             ): (
                                 <div className="collapsed_content">
-                                    Placeholder
+                                    {' '}
                                 </div>
                             ) }
 
@@ -138,10 +138,8 @@ class ListIndex extends React.Component {
                                 {lists.map((list) => (
                                     <li key={list.id}>
                                         <ListCard
-                                            todos={this.props.fetchTodos}
                                             list={list}
                                             projectId={project.id}
-                                            key={list.id}
                                         />
                                     </li>
                                 ))}
@@ -178,9 +176,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         fetchProject: (projectId) => dispatch(fetchProject(projectId)),
         fetchLists: (projectId) => dispatch(fetchLists(projectId)),
-        fetchTodos: (listId) => dispatch(fetchTodos(listId)),
         processForm: (projectId, list) => dispatch(createList(projectId, list)),
     }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ListIndex))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ListIndex));
