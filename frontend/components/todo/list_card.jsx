@@ -22,19 +22,11 @@ class ListCard extends React.Component {
     }
 
     componentDidMount () {
-        console.log(this.props.list.id)
-        this.props.fetchTodos(this.props.listId).then(
-            console.log(this.props.todos)
-        );
+        this.props.fetchTodos(this.props.list.id)
         this.setState({
             list_id: this.props.list.id,
             owner_id: this.props.userId,
         });
-        console.log(this.props)
-
-        // this.props.fetchTodos(this.props.listId).then( () => (
-        // ));
-        // console.log(this.props.todos)
     }
 
     // componentWillReceiveProps(nextProps) {
@@ -54,18 +46,18 @@ class ListCard extends React.Component {
     }
 
     toggleTodo(e) { 
-        this.props.fetchTodo(this.props.listId, e);
-        console.log('request sent')
-        // const updatedTodo = Object.assign({}, this.props.todo);
-        // console.log(updatedTodo)
-        // updatedTodo.done ? (
-        //     updatedTodo.done = false
-        // )
-        // : (
-        //     updatedTodo.done = true
-        // )
-        // console.log(updatedTodo.done)
-        // this.props.updateTodo(this.props.list.id, this.props.todo.id, updatedTodo)
+        // this.props.fetchTodo(this.props.listId, e);
+        // console.log('request sent')
+        const updatedTodo = Object.assign({}, this.props.todo);
+        console.log(updatedTodo)
+        updatedTodo.done ? (
+            updatedTodo.done = false
+        )
+        : (
+            updatedTodo.done = true
+        )
+        console.log(updatedTodo.done)
+        this.props.updateTodo(this.props.list.id, this.props.todo.id, updatedTodo)
         // set current todo.done to whatever it is not. bonus if strikethrough
     }
 
@@ -90,15 +82,28 @@ class ListCard extends React.Component {
         let undoneTodos = [];
         let doneTodos = [];
 
-        todos.forEach(todo => {
-            if (todo.list_id === this.props.listId) {
-                if (todo.done) {
-                    doneTodos.push(todo);
-                } else {
-                    undoneTodos.push(todo);
-                }
-            }
-        })
+            // console.log(todos[key])
+            todos.forEach(todo => {
+                // console.log(todo)
+                Object.keys(todo).map(key => {
+                    // console.log(key)
+                    // key is the todo id
+                    // console.log(todo[key].list_id)
+                    // console.log(this.props.listId)
+                    if (todo[key].list_id === this.props.listId) {
+                        // console.log('match')
+                        // console.log(todo[key])
+                        if (todo[key].done) {
+                            doneTodos.push(todo[key]);
+                            // console.log('done');
+                        } else {
+                            undoneTodos.push(todo[key]);
+                            // console.log('not done')
+                        }
+                    }
+                })
+
+        });
 
         return (
             <article className="list-card">
@@ -188,7 +193,8 @@ const mapStateToProps = (state, ownProps) => {
         projectId: ownProps.projectId,
         list: ownProps.list,
         listId: ownProps.list.id,
-        // todos: Object.values(state.entities.todos),
+        // todos: state.entities.todos
+        todos: Object.values(state.entities.todos),
     }
 }
 
