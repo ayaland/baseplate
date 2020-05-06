@@ -13,6 +13,7 @@ class ListCard extends React.Component {
             due_date: '',
             done: false,
             showTodoForm: false,
+            todos: this.props.todos
         }
         this.showTodoForm = this.showTodoForm.bind(this);
         this.hideTodoForm = this.hideTodoForm.bind(this);
@@ -29,13 +30,13 @@ class ListCard extends React.Component {
         });
     }
 
-    // componentWillReceiveProps(nextProps) {
-    //     if(nextProps.todos!==this.props.todos) {
-    //         console.log(this.props.listId);
-    //         console.log(this.props.todos);
-    //         console.log(nextProps.todos);
-    //     }
-    // }
+    componentWillReceiveProps(nextProps) {
+        if(nextProps.todos!==this.props.todos) {
+            this.setState( {
+                todos: nextProps.todos
+            })
+        }
+    }
 
     showTodoForm(e) {
         this.setState({ showTodoForm: true });
@@ -45,10 +46,8 @@ class ListCard extends React.Component {
         this.setState({ showTodoForm: false });
     }
 
-    toggleTodo(e) { 
-        // this.props.fetchTodo(this.props.listId, e);
-        // console.log('request sent')
-        const updatedTodo = Object.assign({}, this.props.todo);
+    toggleTodo(todo) { 
+        const updatedTodo = Object.assign({}, todo);
         console.log(updatedTodo)
         updatedTodo.done ? (
             updatedTodo.done = false
@@ -57,7 +56,8 @@ class ListCard extends React.Component {
             updatedTodo.done = true
         )
         console.log(updatedTodo.done)
-        this.props.updateTodo(this.props.list.id, this.props.todo.id, updatedTodo)
+        debugger;
+        this.props.updateTodo(this.props.list.id, todo.id, updatedTodo)
         // set current todo.done to whatever it is not. bonus if strikethrough
     }
 
@@ -77,32 +77,24 @@ class ListCard extends React.Component {
     render() {
         if (!this.props.list || !this.props.todos) return null;
         let list = this.props.list;
-        let todos = this.props.todos;
+        let todos = this.state.todos;
 
         let undoneTodos = [];
         let doneTodos = [];
 
-            // console.log(todos[key])
             todos.forEach(todo => {
                 // console.log(todo)
                 Object.keys(todo).map(key => {
-                    // console.log(key)
-                    // key is the todo id
-                    // console.log(todo[key].list_id)
-                    // console.log(this.props.listId)
-                    if (todo[key].list_id === this.props.listId) {
-                        // console.log('match')
-                        // console.log(todo[key])
+
+                    if (todo[key] && (todo[key].list_id === this.props.listId)) {
+
                         if (todo[key].done) {
                             doneTodos.push(todo[key]);
-                            // console.log('done');
                         } else {
                             undoneTodos.push(todo[key]);
-                            // console.log('not done')
                         }
                     }
                 })
-
         });
 
         return (
@@ -119,10 +111,10 @@ class ListCard extends React.Component {
                                     id="todo-check"
                                     className="todo_done"
                                     value={todo.id}
-                                    onClick={e => this.toggleTodo(todo.id)}
+                                    onClick={e => this.toggleTodo(todo)}
                                 />
                                 <label htmlFor="todo_body">
-                                    {' '}{todo.list_id}{' '}{todo.body}
+                                    {' '}{todo.id}{' '}{todo.body}
                                 </label>
                             </div>
                         </li>    
@@ -181,6 +173,24 @@ class ListCard extends React.Component {
                         </div>
                     )
                 }
+                <ul className="todos-done">
+                    {doneTodos.map((todo) => (
+                        <li key={todo.id}>
+                            <div className="checkbox">
+                                <input
+                                    type="checkbox"
+                                    id="todo-check"
+                                    className="todo_done"
+                                    value={todo.id}
+                                    onClick={e => this.toggleTodo(todo.id)}
+                                />
+                                <label htmlFor="todo_body">
+                                    {' '}{todo.list_id}{' '}{todo.body}
+                                </label>
+                            </div>
+                        </li>
+                    ))}
+                </ul>
             </article>
         );
     }

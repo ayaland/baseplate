@@ -15,7 +15,9 @@ const todosReducer = (state = {}, action) => {
             });
             return nextState;
         case RECEIVE_TODO:
-            nextState[action.todo.id] = action.todo
+            const todoObject = {[action.todo.id]: action.todo}
+            nextState[action.todo.list_id] = Object.assign(nextState[action.todo.list_id], todoObject)
+            // debugger;
             return nextState;
         default:
             return state;
