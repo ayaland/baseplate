@@ -23,7 +23,7 @@ class Splash extends React.Component {
                 <section className="wrapper wrapper--intro">
                     <div className="grid grid--centered centered-medium">
                         <div className="star-banner grid_item grid_item--medium centered">
-                            <div className="star-banner_item"><img alt="5 stars" src={window.stars} />"exactly what we need</div>
+                            <div className="star-banner_item"><img alt="5 stars" src={window.stars} />"exactly what we need"</div>
                             <div className="star-banner_item"><img alt="5 stars" src={window.stars} />"wonderful</div>
                             <div className="star-banner_item"><img alt="5 stars" src={window.stars} />"extremely user friendly"</div>
                             <div className="star-banner_item"><img alt="5 stars" src={window.stars} />"truly amazing"</div>
@@ -101,8 +101,13 @@ class Splash extends React.Component {
                         <p className="x-small grid_item grid_item--medium">
                             <strong>Baseplate apps: </strong>
                             <br></br>
-                            <strong>More: </strong><Link to="https://store.bricklink.com/moreshelfspace&utm_content=globalnav#/shop">our shop</Link>
-
+                            <strong>Projects</strong>
+                            <br></br>
+                            <strong>Messageboards</strong>
+                            <br></br>
+                            <strong>Todo Lists</strong>
+                            <br></br>
+                            <strong>Also visit: </strong><Link to="https://store.bricklink.com/moreshelfspace&utm_content=globalnav#/shop">our used LEGO shop</Link>
                         </p>
 
                     </div>
