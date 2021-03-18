@@ -103,7 +103,8 @@ class HomeNavbar extends React.Component {
 
                         {/* suggestion from Phil: can I prevent default to prevent the browser from wiping the props and state when clicking on this link? */}
                         <li className="nav_link">
-                            <Link to={`https://www.youtube.com/watch?v=prgm4eKq6d4`}><img src={window.nav_hey} /> Hey!</Link>
+                            {/* <Link to={`https://www.youtube.com/watch?v=prgm4eKq6d4`}><img src={window.nav_hey} /> Hey!</Link> */}
+                            <a href="https://www.youtube.com/watch?v=prgm4eKq6d4"><img src={window.nav_hey} /> Hey!</a>
                         </li>
                         
                         <li className="nav_link"><Link to={`/`}>Activity</Link></li>

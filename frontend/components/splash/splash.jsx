@@ -55,9 +55,9 @@ class Splash extends React.Component {
                         <h3 className="heading push--top">Do you play with LEGO?</h3>
                         <p>
                             <strong>
-                                <Link className="splash-link" to={`https://www.target.com/p/build-it-volume-1-brick-books-by-jennifer-kemmeter-paperback/-/A-51830555`}>
+                                <a href="https://www.goodreads.com/book/show/30032600-build-it-volume-1" class="splash-link">
                                     Read "Build It!", a book on how to make a LEGO city the Baseplate way
-                                </Link>   
+                                </a>
                             </strong>
                             {'.'}
                         </p>
@@ -65,15 +65,15 @@ class Splash extends React.Component {
                         <h3 className="heading push--top">Want to get better at Baseplate?</h3>
                         <p>
                             <strong>
-                                <Link className="splash-link" to={`https://www.barnesandnoble.com/w/the-lego-ideas-book-daniel-lipkowitz/1105678814`}>
+                                <a href="https://www.barnesandnoble.com/w/the-lego-ideas-book-daniel-lipkowitz/1105678814" class="splash-link">
                                     One of our favorite books in our library
-                                </Link>
+                                </a>
                             </strong>
                             {' or '}
                             <strong>
-                                <Link className="splash-link" to={`https://www.activityhero.com/activities/lego-camps-classes`}>
+                                <a href="https://www.activityhero.com/activities/lego-camps-classes" class="splash-link">
                                     sign up for a class
-                                </Link>
+                                </a>
                             </strong>
                             {'.'}
                         </p>
@@ -81,15 +81,15 @@ class Splash extends React.Component {
                         <h3 className="heading push--top">Need some help?</h3>
                         <p className="push_double--bottom">
                             <strong>
-                                <Link className="splash-link" to={`https://github.com/ayaland/baseplate/wiki`}>
+                                <a href="https://github.com/ayaland/baseplate/wiki" class="splash-link">
                                     Read Baseplate docs
-                                </Link>
+                                </a>
                             </strong>
                             {' or '}
                             <strong>
-                                <Link className="splash-link" to={`https://www.linkedin.com/in/aya-shirai/`}>
+                                <a href="https://www.linkedin.com/in/aya-shirai/" class="splash-link">
                                     send us a message for detailed help
-                                </Link>
+                                </a>
                             </strong>
                             {'.'}
                         </p>
